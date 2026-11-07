@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "MAG-S3: what a recording experiment needs to see the shape of the quantum compass"
 type: software
-version: "0.1.0"
+version: "0.1.1"
 doi: "10.5281/zenodo.24043500"
 repository-code: "https://github.com/nikabri88-cmd/quantum-compass-recording"
 authors:
@@ -23,7 +23,9 @@ abstract: >-
   and an antipodal test of parity needed half the cells topology needed and saw an odd admixture 20 times earlier.
   The hypothesis that pseudo-populations suffer less from shared gain noise failed in the opposite direction; an
   exploratory check traces this to the gain noise of each session and a normalisation by the summed count of the
-  session that restores the shape. Code is released under MIT; text, the protocol and the results under CC BY 4.0.
+  session that restores the shape. Version 0.1.1 corrects figures from the literature after a check against the
+  primary sources and adds notes from an independent reading; the frozen protocol, code, run and verdicts are those
+  of version 0.1.0. Code is released under MIT; text, the protocol and the results under CC BY 4.0.
 keywords:
   - magnetoreception
   - radical pair
