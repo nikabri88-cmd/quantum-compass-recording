@@ -3,7 +3,11 @@ message: "If you use this work, please cite it as below."
 title: "MAG-S3: what a recording experiment needs to see the shape of the quantum compass"
 type: software
 version: "0.1.1"
-doi: "10.5281/zenodo.24043500"
+doi: "10.5281/zenodo.24044654"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24043500"
+    description: "Version 0.1.0"
 repository-code: "https://github.com/nikabri88-cmd/quantum-compass-recording"
 authors:
   - family-names: Ryzhkova
