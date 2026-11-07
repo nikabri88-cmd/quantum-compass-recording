@@ -2,6 +2,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24043500.svg)](https://doi.org/10.5281/zenodo.24043500)
 
+<p align="center"><img src="figures/robin.jpg" alt="A European robin (Erithacus rubecula) in flight, in watercolour" width="440"></p>
+
 A simulation study of the recording experiment that could test the MAG-S2 prediction in birds. MAG-S2 predicted that neurons reading a radical-pair (cryptochrome) magnetic compass carry a population code shaped like the real projective plane RP², while a polarity-sensitive compass read by the same eyes and neurons gives a sphere. MAG-S3 models what a real recording adds: a weak and realistic yield pattern, few cells per session, Poisson spikes, slow drift of firing rates, gain noise shared by the cells of a session, and field rotations slow enough to avoid induction artefacts. It asks how many neurons, field directions and repeats an experiment needs to tell RP² from a sphere in 8 of 10 birds, how strongly each neuron must follow the field for that to fit into a few hours of recording, and whether the readout ever gives the RP² label to a polar code or to noise.
 
 Author: Julia Ryzhkova (Siriona, siriona.one; ORCID 0009-0005-4194-6059).
@@ -143,12 +145,13 @@ The code sets BLAS to one thread. Reruns are bitwise identical with the same BLA
 - `results/calibration/` – the calibration rounds and the repeat on the final code
 - `results/checks/` – environment checks and their comparison, the blind pipeline check, the smoke test and the mutation testing
 - `results/exploratory/` – the output of the exploratory check of H3
+- `figures/robin.jpg` – the European robin, the symbol of the study
 - `FREEZE.txt` – the SHA-256 posted before the run
 - `SHA256SUMS.txt` – SHA-256 of every file in the release
 
 ## Licence
 
-Code (`code/*.py`, `code/scripts/*`) is released under the MIT License. Text, the protocol and the results are released under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+Code (`code/*.py`, `code/scripts/*`) is released under the MIT License. Text, figures, the protocol and the results are released under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
 
 ## Citation
 

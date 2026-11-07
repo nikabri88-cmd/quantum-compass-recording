@@ -1,6 +1,6 @@
 MAG-S3 (quantum-compass-recording)
 Code (code/*.py, code/scripts/*): MIT License
-Text, protocol and results (*.md, *.txt, protocol/, results/, notebooks/, code/physics.json, code/mag_s2_bird1.json): CC BY 4.0
+Text, figures, protocol and results (*.md, *.txt, figures/, protocol/, results/, notebooks/, code/physics.json, code/mag_s2_bird1.json): CC BY 4.0
 
 MIT License
 
