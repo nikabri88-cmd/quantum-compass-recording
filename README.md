@@ -1,9 +1,11 @@
 # MAG-S3: what a recording experiment needs to see the shape of the quantum compass
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24043500.svg)](https://doi.org/10.5281/zenodo.24043500)
+
 A simulation study of the recording experiment that could test the MAG-S2 prediction in birds. MAG-S2 predicted that neurons reading a radical-pair (cryptochrome) magnetic compass carry a population code shaped like the real projective plane RP², while a polarity-sensitive compass read by the same eyes and neurons gives a sphere. MAG-S3 models what a real recording adds: a weak and realistic yield pattern, few cells per session, Poisson spikes, slow drift of firing rates, gain noise shared by the cells of a session, and field rotations slow enough to avoid induction artefacts. It asks how many neurons, field directions and repeats an experiment needs to tell RP² from a sphere in 8 of 10 birds, how strongly each neuron must follow the field for that to fit into a few hours of recording, and whether the readout ever gives the RP² label to a polar code or to noise.
 
 Author: Julia Ryzhkova (Siriona, siriona.one; ORCID 0009-0005-4194-6059).
-Status: version 0.1.0, 7 November 2026. The protocol (v0.4), code and thresholds were frozen before the confirmatory run, and their SHA-256 were posted in Telegram at 18:28 UTC (https://t.me/attractordm/76); the run started at 18:28:57 UTC. The run with its verdicts is included. Companion studies: MAG-S1, a shared quantum compass and the synchrony of a flock, https://doi.org/10.5281/zenodo.24032910; MAG-S2, the shape of the quantum compass signal, https://doi.org/10.5281/zenodo.24030614.
+Status: version 0.1.0, 7 November 2026. The protocol (v0.4), code and thresholds were frozen before the confirmatory run, and their SHA-256 were posted in Telegram at 18:28 UTC (https://t.me/attractordm/76); the run started at 18:28:57 UTC. The run with its verdicts is included. Archived on Zenodo: release v0.1.0, https://doi.org/10.5281/zenodo.24043500. Companion studies: MAG-S1, a shared quantum compass and the synchrony of a flock, https://doi.org/10.5281/zenodo.24032910; MAG-S2, the shape of the quantum compass signal, https://doi.org/10.5281/zenodo.24030614.
 
 ## The question
 
@@ -150,7 +152,7 @@ Code (`code/*.py`, `code/scripts/*`) is released under the MIT License. Text, th
 
 ## Citation
 
-Ryzhkova, J. (2026). MAG-S3: what a recording experiment needs to see the shape of the quantum compass (v0.1.0). Zenodo.
+Ryzhkova, J. (2026). MAG-S3: what a recording experiment needs to see the shape of the quantum compass (v0.1.0). Zenodo. https://doi.org/10.5281/zenodo.24043500
 
 See also `CITATION.cff`.
 
