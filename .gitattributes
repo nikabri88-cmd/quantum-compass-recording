@@ -1,0 +1,2 @@
+# Keep every file byte-identical on checkout, so the SHA-256 sums verify on any OS.
+* -text

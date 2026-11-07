@@ -1,0 +1,101 @@
+needed_floor           killed  by: needed 8 of 10 with 7 birds: (+1)
+cp_level_090           killed  by: cp 80/100: [0.7227997503290862, 0.8633386747541327] (+2)
+cp_upper_090           killed  by: cp one-sided 0/100: 0.02276277904418932 (+2)
+cp_upper_two_sided     killed  by: H2 stage2 shuffled 1: (+3)
+paired_lower           killed  by: paired tie not below: {'n10': 5, 'n01': 5, 'interval': [-0.625827943105203, 0.625827943105203], 'below_zero': True} (+1)
+paired_swap            killed  by: hypotheses met: {'H1': {'verdict': 'met', 'compass_rp2': 95, 'polar_sphere': 95, 'n': 100, 'compass_ci': [0.8871650888945373, 0.9835681208179479], 'polar_ci': [0.8871650888945373, 0.9835681208179479]}, 'H2': {'verdict': 'met', 'stage2': {'polar': {'false_rp2': 0, 'n': 100, 'upper': 0.029513049607039925}, 'shuffled': {'false_rp2': 0, 'n': 100, 'upper': 0.029513049607039925}}, 'map': {'polar': {'false_rp2': 0, 'n': 750, 'share': 0.0}, 'shuffled': {'false_rp2': 0, 'n': 750, 'share': 0.0}}, 'cells': {}, 'worst_cell': {'share': 0.0, 'cell': 'M_d0.1_N25_sim', 'control': 'polar', 'false_rp2': 0, 'n': 10}, 'per_mode': {'sim': {'polar': {'false_rp2': 0, 'n': 250, 'share': 0.0}, 'shuffled': {'false_rp2': 0, 'n': 250, 'share': 0.0}}, 'probe': {'polar': {'false_rp2': 0, 'n': 250, 'share': 0.0}, 'shuffled': {'false_rp2': 0, 'n': 250, 'share': 0.0}}, 'tetrode': {'polar': {'false_rp2': 0, 'n': 250, 'share': 0.0}, 'shuffled': {'false_rp2': 0, 'n': 250, 'share': 0.0}}}}, 'H3': {'verdict': 'not met', 'n_tuned': 100, 'n': 100, 'sim_rp2': 30, 'probe_rp2': 60, 'n10': 30, 'n01': 0, 'interval': [0.23057801506678333, 0.3], 'below_zero': False}, 'H4': {'verdict': 'met', 'even': 90, 'n': 100, 'ci': [0.8237774022599773, 0.9509953107785141], 'delta': 0.4, 'n_t': 100, 'n_tuned': 50}, 'H5': {'verdict': 'met', 'odd_found': 90, 'sphere': 10, 'n': 100, 'eps_ant_below_eps_top': True, 'eps_ant': 0.05, 'eps_top': 0.5}} (+11)
+paired_no_scale        killed  by: paired interval scaled by the discordant share: {'n10': 2, 'n01': 20, 'interval': [-0.977588827951698, -0.4167745168921331], 'below_zero': True}
+gate_07                killed  by: H1 gate closed: (+7)
+gate_or                killed  by: H1 gate closed: (+7)
+I2_tol                 killed  by: I2 ren: (+2)
+I2_skip_mags2          killed  by: I2 mags2 above tolerance: (+1)
+I2_nan_ok              killed  by: I2 nan:
+I4_skip_means          killed  by: I4 same means:
+I4_skip_sessions       killed  by: I4 sessions:
+I4_skip_rebuild        killed  by: I4 rebuild above tolerance: (+1)
+I4_tol                 killed  by: I4 rebuild above tolerance:
+I1_no_fp               killed  by: I1 tolerance path ok: {'verdict': 'ok', 'how': ['bitwise', 'bitwise']} (+5)
+I1_no_phys             killed  by: I1 physics_sha256:
+I1_no_bird1_file       killed  by: I1 bird1_file_sha256:
+I1_tol_10x             killed  by: I1 bars beyond tolerance:
+I1_no_null             killed  by: I1 null beyond tolerance:
+I1_no_shape            killed  by: I1 other shape: (+1)
+I1_one_stage           killed  by: I1 of stage 2 counts:
+I5_too_few_any         killed  by: I5 too_few with 6 cells:
+I3_counts_only         killed  by: I3 rates:
+I5_no_relabel          killed  by: I5 relabel: (+1)
+I5_no_finite           killed  by: I5 inf inside:
+I5_no_verdict_names    killed  by: I5 verdict name:
+all_finite_true        killed  by: I5 inf inside:
+missing_inv_ok         killed  by: disk: missing file is an error:
+Q1_07                  killed  by: Q1 rp2 7/10 fails: (+3)
+Q1_09                  killed  by: Q1 rp2 8/10 passes:
+Q1_no_ring             killed  by: H1 open with Q1 not met: {'verdict': 'met', 'compass_rp2': 95, 'polar_sphere': 95, 'n': 100, 'compass_ci': [0.8871650888945373, 0.9835681208179479], 'polar_ci': [0.8871650888945373, 0.9835681208179479]} (+1)
+Q1_with_torus          killed  by: Q1 ignores torus:
+Q2_upper_065           killed  by: Q2 untuned too high:
+Q2_tuned_07            killed  by: Q2 tuned at 0.4 too low:
+Q2_all_deltas          killed  by: Q2 tuned at 0.4 too low: (+1)
+Q3_07                  killed  by: Q3 7/10:
+Q4_or                  killed  by: Q4 even called polar: (+3)
+Q4_wrong_name          killed  by: Q4 even called polar: (+3)
+H3_min_cells           killed  by: H3 point: {'n_tuned': 25} (+4)
+H3_point_06            killed  by: H3 point: {'n_tuned': 200}
+H3_sim_cells           killed  by: H3 no point: {'H3': {'n_tuned': 100}, 'H4': {'delta': 0.4, 'n_t': 100, 'n_tuned': 50}, 'H5': {'eps_ant': 0.05, 'eps_top': 0.5}} (+3)
+H3_no_gate             killed  by: H3 skips a closed gate: ({'n_tuned': 100}, {'verdict': 'met', 'n_tuned': 100, 'n': 100, 'sim_rp2': 30, 'probe_rp2': 60, 'n10': 0, 'n01': 30, 'interval': [-0.3, -0.23057801506678333], 'below_zero': True}) (+1)
+H4_no_half             killed  by: H4 point: {'delta': 0.4, 'n_t': 100, 'n_tuned': 100} (+4)
+H4_no_gate             killed  by: H4 needs the gate: {'delta': 0.4, 'n_t': 100, 'n_tuned': 50}
+H4_delta_order         killed  by: H4 point: {'delta': 1.0, 'n_t': 25, 'n_tuned': 12} (+3)
+H4_07                  killed  by: H4 79:
+H5_ant_verdict         killed  by: H5 points: {'eps_ant': 0.001, 'eps_top': 0.5} (+3)
+H5_no_earlier          killed  by: H5 same eps not earlier: {'eps_ant': 0.05, 'eps_top': 0.05}
+H5_le                  killed  by: H5 same eps not earlier: {'eps_ant': 0.05, 'eps_top': 0.05}
+H5_sphere_le           killed  by: H5 sphere 80:
+H5_no_gate_ref         killed  by: H5 needs the reference gate: {'verdict': 'met', 'odd_found': 90, 'sphere': 10, 'n': 100, 'eps_ant_below_eps_top': True, 'eps_ant': 0.05, 'eps_top': 0.5} (+1)
+H5_no_q4               killed  by: Q4 gates H5:
+H1_or                  killed  by: H1 79: (+1)
+H1_no_gate             killed  by: H1 gate closed: (+1)
+H4_no_q4               killed  by: Q4 gates H4:
+H2_stage2_two          killed  by: H2 stage2 polar 2: (+1)
+H2_cell_three          killed  by: H2 one cell 3/10:
+H2_pooled_003          killed  by: H2 pooled 16: {'polar': {'false_rp2': 0, 'n': 750, 'share': 0.0}, 'shuffled': {'false_rp2': 16, 'n': 750, 'share': 0.021333333333333333}}
+H2_pooled_lt           killed  by: H2 pooled 15: {'polar': {'false_rp2': 0, 'n': 750, 'share': 0.0}, 'shuffled': {'false_rp2': 15, 'n': 750, 'share': 0.02}}
+H2_missing_ok          killed  by: H2 missing map cell:
+H2_polar_only          killed  by: multiplicity zero: {'cells_with_any_false_rp2': {'polar': 0}, 'n_cells': 75} (+2)
+H2_worst_ge            killed  by: H2 tie names the first cell of the map: {'share': 0.2, 'cell': 'M_d0.7_N100_sim', 'control': 'shuffled', 'false_rp2': 2, 'n': 10}
+req_no_clean           killed  by: N80 skips dirty cell: {'N80_even': 6, 'N80': 25, 'N50': 25} (+1)
+req_no_gate            killed  by: N80 skips a closed gate: {'N80_even': 6, 'N80': 25, 'N50': 25}
+clean_02               killed  by: N80 skips dirty cell: {'N80_even': 6, 'N80': 25, 'N50': 25} (+1)
+req_08_07              killed  by: N80 not at 7 of 10: {'N80_even': 6, 'N80': 25, 'N50': 25}
+req_n50_06             killed  by: N50 at 5 of 10: {'N80_even': 6, 'N80': 100, 'N50': 100}
+bud_hours              killed  by: B1 hours limit: {'topology': {'cell': 'M_d0.1_N25_sim', 'n_sessions': 1, 'planned_hours': 2.2222222222222223, 'n_recorded': 25, 'hours': 3.5}, 'antipodal': {'cell': 'A_d0.1_N6_sim', 'n_sessions': 1, 'planned_hours': 0.5555555555555556, 'n_recorded': 6, 'hours': 0.5}}
+bud_sessions           killed  by: B2 session limit: {'topology': {'cell': 'F_d0.4_N25_probe_p05', 'n_sessions': 11, 'planned_hours': 2.2222222222222223, 'n_recorded': 250, 'hours': 0.73}, 'antipodal': {'cell': 'AF_d0.4_N6_probe_p05', 'n_sessions': 1, 'planned_hours': 0.5555555555555556, 'n_recorded': 60, 'hours': 0.5}}
+bud_recorded           killed  by: B1 hours limit: {'topology': {'cell': 'M_d0.1_N200_sim', 'n_sessions': 1, 'planned_hours': 2.2222222222222223, 'n_recorded': 200, 'hours': 0.73}, 'antipodal': {'cell': 'A_d0.1_N6_sim', 'n_sessions': 1, 'planned_hours': 0.5555555555555556, 'n_recorded': 6, 'hours': 0.5}} (+1)
+bud_topo_rule          killed  by: cheapest needs clean controls: {'cell': 'M_d0.1_N25_sim', 'n_sessions': 1, 'planned_hours': 2.2222222222222223, 'n_recorded': 25, 'hours': 0.73}
+bud_hours_first        killed  by: cheapest ignores random session lengths: {'cell': 'M_d0.1_N100_sim', 'n_sessions': 1, 'planned_hours': 2.2222222222222223, 'n_recorded': 100, 'hours': 2.91}
+bud_no_sessions        killed  by: fewest sessions first: {'cell': 'F_d0.4_N25_probe_p05', 'n_sessions': 2, 'planned_hours': 2.2222222222222223, 'n_recorded': 250, 'hours': 0.73}
+bud_planned_off        killed  by: shorter planned session before fewer cells: {'cell': 'M_d0.1_N6_sim', 'n_sessions': 1, 'planned_hours': 2.2222222222222223, 'n_recorded': 6, 'hours': 0.73}
+bud_anti_no_short      killed  by: shorter planned session before fewer cells: {'cell': 'M_d0.1_N6_sim', 'n_sessions': 1, 'planned_hours': 2.2222222222222223, 'n_recorded': 6, 'hours': 0.73} (+2)
+req_even_07            killed  by: N80 even in the short map: {'N80_even': 6}
+mult_gt1               killed  by: multiplicity counts cells: {'cells_with_any_false_rp2': {'polar': 0, 'shuffled': 0}, 'n_cells': 75}
+val_missing            killed  by: points refuses an incomplete stage 1: (+1)
+val_extra              killed  by: extra cell: (+1)
+val_seeds              killed  by: missing bird: (+1)
+val_design             killed  by: other depth in Q3: (+3)
+val_code               killed  by: record of other code: (+1)
+val_label              killed  by: record filed under another seed: (+1)
+val_meta_missing       killed  by: metadata missing:
+val_complete           killed  by: run not complete:
+val_meta_code          killed  by: metadata of other code:
+val_meta_seeds         killed  by: metadata of other birds:
+val_points             killed  by: stage 2 at other working points: ["stage 2: 100 records whose design differs from the design of their cell, e.g. ['H4/seed_101', 'H4/seed_102', 'H4/seed_103']"]
+val_inv_missing        killed  by: invariants missing:
+val_inv_code           killed  by: invariants of other code:
+val_inv_cover          killed  by: invariants miss a bird:
+val_stored_points      killed  by: edited working points make the run invalid: []
+val_valid_ignores      killed  by: edited working points make the run invalid: ['working_points.json differs from the working points recomputed from stage 1'] (+1)
+val_points_writes      killed  by: points refuses an incomplete stage 1:
+confirmatory_any       killed  by: other birds are not confirmatory:
+E4_lt                  killed  by: E4 half w at exactly half: 0.3
+E5_compass_rp2         killed  by: E5 half eps: 0.001
+
+99 mutations, 99 killed, survivors or bad patterns: []

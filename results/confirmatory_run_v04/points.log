@@ -1,0 +1,29 @@
+{
+ "points": {
+  "H3": {
+   "n_tuned": 200
+  },
+  "H4": {
+   "delta": 0.4,
+   "n_t": 200,
+   "n_tuned": 100
+  },
+  "H5": {
+   "eps_ant": 0.05,
+   "eps_top": 1.0
+  }
+ },
+ "invariants": {
+  "I1": "ok",
+  "I2": "ok",
+  "I4": "ok",
+  "I3": "ok",
+  "I5": "ok"
+ },
+ "expectations": {
+  "Q1": "met",
+  "Q2": "met",
+  "Q3": "met",
+  "Q4": "met"
+ }
+}

@@ -1,0 +1,226 @@
+{
+ "C6": {
+  "K100": {
+   "point": [
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point"
+   ],
+   "ring": [
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring"
+   ],
+   "sphere": [
+    "sphere",
+    "sphere",
+    "other",
+    "other",
+    "sphere",
+    "other",
+    "other",
+    "sphere",
+    "sphere",
+    "other"
+   ],
+   "torus": [
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "torus"
+   ],
+   "rp2": [
+    "ring",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "ring",
+    "other",
+    "other",
+    "ring"
+   ],
+   "klein": [
+    "other",
+    "other",
+    "other",
+    "torus",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other"
+   ]
+  },
+  "K200": {
+   "point": [
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "ring"
+   ],
+   "ring": [
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring"
+   ],
+   "sphere": [
+    "sphere",
+    "torus",
+    "sphere",
+    "other",
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere",
+    "other",
+    "sphere"
+   ],
+   "torus": [
+    "torus",
+    "torus",
+    "other",
+    "torus",
+    "other",
+    "torus",
+    "other",
+    "other",
+    "other",
+    "torus"
+   ],
+   "rp2": [
+    "other",
+    "other",
+    "klein",
+    "other",
+    "other",
+    "other",
+    "other",
+    "klein",
+    "other",
+    "other"
+   ],
+   "klein": [
+    "klein",
+    "other",
+    "klein",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other",
+    "other"
+   ]
+  },
+  "K400": {
+   "point": [
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point",
+    "point"
+   ],
+   "ring": [
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring",
+    "ring"
+   ],
+   "sphere": [
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere",
+    "sphere"
+   ],
+   "torus": [
+    "torus",
+    "other",
+    "torus",
+    "torus",
+    "other",
+    "torus",
+    "torus",
+    "torus",
+    "other",
+    "other"
+   ],
+   "rp2": [
+    "other",
+    "other",
+    "klein",
+    "other",
+    "other",
+    "rp2",
+    "rp2",
+    "rp2",
+    "rp2",
+    "rp2"
+   ],
+   "klein": [
+    "other",
+    "other",
+    "other",
+    "other",
+    "klein",
+    "klein",
+    "klein",
+    "klein",
+    "klein",
+    "other"
+   ]
+  }
+ }
+}

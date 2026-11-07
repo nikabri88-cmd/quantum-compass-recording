@@ -1,0 +1,41 @@
+Re-analysis of the confirmatory archive with the frozen analyze.py in the calibration environment (7 November 2026, UTC)
+
+archive: 323d36c145248bd2a3dd4fbe4df85ba01baf3ea1afef64306e1f053fd0f8a1da  confirmatory_v04.tar.gz
+
+analyze.py points s1, as in Colab and again here:
+  Colab: 6bac125b74eb476a312b0a9966f238c3530ea4719e844cfa490277978638789f  s1/working_points.json
+  here:  6bac125b74eb476a312b0a9966f238c3530ea4719e844cfa490277978638789f  s1/working_points.json
+
+analyze.py final s1 s2:
+  Colab: a9c320eb5520bf1fe871f5f3b71333b432ebd73b5de4bc995bc233a3935ef646  s2/results.json
+  here:  a9c320eb5520bf1fe871f5f3b71333b432ebd73b5de4bc995bc233a3935ef646  s2/results.json
+
+results.json: byte-identical
+working_points.json: byte-identical
+
+verdict summary (final.log of the re-analysis):
+{
+ "valid": true,
+ "confirmatory": true,
+ "input_issues": [],
+ "invariants": {
+  "I1": "ok",
+  "I2": "ok",
+  "I4": "ok",
+  "I3": "ok",
+  "I5": "ok"
+ },
+ "expectations": {
+  "Q1": "met",
+  "Q2": "met",
+  "Q3": "met",
+  "Q4": "met"
+ },
+ "hypotheses": {
+  "H1": "met",
+  "H2": "met",
+  "H3": "not met",
+  "H4": "met",
+  "H5": "met"
+ }
+}

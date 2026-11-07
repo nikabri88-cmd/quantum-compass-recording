@@ -1,0 +1,9 @@
+# Versions of the calibration and of the reference environment (Python 3.13.18); same pins as MAG-S2 v0.1.2
+numpy==2.5.3
+scipy==1.18.1
+radicalpy==1.0.9
+ripser==0.6.15
+persim==0.4.1
+scikit-learn==1.9.1
+threadpoolctl==3.7.0
+matplotlib==3.11.2

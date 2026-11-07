@@ -1,0 +1,9 @@
+[2026-11-07T18:28:57Z] confirmatory run in /content/work/confirmatory_v04 with 44 workers (44 processors, 169 GB memory available)
+[2026-11-07T18:42:16Z] physics exit 0
+[2026-11-07T19:09:17Z] stage1 exit 0
+[2026-11-07T19:09:17Z] stage1 files 5250 in 525 cells
+[2026-11-07T19:09:18Z] analyze points exit 0
+[2026-11-07T19:13:56Z] stage2 exit 0
+[2026-11-07T19:13:56Z] stage2 files 500 in 5 cells
+[2026-11-07T19:13:58Z] analyze final exit 0
+[2026-11-07T19:13:58Z] done

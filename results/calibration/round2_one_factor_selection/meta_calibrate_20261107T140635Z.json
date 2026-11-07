@@ -1,0 +1,53 @@
+{
+ "mode": "calibrate",
+ "code_sha256": "8b158a76f2335d7b29bbaeb7be1ec7040153f7cc46e7360ca1ba8783fd4b6cbe",
+ "analysis_sha256": "93a8b7253b5448f16c0c08237c7bfdbde2fb184940ac011bcab888094a19c7a9",
+ "tests_sha256": "b6c4b9f1a61e3c2911409bc52c2341df78f17396f3dbeed90845988c01272538",
+ "mag_s2_sha256": "2352aefe0fe5974732c318b365f4fb5477ffc47fb78b12748bca2515465829c4",
+ "physics_sha256": "647bc0ccb1312991a1b772193cac39f4ced1481c591422c50659bb822a3100c5",
+ "python": "3.13.18",
+ "numpy": "2.5.3",
+ "scipy": "1.18.1",
+ "ripser": "0.6.15",
+ "radicalpy": "1.0.9",
+ "blas": [
+  {
+   "internal_api": "openblas",
+   "version": "0.3.31.dev",
+   "architecture": "SkylakeX",
+   "num_threads": 1,
+   "filepath": "/usr/local/lib/python3.13/dist-packages/scipy.libs/libscipy_openblas-5f890258.so"
+  },
+  {
+   "internal_api": "openblas",
+   "version": "0.3.34.106.0",
+   "architecture": "SkylakeX",
+   "num_threads": 1,
+   "filepath": "/usr/local/lib/python3.13/dist-packages/numpy.libs/libscipy_openblas64_-f48b354e.so"
+  }
+ ],
+ "reference": {
+  "delta": 1.0,
+  "n_tuned": 200,
+  "mode": "sim",
+  "sigma_g": 0.1,
+  "K": 800,
+  "R": 4,
+  "T": 2.0,
+  "f": 1.0,
+  "select": "none",
+  "pattern": "ren",
+  "fano": 1.0,
+  "w": 0.0,
+  "eps": 0.0,
+  "tau_a": 0.0,
+  "drift": true,
+  "topology": true,
+  "antipodal": true,
+  "atlas": [
+   "rp2",
+   "sphere"
+  ]
+ },
+ "seconds": 574.7
+}

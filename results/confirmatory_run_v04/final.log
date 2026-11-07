@@ -1,0 +1,25 @@
+{
+ "valid": true,
+ "confirmatory": true,
+ "input_issues": [],
+ "invariants": {
+  "I1": "ok",
+  "I2": "ok",
+  "I4": "ok",
+  "I3": "ok",
+  "I5": "ok"
+ },
+ "expectations": {
+  "Q1": "met",
+  "Q2": "met",
+  "Q3": "met",
+  "Q4": "met"
+ },
+ "hypotheses": {
+  "H1": "met",
+  "H2": "met",
+  "H3": "not met",
+  "H4": "met",
+  "H5": "met"
+ }
+}

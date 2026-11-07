@@ -1,0 +1,46 @@
+{
+ "C4": {
+  "sim_delta0.4": {
+   "untuned_pass": 0.04816666666666667,
+   "tuned_pass": 0.977,
+   "untuned_share_of_selected": 0.30733782346685573,
+   "n_untuned": 18000,
+   "n_tuned": 2000
+  },
+  "sim_delta1": {
+   "untuned_pass": 0.04672222222222222,
+   "tuned_pass": 1.0,
+   "untuned_share_of_selected": 0.2960225272791271,
+   "n_untuned": 18000,
+   "n_tuned": 2000
+  },
+  "probe_delta0.4": {
+   "untuned_pass": 0.04683333333333333,
+   "tuned_pass": 0.9805,
+   "untuned_share_of_selected": 0.30064194008559203,
+   "n_untuned": 18000,
+   "n_tuned": 2000
+  },
+  "probe_delta1": {
+   "untuned_pass": 0.05266666666666667,
+   "tuned_pass": 1.0,
+   "untuned_share_of_selected": 0.32157394843962006,
+   "n_untuned": 18000,
+   "n_tuned": 2000
+  },
+  "tetrode_delta0.4": {
+   "untuned_pass": 0.04844444444444444,
+   "tuned_pass": 0.9805,
+   "untuned_share_of_selected": 0.30780091775503,
+   "n_untuned": 18000,
+   "n_tuned": 2000
+  },
+  "tetrode_delta1": {
+   "untuned_pass": 0.0475,
+   "tuned_pass": 1.0,
+   "untuned_share_of_selected": 0.29947460595446584,
+   "n_untuned": 18000,
+   "n_tuned": 2000
+  }
+ }
+}

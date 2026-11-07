@@ -1,0 +1,18 @@
+[2026-11-07T18:00:52Z] blind run in /content/work/blind_9301_9302 with 44 workers (44 processors, 169 GB memory available)
+[2026-11-07T18:14:01Z] physics exit 0
+[2026-11-07T18:20:16Z] stage1 exit 0
+[2026-11-07T18:20:16Z] stage1 files 1050 in 525 cells
+[2026-11-07T18:20:17Z] analyze points exit 0
+[2026-11-07T18:21:15Z] stage2 exit 0
+[2026-11-07T18:21:15Z] stage2 files 10 in 5 cells
+[2026-11-07T18:21:16Z] analyze final exit 0
+result keys present: True
+input checks: no problems
+invariants: {'I1': 'ok', 'I2': 'ok', 'I4': 'ok', 'I3': 'ok', 'I5': 'ok'} I1 by ['tolerance', 'tolerance']
+valid: True  confirmatory: False
+expectations well formed: ['Q1', 'Q2', 'Q3', 'Q4'] True
+hypotheses well formed: ['H1', 'H2', 'H3', 'H4', 'H5'] True
+exploratory maps: ['E1', 'E2', 'E3', 'E4', 'E5']
+working point keys: ['H3', 'H4', 'H5']
+[2026-11-07T18:21:16Z] deleting the blind output
+[2026-11-07T18:21:16Z] done

@@ -1,0 +1,33 @@
+# scripts/env_check.py --compare, calibration environment against Colab TPU v6e-1 (the run environment)
+219 values identical, 4 equal to 1e-9, 2 different
+  close   /calibration/C3/delta2 0.8786485075914896 0.8786485075914905
+  close   /calibration/C3/median_snr_at_delta2 2.0 2.0000000000000018
+  close   /calibration/C3/median_snr_reference_delta1 2.6203387968091767 2.6203387968091763
+  close   /invariants_bird_1001/I2_mags2_max_diff 8.382183835919932e-15 8.548717289613705e-15
+  DIFFER  /I1/fingerprint_ok True False
+  DIFFER  /calibration/C3/matches_frozen True False
+
+# scripts/env_check.py --compare, calibration environment against Colab TPU v5e-1
+203 values identical, 20 equal to 1e-9, 2 different
+  close   /calibration/C3/delta2 0.8786485075914896 0.8786485075914905
+  close   /calibration/C3/median_snr_at_delta2 2.0 2.0000000000000018
+  close   /calibration/C3/median_snr_reference_delta1 2.6203387968091767 2.6203387968091763
+  close   /invariants_bird_1001/I2_mags2_max_diff 8.382183835919932e-15 8.548717289613705e-15
+  close   /physics/C2_channels_sum_minus_one -1.9984014443252818e-15 -7.216449660063518e-15
+  close   /physics/C2_equal_rate_limit_max_diff_vs_mag_s2 1.765254609153999e-14 1.404432126150823e-14
+  close   /physics/C2_odd_max_chi0 1.1324274851176597e-14 1.0047518372857667e-14
+  close   /physics/C2_time_domain_diff_chi0.1 4.167007916500154e-08 4.16700864924735e-08
+  close   /physics/anchor_eps_equivalent/chi0.02_kf1e+06_kr1e+06 0.0002460908910757864 0.00024609089125730426
+  close   /physics/anchor_eps_equivalent/chi0.02_kf1e+07_kr340000 2.835845050457621e-05 2.8358450652286442e-05
+  close   /physics/anchor_eps_equivalent/chi0.02_kf5e+06_kr340000 3.295066157376492e-05 3.2950661415201174e-05
+  close   /physics/anchor_eps_equivalent/chi0.05_kf1e+06_kr1e+06 0.0006030918632265422 0.0006030918632467716
+  close   /physics/anchor_eps_equivalent/chi0.05_kf1e+07_kr340000 6.844837574906891e-05 6.844837536531388e-05
+  close   /physics/anchor_eps_equivalent/chi0.05_kf5e+06_kr340000 7.969358095918333e-05 7.969358097326822e-05
+  close   /physics/anchor_eps_equivalent/chi0.1_kf1e+06_kr1e+06 0.0011244586373918653 0.0011244586375650503
+  close   /physics/anchor_eps_equivalent/chi0.1_kf1e+07_kr340000 0.00012169824179592192 0.00012169824346877216
+  close   /physics/anchor_eps_equivalent/chi0.1_kf5e+06_kr340000 0.00014289998826479909 0.00014289998799261016
+  close   /physics/anchor_eps_equivalent/chi0_kf1e+06_kr1e+06 4.593391703190573e-13 4.728095272198953e-13
+  close   /physics/anchor_eps_equivalent/chi0_kf1e+07_kr340000 4.3568003638125934e-12 3.3171093679040835e-12
+  close   /physics/anchor_eps_equivalent/chi0_kf5e+06_kr340000 1.8828023025249677e-12 1.5062418420192323e-12
+  DIFFER  /I1/fingerprint_ok True False
+  DIFFER  /calibration/C3/matches_frozen True False

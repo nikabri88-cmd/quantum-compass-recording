@@ -1,0 +1,95 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "MAG-S3: what a recording experiment needs to see the shape of the quantum compass"
+type: software
+version: "0.1.0"
+repository-code: "https://github.com/nikabri88-cmd/quantum-compass-recording"
+authors:
+  - family-names: Ryzhkova
+    given-names: Julia
+    affiliation: Siriona
+    orcid: "https://orcid.org/0009-0005-4194-6059"
+date-released: 2026-11-07
+license: MIT
+abstract: >-
+  Simulation study of the recording experiment that could test whether neurons reading a radical-pair (cryptochrome)
+  magnetic compass carry a population code shaped like the real projective plane RP2, while a polarity-sensitive
+  control gives a sphere. The model adds a realistic yield pattern, a modulation depth of the firing rate set directly,
+  Poisson spikes, drift, shared gain noise, slow field rotations, simultaneous recordings and pseudo-populations from
+  probe and tetrode sessions, and a share of tuned cells with selection. The protocol, code and thresholds were frozen
+  before the confirmatory run and their SHA-256 posted before it. In the confirmatory run the realistic pattern kept
+  RP2 in 82 of 100 virtual birds, the polar control gave a sphere in 100 of 100, no control readout got a false RP2,
+  and an antipodal test of parity needed half the cells topology needed and saw an odd admixture 20 times earlier.
+  The hypothesis that pseudo-populations suffer less from shared gain noise failed in the opposite direction; an
+  exploratory check traces this to the gain noise of each session and a normalisation by the summed count of the
+  session that restores the shape. Code is released under MIT; text, the protocol and the results under CC BY 4.0.
+keywords:
+  - magnetoreception
+  - radical pair
+  - cryptochrome
+  - electrophysiology
+  - experimental design
+  - persistent homology
+  - topological data analysis
+  - neural manifold
+  - projective plane
+  - population coding
+  - simulation
+references:
+  - type: software
+    title: "MAG-S2: the shape of the quantum compass signal"
+    authors:
+      - family-names: Ryzhkova
+        given-names: Julia
+    version: "0.1.2"
+    doi: "10.5281/zenodo.24030614"
+    year: 2026
+  - type: article
+    title: "Angular precision of radical pair compass magnetoreceptors"
+    authors:
+      - family-names: Ren
+        given-names: Y.
+      - family-names: Hiscock
+        given-names: Hamish G.
+      - family-names: Hore
+        given-names: P. J.
+    journal: "Biophysical Journal"
+    volume: 120
+    doi: "10.1016/j.bpj.2020.12.023"
+    year: 2021
+  - type: article
+    title: "Electrophysiology and the magnetic sense: a guide to best practice"
+    authors:
+      - family-names: Fenton
+        given-names: G. E.
+      - family-names: Nath
+        given-names: K.
+      - family-names: Malkemper
+        given-names: E. P.
+    journal: "Journal of Comparative Physiology A"
+    volume: 208
+    doi: "10.1007/s00359-021-01517-y"
+    year: 2022
+  - type: article
+    title: "Toroidal topology of population activity in grid cells"
+    authors:
+      - family-names: Gardner
+        given-names: Richard J.
+      - name: "et al."
+    journal: "Nature"
+    volume: 602
+    doi: "10.1038/s41586-021-04268-7"
+    year: 2022
+  - type: article
+    title: "Ripser.py: a lean persistent homology library for Python"
+    authors:
+      - family-names: Tralie
+        given-names: Christopher
+      - family-names: Saul
+        given-names: Nathaniel
+      - family-names: Bar-On
+        given-names: Rann
+    journal: "Journal of Open Source Software"
+    volume: 3
+    doi: "10.21105/joss.00925"
+    year: 2018
