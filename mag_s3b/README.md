@@ -1,11 +1,13 @@
 # MAG-S3b: CISS non-reciprocity, cryptochrome order and the blind inverse problem
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24079875.svg)](https://doi.org/10.5281/zenodo.24079875)
+
 <p align="center"><img src="figures/test_power.png" alt="Share of 100 virtual birds in which the dipole test and the antipodal test of MAG-S3 found an odd part, at seven levels of the effective odd admixture" width="640"></p>
 
 A pre-registered simulation study of whether the odd part of a radical-pair compass code, the part that changes sign when the field is reversed, can carry the sign of the geomagnetic field to neurons through chirality-induced spin selectivity (CISS) in cryptochrome 4, and whether a recording experiment could see and measure it.
 
 Author: Julia Ryzhkova (Siriona, siriona.one; ORCID 0009-0005-4194-6059).
-Status: part of release v0.2.0 of this repository, 9 November 2026. The protocol (v0.4, in Russian), the code, the requirements and the Colab notebook were frozen at 08:49 UTC, and their SHA-256 were posted in Telegram (https://t.me/attractordm/78). The confirmatory run started at 08:46:33 UTC, three minutes before the freeze; see "Deviations" below. MAG-S3b builds on MAG-S3 (this repository, release v0.1.0, https://doi.org/10.5281/zenodo.24043500) and MAG-S2 (release v0.1.2, https://doi.org/10.5281/zenodo.24030614) and uses their code unchanged.
+Status: part of release v0.2.0 of this repository, 9 November 2026, archived on Zenodo as https://doi.org/10.5281/zenodo.24079875. The protocol (v0.4, in Russian), the code, the requirements and the Colab notebook were frozen at 08:49 UTC, and their SHA-256 were posted in Telegram (https://t.me/attractordm/78). The confirmatory run started at 08:46:33 UTC, three minutes before the freeze; see "Deviations" below. MAG-S3b builds on MAG-S3 (this repository, release v0.1.0, https://doi.org/10.5281/zenodo.24043500) and MAG-S2 (release v0.1.2, https://doi.org/10.5281/zenodo.24030614) and uses their code unchanged.
 
 ## The question
 
