@@ -1,0 +1,16 @@
+[2026-11-09T13:41:39Z] smoke run in /tmp/claude-0/-home-claude/dee9579a-0cff-5c92-93ac-2ff77f6a2175/scratchpad/s3c/smoke3/smoke_s3c with 2 workers (2 processors)
+[2026-11-09T14:04:24Z] pair exit 0
+[2026-11-09T14:13:45Z] checks exit 0
+[2026-11-09T14:13:57Z] curves exit 0
+[2026-11-09T14:15:40Z] receptor exit 0
+[2026-11-09T14:15:41Z] analyze exit 0
+[2026-11-09T14:15:41Z] cells 534
+result keys present: True
+invariants: {'I1': 'ok', 'I2': 'ok', 'I3': 'ok', 'I4': 'ok', 'I5': 'ok', 'I6': 'ok', 'I7': 'ok'}
+valid: False  grid_ok: False  rates_ok: False  curves_full: False  cells_complete: True  blas_single_thread: True (grid, rates and curves differ from the protocol in the checks)
+expectations well formed: True  hypotheses well formed: True
+comparisons as in the protocol: True  maps E1-E10 present: True
+check passed
+[2026-11-09T14:15:41Z] done
+check output deleted (exit 0)
+exit 0

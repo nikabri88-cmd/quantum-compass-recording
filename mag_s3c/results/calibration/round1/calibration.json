@@ -1,0 +1,122 @@
+{
+ "C1": {
+  "cells": {
+   "W_C_r_rf1e+06_K_chi0.1_m1_mags2": {
+    "C1_eps_mol_rel_change": -0.000620062129648824,
+    "C1_F_rel_change": 1.1156723492389276e-05,
+    "C1_d_odd_z_rel_change": -9.926134381110785e-08,
+    "C2_eps_rec_rel_change": -1.1463542234024793e-05
+   },
+   "W_C_r_rf1e+06_P-same_chi0.1_m1_mags2": {
+    "C1_eps_mol_rel_change": -0.005314223647247984,
+    "C1_F_rel_change": 1.277343356731464e-05,
+    "C1_d_odd_z_rel_change": 3.486647242034735e-07,
+    "C2_eps_rec_rel_change": -0.00028855446268349905
+   }
+  },
+  "criterion_met": true
+ },
+ "C2": {
+  "criterion_met": true
+ },
+ "C3": {
+  "diagnostics": {
+   "max_rel_residual": 6.179687638972645e-13,
+   "max_conservation_error": 3.219646771412954e-14,
+   "max_gmres_iterations": 81
+  },
+  "criterion_met": true
+ },
+ "C4": {
+  "report": {
+   "W_A": {
+    "dist": 7.863245988477579,
+    "normal_to_z_deg": 85.37090222111635,
+    "r_hat_to_z_deg": 89.31934653583393
+   },
+   "W_B": {
+    "dist": 12.965788621371022,
+    "normal_to_z_deg": 72.57409683011706,
+    "r_hat_to_z_deg": 57.26241778442871
+   },
+   "W_C": {
+    "dist": 17.613580048283318,
+    "normal_to_z_deg": 50.0279306839711,
+    "r_hat_to_z_deg": 72.35060437601709
+   },
+   "W_D": {
+    "dist": 21.27152004775342,
+    "normal_to_z_deg": 81.61816574123138,
+    "r_hat_to_z_deg": 78.80447762996175
+   },
+   "listing_N1_vs_W318_deg": 77.5945569087064,
+   "listing_N1_vs_W318_after_z_sign_deg": 3.919367728720515
+  },
+  "deviations": {
+   "W_A_r_hat_to_z_deg": 0.01934653583393242,
+   "W_B_r_hat_to_z_deg": 0.03758221557128394,
+   "W_C_dist": 0.003580048283318149,
+   "W_C_normal_to_z_deg": 0.027930683971099768,
+   "W_C_r_hat_to_z_deg": 0.049395623982917414,
+   "W_D_dist": 0.001520047753420073,
+   "W_D_normal_to_z_deg": 0.01816574123138537,
+   "W_D_r_hat_to_z_deg": 0.0044776299617552695,
+   "listing": 0.019367728720514954
+  },
+  "criterion_met": true
+ },
+ "seconds": 937.5632253019999,
+ "metadata": {
+  "mode": "calibrate",
+  "protocol": "0.2",
+  "time_utc": "2026-11-09T12:27:16Z",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "radicalpy": "1.0.9",
+  "blas": [
+   {
+    "internal_api": "openblas",
+    "version": "0.3.34.106.0",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/numpy.libs/libscipy_openblas64_-f48b354e.so"
+   },
+   {
+    "internal_api": "openblas",
+    "version": "0.3.31.dev",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/scipy.libs/libscipy_openblas-5f890258.so"
+   }
+  ],
+  "frozen_ok": true,
+  "frozen": {
+   "mag_s3b.py": "f88118db34507156d3204c00368ba14c88c884e45f17ada8855da1fc45cd0ee3",
+   "mag_s3.py": "1df703af63a2af71a94385d33276ad39a422e9abaa040fdf4bcb618344e1f350",
+   "analyze.py": "ecc6a15b77e4f4d1c07a4217439e0c97868b9a12971c9ada255f79840ef1d21f",
+   "mag_s2.py": "2352aefe0fe5974732c318b365f4fb5477ffc47fb78b12748bca2515465829c4",
+   "physics.json": "647bc0ccb1312991a1b772193cac39f4ced1481c591422c50659bb822a3100c5"
+  },
+  "pdb_sha256": "39b25015964ecd1f53a09391c7ccd1515c31780c96a9e8861c4346f68e445a3b",
+  "own": {
+   "mag_s3c.py": "d11b440b513ad8f09dcba8aa916f7b6a46adbe4e5298ad564635df213a5a18a1",
+   "analyze_s3c.py": "5d5f5f4a1fb36171700463ee50ae47054706d98a8bc534ff323eaa4aa6e8b0a6",
+   "test_s3c.py": "68d72e71a3b37831c77669db25278a49d97929a9c09198a7e0722aad5d203541"
+  },
+  "rates": {
+   "mags2": [
+    1000000.0,
+    1000000.0
+   ],
+   "cry4a": [
+    5000000.0,
+    340000.0
+   ],
+   "cry4a_fast": [
+    10000000.0,
+    340000.0
+   ]
+  }
+ }
+}

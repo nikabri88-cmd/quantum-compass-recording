@@ -1,0 +1,9 @@
+# Versions of the MAG-S3 v0.1.0 environment (Python 3.13.18), which MAG-S3b keeps; same pins as MAG-S2 v0.1.2
+numpy==2.5.3
+scipy==1.18.1
+radicalpy==1.0.9
+ripser==0.6.15
+persim==0.4.1
+scikit-learn==1.9.1
+threadpoolctl==3.7.0
+matplotlib==3.11.2

@@ -3,3 +3,6 @@ __pycache__/
 .ipynb_checkpoints/
 OUT_*/
 RUN/
+
+# MAG-S3c before its confirmatory run: raw calibration yields stay local (the calibration publishes only relative changes)
+mag_s3c/results/calibration/*/C1_yields.npz

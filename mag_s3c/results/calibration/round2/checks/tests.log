@@ -1,0 +1,25 @@
+PASS test_frozen_and_cells (0.0 s)
+PASS test_geometry (0.7 s)
+PASS test_dipolar_tensor (0.0 s)
+PASS test_tensors_of_structure (0.4 s)
+PASS test_relaxation_algebra (0.0 s)
+PASS test_relaxation_matches_radicalpy (0.3 s)
+PASS test_solver_against_dense (3.2 s)
+PASS test_gmres_failure_raises (0.0 s)
+PASS test_frozen_regression_s2 (2.3 s)
+PASS test_exact_zeros_full_pairs (7.9 s)
+PASS test_kinc_and_forms (0.0 s)
+PASS test_curves (10.4 s)
+PASS test_receptor_transfer (1.9 s)
+PASS test_blind_rates (6.0 s)
+W_C_r_rf1e+06_K_chi0.1_m1_mags2 done 0.00 h
+W_D_x_std1e+06_K-inc_chi0.1_m1_mags2 done 0.00 h
+PASS test_pair_and_receptor_modes (5.3 s)
+PASS test_analysis_world_and_counts (0.1 s)
+PASS test_analysis_edges (1.0 s)
+PASS test_analysis_cli (1.7 s)
+PASS test_pipeline_gates (0.1 s)
+PASS test_notebook_build_reproducible (3.8 s)
+PASS test_solver_against_steps (17.6 s)
+all passed
+exit 0
