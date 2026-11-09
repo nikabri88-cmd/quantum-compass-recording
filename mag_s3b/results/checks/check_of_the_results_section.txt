@@ -1,0 +1,51 @@
+MAG-S3b – independent check of the results section, 9 November 2026
+
+After the run, the section "Результаты подтверждающего прогона" was written into the protocol document. A separate
+checker that had not written it recomputed every number in it from results.json, pair/receptor.json and the
+frozen code, and compared the text with the protocol's own rules. About 140 numbers agreed, including every verdict,
+threshold, invariant, Clopper–Pearson interval, the bound table, the E3, E4 and E8 values, the region counts and the
+chart rows. It also confirmed that the protocol text above the section is byte-identical to the frozen file
+(SHA-256 3970bee3...). The release carries the corrected section, in
+protocol/MAG-S3b_protocol_v0.4_with_results_ru.md.
+
+Corrected before release
+
+1. The SHA-256 of the protocol was published in Telegram while the run was going, before anyone saw its output; the
+   first draft said "before the run".
+2. The reanalysis agrees in every verdict and number except 27 values that differ in the last bit (see
+   reanalysis_of_the_archive.txt); the first draft said "without a single difference".
+3. The unit vector of the odd dipole at beta = 0, chi_b = 0.1 pi is (0.35; 0.87; 0.34); the draft had 0.88 for y.
+4. G at 80 degrees and chi_b = 0.1 pi is 1.32; the draft had 1.33.
+5. The slope s at chi_b = 0.05 pi is 0.071 per radian; the draft had 0.072.
+6. g(S) of the pair pattern spans 1.16–1.19, 1.39–1.43 and 1.79–1.83; the draft had 1.20 and 1.84 as upper ends.
+7. The K form at Cry4a rates exceeds eps_eff = 0.05 in 23 combinations (21 at p = 1 and 2 at p = 0.5), and more than
+   half of them are cells with a rotated recombination axis; the draft said 21.
+8. The polarisation forms give eps_eff up to 1.8e-4 over all beta, p and S; the draft range 3e-6 to 2.4e-5 holds only
+   at beta = 0, p = 1, S = 1.
+9. For P-same, 78–94% of the receptor's odd power lies at degree 3 and above at beta = 0 and 45 degrees, and 4–5% at
+   90 degrees; the draft gave 78–94% for all tilts.
+
+Clarified before release
+
+- H1: the departure from linearity sits in the dipole components across the receptor axis and in the even range of
+  the molecule (at chi_b = 0.1 pi, m = 0.1: |d_odd| 19.7% below the linear law, molecular even range 6.6% above its
+  value at m = 1). The projection d_odd.z (+6.2%) and the receptor's even range (+5.6%) move together, so F stays
+  linear within 1.9%. The draft had attributed the departure to higher odd harmonics, which carry only 1.5–2.7% of
+  the molecule's odd power in these cells.
+- Tilted CISS axis: the admissible region uses the eps_eff of every tilted cell directly. The receptor signal grows
+  with tilt by 1.34–2.33 at m = 1, more than the projection G (1.18–1.60), because the receptor's even range shrinks
+  with tilt; the single-slope bound through G is therefore conservative for tilted axes.
+- H5: the undercoverage is specific to R2, the reference design at delta = 40%; R3 runs at the same delta and its
+  exact interval includes 95%.
+- Explanations of a null result: besides reciprocal CISS and apolar order with a free azimuth, non-reciprocal CISS of
+  the polarisation forms also survives, because the recording does not limit those forms.
+- E3: 6–10 is the ratio of median two-sided widths at eps_eff = 0; the protocol computes no separate E3 upper bound.
+- The output metadata records the SHA-256 of 8 of the 16 published files; the notebook checks the remaining code
+  files against the SHA-256 embedded in it when it starts.
+- Of the 72 combinations with a rotated recombination axis (m = 0, alpha = 30 and 90 degrees) at p = 1, R1 admits 4.
+- E6: the amplitude transfer alone admits 1286 of 2700 combinations in R1, both transfers together 1275.
+- I5: the odd part at p = 0 is exactly zero; the half-value rule at p = 0.5 holds to 1e-16.
+- E4: the statement on apolar stacks covers the two azimuth modes the protocol computed, free and fixed.
+- Added, as the protocol asks: the upper bound of every bird at eps_eff = 0 and the table of all cells of the pair
+  grid (results/tables), quartiles of the bounds, and a reading of E2 together with the forbidden region.
+- Added: the analysis step in Colab ran with 44 BLAS threads (see reanalysis_of_the_archive.txt).

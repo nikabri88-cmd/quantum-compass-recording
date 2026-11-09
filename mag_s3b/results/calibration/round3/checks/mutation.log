@@ -1,0 +1,22 @@
+gamma_no_intercept killed ['test_read_record_e8', 'test_estimate_exact_synthetic', 'test_estimate_exact_neural', 'test_bootstrap_coverage']
+odd_template_sign killed ['test_read_record_e8', 'test_estimate_exact_neural']
+odd_template_no_depth killed ['test_read_record_e8', 'test_estimate_exact_neural']
+even_template_with_odd killed ['test_read_record_e8', 'test_estimate_exact_neural']
+even_part_in_numerator killed ['test_read_record_e8', 'test_estimate_exact_synthetic', 'test_estimate_exact_neural', 'test_bootstrap_coverage']
+bootstrap_cells_and_pairs killed ['test_bootstrap_coverage']
+interval_90 killed ['test_interval_rule_and_pvalue', 'test_bootstrap_coverage']
+upper_with_t975 killed ['test_interval_rule_and_pvalue']
+normal_quantiles killed ['test_interval_rule_and_pvalue']
+no_small_sample_factor killed ['test_interval_rule_and_pvalue']
+null_scaled_up killed ['test_dipole_energy_identity']
+pvalue_without_plus_one killed ['test_interval_rule_and_pvalue']
+main_estimate_knows_S killed ['test_read_record_e8']
+weights_uniform killed ['test_weights_as_mag_s3']
+dipole_same_half killed ['test_dipole_energy_identity', 'test_dipole_size_and_power']
+dipole_null_unprojected killed ['test_dipole_energy_identity', 'test_dipole_size_and_power']
+alpha_010 killed ['test_dipole_size_and_power']
+geometry_stream killed ['test_read_record_e8', 'test_geometry_matches_bird', 'test_estimate_exact_neural']
+flips_shared_by_halves SURVIVED []
+18 of 18 mutations killed; 1 equivalent
+mutation exit 0
+CHAIN_DONE

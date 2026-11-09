@@ -1,36 +1,42 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "MAG-S3: what a recording experiment needs to see the shape of the quantum compass"
+title: "MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order"
 type: software
-version: "0.1.1"
-doi: "10.5281/zenodo.24044654"
+version: "0.2.0"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24043500"
-    description: "Version 0.1.0"
+    description: "Version 0.1.0 (MAG-S3)"
+  - type: doi
+    value: "10.5281/zenodo.24044654"
+    description: "Version 0.1.1 (MAG-S3)"
 repository-code: "https://github.com/nikabri88-cmd/quantum-compass-recording"
 authors:
   - family-names: Ryzhkova
     given-names: Julia
     affiliation: Siriona
     orcid: "https://orcid.org/0009-0005-4194-6059"
-date-released: 2026-11-07
+date-released: 2026-11-09
 license: MIT
 abstract: >-
-  Simulation study of the recording experiment that could test whether neurons reading a radical-pair (cryptochrome)
-  magnetic compass carry a population code shaped like the real projective plane RP2, while a polarity-sensitive
-  control gives a sphere. The model adds a realistic yield pattern, a modulation depth of the firing rate set directly,
-  Poisson spikes, drift, shared gain noise, slow field rotations, simultaneous recordings and pseudo-populations from
-  probe and tetrode sessions, and a share of tuned cells with selection. The protocol, code and thresholds were frozen
-  before the confirmatory run and their SHA-256 posted before it. In the confirmatory run the realistic pattern kept
-  RP2 in 82 of 100 virtual birds, the polar control gave a sphere in 100 of 100, no control readout got a false RP2,
-  and an antipodal test of parity needed half the cells topology needed and saw an odd admixture 20 times earlier.
-  The hypothesis that pseudo-populations suffer less from shared gain noise failed in the opposite direction; an
-  exploratory check traces this to the gain noise of each session and a normalisation by the summed count of the
-  session that restores the shape. Version 0.1.1 corrects figures from the literature after a check against the
-  primary sources and adds notes from an independent reading; the frozen protocol, code, run and verdicts are those
-  of version 0.1.0. Code is released under MIT; text, the protocol and the results under CC BY 4.0.
+  Version 0.2.0 adds MAG-S3b to MAG-S3. MAG-S3b is a pre-registered simulation study of whether the odd part of a
+  radical-pair (cryptochrome 4) compass code can carry the sign of the geomagnetic field to neurons through
+  chirality-induced spin selectivity (CISS), how the polar and axial order of cryptochromes gates it, and whether a
+  blind estimate recovers its size from a MAG-S3 recording. Its protocol, code and notebook were frozen and their
+  SHA-256 posted before the run was read; the run started three minutes before the freeze on the same files, a
+  deviation recorded with the release. All invariants held. The coherence form of CISS gave 253 times more odd part
+  than the polarisation forms, the blind estimate was calibrated, and a dipole test found the odd part at an
+  effective admixture five times below the antipodal test of MAG-S3. The odd part stayed below the antipodal
+  threshold in the reference design, departed from proportionality at the largest CISS angle, and did not follow
+  the cos beta law, because the hyperfine tensors set the direction of the odd dipole together with the CISS axis.
+  MAG-S3 itself, unchanged since version 0.1.1, is a simulation study of the recording experiment that could test
+  whether neurons reading a radical-pair compass carry a population code shaped like the real projective plane RP2.
+  Code is released under MIT; text, the protocols and the results under CC BY 4.0.
 keywords:
+  - chirality-induced spin selectivity
+  - non-reciprocity
+  - inverse problem
+  - pre-registration
   - magnetoreception
   - radical pair
   - cryptochrome

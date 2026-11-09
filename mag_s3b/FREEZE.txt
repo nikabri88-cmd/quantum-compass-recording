@@ -1,0 +1,33 @@
+MAG-S3b freeze before the confirmatory run, 9 November 2026 (UTC)
+
+The protocol v0.4, the code, the requirements and the Colab notebook were frozen at 08:49 UTC, after the
+calibration (three rounds), the blind code review and the blind pipeline check in Colab (TPU v6e-1). Their
+SHA-256 below were posted in Telegram, https://t.me/attractordm/78; the link to the post came at 08:51 UTC.
+The command «запускай» came at 08:53:05 UTC.
+Paths: the protocol is protocol/MAG-S3b_protocol_v0.4_ru.md, the notebook is notebooks/MAG-S3b_colab.ipynb,
+the other files are in code/. The last five are the frozen files of MAG-S3 v0.1.0 (DOI 10.5281/zenodo.24043500),
+which carry MAG-S2 v0.1.2 (DOI 10.5281/zenodo.24030614).
+
+The confirmatory run (cell 5 of the notebook) started at 08:46:33 UTC, right after the blind check in cell 4
+ended, so before the freeze (08:49 UTC), the post and the command (08:53 UTC). It ran the files listed below:
+cell 1 of the notebook checks their SHA-256, and the code had not changed since 07:48 UTC. Between 08:46 and
+08:49 UTC the protocol received only its status line and the paragraph on the checks in Colab; no rule,
+threshold or grid changed. In confirmatory mode the pipeline prints exit codes only, and no output of the run
+was read before the run ended at 09:11:39 UTC (its log was first read at 09:14 UTC).
+
+3970bee37b2b13d5c9dd0d7ab1e567428efa6b7d09034e2af60af3a54ce00964  MAG-S3b_protocol_v0.4_ru.md
+f88118db34507156d3204c00368ba14c88c884e45f17ada8855da1fc45cd0ee3  mag_s3b.py
+df2702366d55fe28c2443e5fa347d1d59709e38d571ae1254ee6eb1a81c691b0  estimate.py
+a77198a499ea6e867705d6056248c510dec52568cc1f3a67c65139b62fb9e859  analyze_s3b.py
+7185e3d0f0e96bbe58327cbc04fb01b2737725138f238c45da817fb1bf2af734  test_s3b.py
+f5bd18bc708013eddf9dff3f9a5d12de28ae4bd8be065ef4e4d1a7ffeaa1aa5c  pipeline.sh
+ba793555ae12b27c3d3400405513c0710dfb1f7be6ede48b1749fc096aae487f  env_check.py
+cb2bfc48ad7b9b9c9a2adb6d2f29a74219beab11ccc2856ff92122af78461bc3  make_colab_notebook.py
+2767052d163a8d1a3675257bfd253474b9a9e6d16a215348cb701404cb7119c7  mutate_estimate.py
+ba5ddab58d78c37fbd70099684586d8e7a59b92d99d810e8768608c7f721f3a2  requirements.txt
+e70543c4ce9648f910f4078f2a1bb611bdfc9706fbda3d7fd4fb1eaf353deaa6  MAG-S3b_colab.ipynb
+1df703af63a2af71a94385d33276ad39a422e9abaa040fdf4bcb618344e1f350  mag_s3.py
+ecc6a15b77e4f4d1c07a4217439e0c97868b9a12971c9ada255f79840ef1d21f  analyze.py
+2352aefe0fe5974732c318b365f4fb5477ffc47fb78b12748bca2515465829c4  mag_s2.py
+647bc0ccb1312991a1b772193cac39f4ced1481c591422c50659bb822a3100c5  physics.json
+0b603a65362e999a0c1da09ee0d6edc0e2864dcd690a2f277978d541943b2d86  mag_s2_bird1.json

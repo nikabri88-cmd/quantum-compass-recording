@@ -1,0 +1,91 @@
+{
+ "residual": {
+  "L60": {
+   "max_abs": 0.00030840153996081286,
+   "rms_sphere": 2.6051830714866566e-06,
+   "max_abs_at_cos": -1.0
+  },
+  "L80": {
+   "max_abs": 0.00023330089504425364,
+   "rms_sphere": 1.5429237216126344e-06,
+   "max_abs_at_cos": -1.0
+  }
+ },
+ "D_S04_L60": 0.4362816630367853,
+ "D_S04_L80": 0.4362816630367853,
+ "D_rel_change": 0.0,
+ "order": {
+  "S1": {
+   "kappa": Infinity,
+   "P1": 1.0,
+   "P2": 1.0,
+   "D60": 1.0,
+   "D80": 1.0,
+   "g60": 1.0
+  },
+  "S0.8": {
+   "kappa": 13.922616289358812,
+   "P1": 0.9281744192905874,
+   "P2": 0.8,
+   "D60": 0.8234150333794781,
+   "D80": 0.8234150333794781,
+   "g60": 1.1272254958488594
+  },
+  "S0.6": {
+   "kappa": 6.31179854945745,
+   "P1": 0.8415731399276597,
+   "P2": 0.6000000000000001,
+   "D60": 0.6390176806937887,
+   "D80": 0.6390176806937887,
+   "g60": 1.3169794285096372
+  },
+  "S0.4": {
+   "kappa": 3.6294099359559944,
+   "P1": 0.7258819871911993,
+   "P2": 0.4,
+   "D60": 0.4362816630367853,
+   "D80": 0.4362816630367853,
+   "g60": 1.66379210654562
+  }
+ },
+ "R_REN": 0.9974991491383574,
+ "criterion_met": false,
+ "seconds": 1.1501089599996703,
+ "metadata": {
+  "mode": "calibrate",
+  "protocol": "0.3",
+  "time_utc": "2026-11-09T03:56:10Z",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "radicalpy": "1.0.9",
+  "blas": [
+   {
+    "internal_api": "openblas",
+    "version": "0.3.34.106.0",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/numpy.libs/libscipy_openblas64_-f48b354e.so"
+   },
+   {
+    "internal_api": "openblas",
+    "version": "0.3.31.dev",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/scipy.libs/libscipy_openblas-5f890258.so"
+   }
+  ],
+  "frozen_ok": true,
+  "frozen": {
+   "mag_s3.py": "1df703af63a2af71a94385d33276ad39a422e9abaa040fdf4bcb618344e1f350",
+   "analyze.py": "ecc6a15b77e4f4d1c07a4217439e0c97868b9a12971c9ada255f79840ef1d21f",
+   "mag_s2.py": "2352aefe0fe5974732c318b365f4fb5477ffc47fb78b12748bca2515465829c4",
+   "physics.json": "647bc0ccb1312991a1b772193cac39f4ced1481c591422c50659bb822a3100c5"
+  },
+  "own": {
+   "mag_s3b.py": "0dbc052da6187b12be86bc8e7c29e86577a73268a7341e8404e4e899adc7a04a",
+   "estimate.py": "1a539ff8a84bed0e22fb5a5506ec1b44c19247e4789b23f546506acd6e3c2bd8",
+   "test_s3b.py": "ef339fa7a4368319cb3bfea8893b00c432a0b43b3a4f76d7cb66f92ee2fe95d1"
+  }
+ }
+}

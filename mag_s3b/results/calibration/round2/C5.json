@@ -1,0 +1,112 @@
+{
+ "degree": 200,
+ "degree_check": 240,
+ "residual": {
+  "L60": {
+   "max_abs": 0.00030840153996081286,
+   "rms_sphere": 2.6051830714866566e-06,
+   "max_abs_at_cos": -1.0,
+   "max_abs_cos_below_099": 8.781086214326717e-06
+  },
+  "L80": {
+   "max_abs": 0.00023330089504425364,
+   "rms_sphere": 1.5429237216126344e-06,
+   "max_abs_at_cos": -1.0,
+   "max_abs_cos_below_099": 4.355883427078176e-06
+  },
+  "L200": {
+   "max_abs": 9.462544322602715e-05,
+   "rms_sphere": 3.537530427270581e-07,
+   "max_abs_at_cos": -1.0,
+   "max_abs_cos_below_099": 4.434556056141445e-07
+  },
+  "L240": {
+   "max_abs": 7.896693673248387e-05,
+   "rms_sphere": 2.789342633308218e-07,
+   "max_abs_at_cos": -1.0,
+   "max_abs_cos_below_099": 2.9559902951781236e-07
+  }
+ },
+ "D_S04": 0.4362816630367853,
+ "D_S04_check": 0.4362816630367853,
+ "D_rel_change": 0.0,
+ "order": {
+  "S1": {
+   "kappa": Infinity,
+   "P1": 1.0,
+   "P2": 1.0,
+   "D": 1.0,
+   "D_check": 1.0,
+   "g": 1.0,
+   "smoothed_deg60_vs_full_max": null
+  },
+  "S0.8": {
+   "kappa": 13.922616289358812,
+   "P1": 0.9281744192905874,
+   "P2": 0.8,
+   "D": 0.8234150333794781,
+   "D_check": 0.8234150333794781,
+   "g": 1.1272254958488594,
+   "smoothed_deg60_vs_full_max": 0.0
+  },
+  "S0.6": {
+   "kappa": 6.31179854945745,
+   "P1": 0.8415731399276597,
+   "P2": 0.6000000000000001,
+   "D": 0.6390176806937887,
+   "D_check": 0.6390176806937887,
+   "g": 1.3169794285096372,
+   "smoothed_deg60_vs_full_max": 0.0
+  },
+  "S0.4": {
+   "kappa": 3.6294099359559944,
+   "P1": 0.7258819871911993,
+   "P2": 0.4,
+   "D": 0.4362816630367853,
+   "D_check": 0.4362816630367853,
+   "g": 1.66379210654562,
+   "smoothed_deg60_vs_full_max": 0.0
+  }
+ },
+ "R_REN": 0.9974991491383574,
+ "criterion_met": true,
+ "seconds": 3.670753644000797,
+ "metadata": {
+  "mode": "calibrate",
+  "protocol": "0.3",
+  "time_utc": "2026-11-09T04:28:52Z",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "radicalpy": "1.0.9",
+  "blas": [
+   {
+    "internal_api": "openblas",
+    "version": "0.3.31.dev",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/scipy.libs/libscipy_openblas-5f890258.so"
+   },
+   {
+    "internal_api": "openblas",
+    "version": "0.3.34.106.0",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/numpy.libs/libscipy_openblas64_-f48b354e.so"
+   }
+  ],
+  "frozen_ok": true,
+  "frozen": {
+   "mag_s3.py": "1df703af63a2af71a94385d33276ad39a422e9abaa040fdf4bcb618344e1f350",
+   "analyze.py": "ecc6a15b77e4f4d1c07a4217439e0c97868b9a12971c9ada255f79840ef1d21f",
+   "mag_s2.py": "2352aefe0fe5974732c318b365f4fb5477ffc47fb78b12748bca2515465829c4",
+   "physics.json": "647bc0ccb1312991a1b772193cac39f4ced1481c591422c50659bb822a3100c5"
+  },
+  "own": {
+   "mag_s3b.py": "5f6e40dd488a1e66eb857a1a11156bfaf1a5239f0aa6d13864e6aca545492eb7",
+   "estimate.py": "1a539ff8a84bed0e22fb5a5506ec1b44c19247e4789b23f546506acd6e3c2bd8",
+   "analyze_s3b.py": "13c005a3d420334f597a1ea8fb2fcf37f45a79d76cf6f867331b7a07ca95b828",
+   "test_s3b.py": "397cf893c8249644304c5f192c983bd4f90695335b0ef7b372507dc5710d7b41"
+  }
+ }
+}

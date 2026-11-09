@@ -1,0 +1,132 @@
+{
+ "P-same_chi0.1_b0_mags2": {
+  "grid2000": {
+   "parts": {
+    "mean": 0.7255940227967158,
+    "even_range": 0.0429100587357496,
+    "odd_half_range": 4.8250586190845546e-05,
+    "eps_mol": 0.0011244586377283747,
+    "odd_sd": 2.3497104770884214e-05,
+    "even_sd": 0.012093057083939476
+   },
+   "L10": {
+    "eps_rec": 0.00022494867940868715,
+    "d_odd": [
+     -9.697252076176322e-06,
+     -3.654691311705491e-05,
+     9.131507136415167e-06
+    ],
+    "even_rms_over_sd": 0.0031129465748169645,
+    "odd_rms_over_sd": 0.03875374900659501
+   },
+   "L12": {
+    "eps_rec": 0.00022487408804298627,
+    "d_odd": [
+     -9.697194379960902e-06,
+     -3.654706206463243e-05,
+     9.13094882736758e-06
+    ],
+    "even_rms_over_sd": 0.0030377965957410144,
+    "odd_rms_over_sd": 0.030639834532857305
+   }
+  },
+  "grid4000": {
+   "parts": {
+    "mean": 0.725593951383325,
+    "even_range": 0.043016215073882424,
+    "odd_half_range": 4.82599148957652e-05,
+    "eps_mol": 0.0011219005394332456,
+    "odd_sd": 2.3497542324706443e-05,
+    "even_sd": 0.01209321172587396
+   }
+  },
+  "C2_rel_change": -0.00227495988673887,
+  "C4_rel_change": -0.00033159281440087174,
+  "anchor_check_vs_mag_s3_E5": 2.9926350286757497e-10
+ },
+ "K_chi0.02_m1_a0_b0_mags2": {
+  "grid2000": {
+   "parts": {
+    "mean": 0.7377278499163121,
+    "even_range": 0.04133352366294352,
+    "odd_half_range": 4.409055965731712e-05,
+    "eps_mol": 0.0010667021765880887,
+    "odd_sd": 2.0156029668015672e-05,
+    "even_sd": 0.011578676166291704
+   },
+   "L10": {
+    "eps_rec": 0.0004631605729560826,
+    "d_odd": [
+     7.845460845521219e-06,
+     -6.973137728739377e-06,
+     1.7920880738124983e-05
+    ],
+    "even_rms_over_sd": 0.003442298333023368,
+    "odd_rms_over_sd": 0.1738724166707031
+   },
+   "L12": {
+    "eps_rec": 0.00046308966657364944,
+    "d_odd": [
+     7.845341903906458e-06,
+     -6.972970441788681e-06,
+     1.79235124380611e-05
+    ],
+    "even_rms_over_sd": 0.003359556236338149,
+    "odd_rms_over_sd": 0.1619333539198499
+   }
+  },
+  "grid4000": {
+   "parts": {
+    "mean": 0.7377277845275902,
+    "even_range": 0.04136194536339566,
+    "odd_half_range": 4.4084852481751646e-05,
+    "eps_mol": 0.0010658312150077375,
+    "odd_sd": 2.0154833572565056e-05,
+    "even_sd": 0.011578815350543593
+   }
+  },
+  "C2_rel_change": -0.0008164992998673792,
+  "C4_rel_change": -0.00015309244044803272
+ },
+ "C2_criterion_met": true,
+ "C4_criterion_met": true,
+ "seconds": 175.74635532699995,
+ "metadata": {
+  "mode": "calibrate",
+  "protocol": "0.3",
+  "time_utc": "2026-11-09T04:03:34Z",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "radicalpy": "1.0.9",
+  "blas": [
+   {
+    "internal_api": "openblas",
+    "version": "0.3.34.106.0",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/numpy.libs/libscipy_openblas64_-f48b354e.so"
+   },
+   {
+    "internal_api": "openblas",
+    "version": "0.3.31.dev",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/scipy.libs/libscipy_openblas-5f890258.so"
+   }
+  ],
+  "frozen_ok": true,
+  "frozen": {
+   "mag_s3.py": "1df703af63a2af71a94385d33276ad39a422e9abaa040fdf4bcb618344e1f350",
+   "analyze.py": "ecc6a15b77e4f4d1c07a4217439e0c97868b9a12971c9ada255f79840ef1d21f",
+   "mag_s2.py": "2352aefe0fe5974732c318b365f4fb5477ffc47fb78b12748bca2515465829c4",
+   "physics.json": "647bc0ccb1312991a1b772193cac39f4ced1481c591422c50659bb822a3100c5"
+  },
+  "own": {
+   "mag_s3b.py": "c710ffcac296f34537d6d0c5098f04f11f0388c6afe7e95cd7b7cbfd2f5eced6",
+   "estimate.py": "1a539ff8a84bed0e22fb5a5506ec1b44c19247e4789b23f546506acd6e3c2bd8",
+   "analyze_s3b.py": "f5bca4d9a2437ff09c78b4143937e9a6324b6255f9ab17eca47d4a9541bc6e21",
+   "test_s3b.py": "ef339fa7a4368319cb3bfea8893b00c432a0b43b3a4f76d7cb66f92ee2fe95d1"
+  }
+ }
+}

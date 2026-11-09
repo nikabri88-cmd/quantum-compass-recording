@@ -7,7 +7,9 @@
 A simulation study of the recording experiment that could test the MAG-S2 prediction in birds. MAG-S2 predicted that neurons reading a radical-pair (cryptochrome) magnetic compass carry a population code shaped like the real projective plane RP², while a polarity-sensitive compass read by the same eyes and neurons gives a sphere. MAG-S3 models what a real recording adds: a weak and realistic yield pattern, few cells per session, Poisson spikes, slow drift of firing rates, gain noise shared by the cells of a session, and field rotations slow enough to avoid induction artefacts. It asks how many neurons, field directions and repeats an experiment needs to tell RP² from a sphere in 8 of 10 birds, how strongly each neuron must follow the field for that to fit into a few hours of recording, and whether the readout ever gives the RP² label to a polar code or to noise.
 
 Author: Julia Ryzhkova (Siriona, siriona.one; ORCID 0009-0005-4194-6059).
-Status: version 0.1.1, 7 November 2026. The protocol (v0.4), code and thresholds were frozen before the confirmatory run, and their SHA-256 were posted in Telegram at 18:28 UTC (https://t.me/attractordm/76); the run started at 18:28:57 UTC. The run with its verdicts is included. Version 0.1.1 corrects figures from the literature after a check against the primary sources and adds notes from an independent reading of v0.1.0, listed in "Review after release"; the frozen files, the run and the verdicts are those of v0.1.0. Archived on Zenodo: release v0.1.0, https://doi.org/10.5281/zenodo.24043500; release v0.1.1, https://doi.org/10.5281/zenodo.24044654. Companion studies: MAG-S1, a shared quantum compass and the synchrony of a flock, https://doi.org/10.5281/zenodo.24032910; MAG-S2, the shape of the quantum compass signal, https://doi.org/10.5281/zenodo.24030614.
+**New in release v0.2.0 (9 November 2026): MAG-S3b.** The folder [`mag_s3b`](mag_s3b/README.md) holds the follow-up study MAG-S3b: whether the odd part of the compass code can carry the sign of the field to neurons through chirality-induced spin selectivity (CISS) in cryptochrome 4, how the order of cryptochromes in the receptor gates it, and whether a blind estimate recovers its size from a MAG-S3 recording. Its protocol, code and confirmatory run were frozen and checked the same way as MAG-S3. The MAG-S3 files described below are unchanged in v0.2.0.
+
+Status of MAG-S3: version 0.1.1, 7 November 2026. The protocol (v0.4), code and thresholds were frozen before the confirmatory run, and their SHA-256 were posted in Telegram at 18:28 UTC (https://t.me/attractordm/76); the run started at 18:28:57 UTC. The run with its verdicts is included. Version 0.1.1 corrects figures from the literature after a check against the primary sources and adds notes from an independent reading of v0.1.0, listed in "Review after release"; the frozen files, the run and the verdicts are those of v0.1.0. Archived on Zenodo: release v0.1.0, https://doi.org/10.5281/zenodo.24043500; release v0.1.1, https://doi.org/10.5281/zenodo.24044654. Companion studies: MAG-S1, a shared quantum compass and the synchrony of a flock, https://doi.org/10.5281/zenodo.24032910; MAG-S2, the shape of the quantum compass signal, https://doi.org/10.5281/zenodo.24030614.
 
 ## The question
 
@@ -168,6 +170,7 @@ The code sets BLAS to one thread. Reruns are bitwise identical with the same BLA
 - `results/exploratory/` – the output of the exploratory check of H3
 - `figures/robin.jpg` – the European robin, the symbol of the study
 - `FREEZE.txt` – the SHA-256 posted before the run
+- `mag_s3b/` – the follow-up study MAG-S3b (release v0.2.0), with its own README, freeze record, protocol, code, notebook, calibration, run and checks
 - `SHA256SUMS.txt` – SHA-256 of every file in the release
 
 ## Licence
@@ -177,6 +180,8 @@ Code (`code/*.py`, `code/scripts/*`) is released under the MIT License. Text, fi
 ## Citation
 
 Ryzhkova, J. (2026). MAG-S3: what a recording experiment needs to see the shape of the quantum compass (v0.1.1). Zenodo. https://doi.org/10.5281/zenodo.24044654
+
+MAG-S3b: Ryzhkova, J. (2026). MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order (v0.2.0). Zenodo.
 
 See also `CITATION.cff`.
 

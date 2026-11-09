@@ -1,0 +1,103 @@
+{
+ "I2": {
+  "K_chi0_m0_a0_b0_mags2": 1.1712852909795402e-14,
+  "K_chi0_m0_a0_b0_cry4a": 6.6058269965196814e-15,
+  "K_chi0_m0_a0_b0_cry4a_fast": 2.942091015256665e-15,
+  "P-same_chi0_b0_mags2": 1.1712852909795402e-14,
+  "P-same_chi0_b0_cry4a": 6.6058269965196814e-15,
+  "P-same_chi0_b0_cry4a_fast": 2.942091015256665e-15,
+  "P-LH_chi0_b0_mags2": 1.1712852909795402e-14,
+  "P-LH_chi0_b0_cry4a": 6.6058269965196814e-15,
+  "P-LH_chi0_b0_cry4a_fast": 2.942091015256665e-15
+ },
+ "I3": {
+  "K_chi0.02_m0_a0_b0_mags2": 1.2490009027033011e-14,
+  "K_chi0.02_m0_a0_b45_mags2": 1.3211653993039363e-14,
+  "K_chi0.02_m0_a0_b90_mags2": 1.3489209749195652e-14,
+  "K_chi0.05_m0_a0_b0_mags2": 1.099120794378905e-14,
+  "K_chi0.05_m0_a0_b45_mags2": 9.547918011776346e-15,
+  "K_chi0.05_m0_a0_b90_mags2": 1.2656542480726785e-14,
+  "K_chi0.1_m0_a0_b0_mags2": 1.2323475573339238e-14,
+  "K_chi0.1_m0_a0_b45_mags2": 1.1213252548714081e-14,
+  "K_chi0.1_m0_a0_b90_mags2": 1.4099832412739488e-14,
+  "K_chi0.02_m0_a0_b0_cry4a": 3.9968028886505635e-15,
+  "K_chi0.02_m0_a0_b45_cry4a": 3.7192471324942744e-15,
+  "K_chi0.02_m0_a0_b90_cry4a": 3.9968028886505635e-15,
+  "K_chi0.05_m0_a0_b0_cry4a": 4.107825191113079e-15,
+  "K_chi0.05_m0_a0_b45_cry4a": 4.6629367034256575e-15,
+  "K_chi0.05_m0_a0_b90_cry4a": 4.496403249731884e-15,
+  "K_chi0.1_m0_a0_b0_cry4a": 4.274358644806853e-15,
+  "K_chi0.1_m0_a0_b45_cry4a": 4.052314039881821e-15,
+  "K_chi0.1_m0_a0_b90_cry4a": 4.773959005888173e-15,
+  "K_chi0.02_m0_a0_b0_cry4a_fast": 2.609024107869118e-15,
+  "K_chi0.02_m0_a0_b45_cry4a_fast": 1.942890293094024e-15,
+  "K_chi0.02_m0_a0_b90_cry4a_fast": 2.1649348980190553e-15,
+  "K_chi0.05_m0_a0_b0_cry4a_fast": 2.831068712794149e-15,
+  "K_chi0.05_m0_a0_b45_cry4a_fast": 1.8318679906315083e-15,
+  "K_chi0.05_m0_a0_b90_cry4a_fast": 2.0539125955565396e-15,
+  "K_chi0.1_m0_a0_b0_cry4a_fast": 3.3306690738754696e-15,
+  "K_chi0.1_m0_a0_b45_cry4a_fast": 1.942890293094024e-15,
+  "K_chi0.1_m0_a0_b90_cry4a_fast": 2.275957200481571e-15
+ },
+ "I4": {
+  "chi0.02_b0": 2.498001805406602e-16,
+  "chi0.02_b45": 2.220446049250313e-16,
+  "chi0.02_b90": 2.7755575615628914e-16,
+  "chi0.05_b0": 2.7755575615628914e-16,
+  "chi0.05_b45": 2.498001805406602e-16,
+  "chi0.05_b90": 2.7755575615628914e-16,
+  "chi0.1_b0": 3.3306690738754696e-16,
+  "chi0.1_b45": 2.498001805406602e-16,
+  "chi0.1_b90": 2.498001805406602e-16
+ },
+ "I6": {
+  "K_chi0.1_m0.5_a0_b45_cry4a": 1.388380682643131e-07,
+  "P-same_chi0.1_b45_cry4a": 1.3905565565686118e-07,
+  "P-LH_chi0.1_b45_cry4a": 1.3820972011302501e-07
+ },
+ "I8": {
+  "S1": 0.0,
+  "S0.8": 0.0,
+  "S0.6": 0.0,
+  "S0.4": 0.0
+ },
+ "seconds": 124.11451983451843,
+ "metadata": {
+  "mode": "invariants_check",
+  "protocol": "0.3",
+  "time_utc": "2026-11-09T04:42:01Z",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "radicalpy": "1.0.9",
+  "blas": [
+   {
+    "internal_api": "openblas",
+    "version": "0.3.31.dev",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/scipy.libs/libscipy_openblas-5f890258.so"
+   },
+   {
+    "internal_api": "openblas",
+    "version": "0.3.34.106.0",
+    "architecture": "SkylakeX",
+    "num_threads": 1,
+    "filepath": "/usr/local/lib/python3.13/dist-packages/numpy.libs/libscipy_openblas64_-f48b354e.so"
+   }
+  ],
+  "frozen_ok": true,
+  "frozen": {
+   "mag_s3.py": "1df703af63a2af71a94385d33276ad39a422e9abaa040fdf4bcb618344e1f350",
+   "analyze.py": "ecc6a15b77e4f4d1c07a4217439e0c97868b9a12971c9ada255f79840ef1d21f",
+   "mag_s2.py": "2352aefe0fe5974732c318b365f4fb5477ffc47fb78b12748bca2515465829c4",
+   "physics.json": "647bc0ccb1312991a1b772193cac39f4ced1481c591422c50659bb822a3100c5"
+  },
+  "own": {
+   "mag_s3b.py": "5f6e40dd488a1e66eb857a1a11156bfaf1a5239f0aa6d13864e6aca545492eb7",
+   "estimate.py": "1a539ff8a84bed0e22fb5a5506ec1b44c19247e4789b23f546506acd6e3c2bd8",
+   "analyze_s3b.py": "13c005a3d420334f597a1ea8fb2fcf37f45a79d76cf6f867331b7a07ca95b828",
+   "test_s3b.py": "397cf893c8249644304c5f192c983bd4f90695335b0ef7b372507dc5710d7b41"
+  }
+ }
+}

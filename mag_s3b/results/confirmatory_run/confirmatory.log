@@ -1,0 +1,10 @@
+[2026-11-09T08:46:33Z] confirmatory run in /content/work/confirmatory_s3b with 44 workers (44 processors)
+[2026-11-09T08:58:35Z] physics exit 0
+[2026-11-09T09:00:54Z] receptor exit 0
+[2026-11-09T09:00:59Z] e3geo exit 0
+[2026-11-09T09:10:29Z] generate exit 0
+[2026-11-09T09:11:34Z] estimate exit 0
+[2026-11-09T09:11:38Z] e4 exit 0
+[2026-11-09T09:11:39Z] analyze exit 0
+[2026-11-09T09:11:39Z] records 3500, cells 225
+[2026-11-09T09:11:39Z] done

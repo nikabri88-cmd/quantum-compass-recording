@@ -1,0 +1,18 @@
+[2026-11-09T07:25:25Z] smoke run in /tmp/claude-0/-home-claude/dee9579a-0cff-5c92-93ac-2ff77f6a2175/scratchpad/smoke3/smoke_9411_9412 with 2 workers (2 processors)
+[2026-11-09T07:30:47Z] physics exit 0
+[2026-11-09T07:32:10Z] receptor exit 0
+[2026-11-09T07:32:10Z] e3geo exit 0
+[2026-11-09T07:32:19Z] generate exit 0
+[2026-11-09T07:32:22Z] estimate exit 0
+[2026-11-09T07:32:23Z] e4 exit 0
+[2026-11-09T07:32:25Z] analyze exit 0
+[2026-11-09T07:32:25Z] records 10, cells 225
+result keys present: True
+invariants: {'I1': 'ok', 'I2': 'ok', 'I3': 'ok', 'I4': 'ok', 'I5': 'ok', 'I6': 'ok', 'I7': 'ok', 'I8': 'ok'}
+valid: False  grid_ok: False  rates_ok: False (False at the substitute rates)
+expectations well formed: ['Q1', 'Q2', 'Q3', 'Q4'] True
+hypotheses well formed: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'] True
+maps: ['E1_E5_E6', 'E2', 'E3', 'E4', 'E7', 'E8']
+[2026-11-09T07:32:25Z] done
+check output deleted (exit 0)
+smoke exit 0

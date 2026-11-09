@@ -1,0 +1,26 @@
+MAG-S3b – reanalysis of the confirmatory run outside Colab, 9 November 2026
+
+The frozen analyze_s3b.py (SHA-256 a77198a4...) was run again in the calibration environment (Python 3.13.18,
+NumPy 2.5.3, SciPy 1.18.1, RadicalPy 1.0.9, OpenBLAS SkylakeX, one BLAS thread) on the pair grid, the records
+manifest, the estimates and the truth unpacked from results/confirmatory_run/confirmatory_s3b_light.tar.gz, with
+the reference calibration results/calibration/round3:
+
+  python3 -I analyze_s3b.py --pair RUN/pair --calibration round3 --records RUN/records \
+      --estimates RUN/estimates --truth RUN/truth --out RUN/reanalysis
+
+Every verdict and every number of results.json came out the same, with two kinds of exceptions.
+
+- 27 values differ in the last bit: maps.E2.R1/R2/R3.translation.K_*.bound_dchi_p_cosb_by_S.S0.8, at most
+  6.2e-16 relative.
+- The fields metadata.time_utc, invariants.I7.truth_opened_at and metadata.blas[*].num_threads differ, as they
+  record when and how the analysis ran.
+
+The analysis step in Colab ran with 44 BLAS threads, because analyze_s3b.py, unlike mag_s3b.py and estimate.py, does
+not pin the number of threads; the reanalysis ran with one thread. Every other step of the run (physics, receptor,
+e3geo, generate, estimate, e4) recorded one BLAS thread, as the protocol requires. The 27 last-bit differences are
+consistent with a different order of summation in multithreaded BLAS; no verdict depends on them.
+
+Also checked on the archive: all 225 cells of the pair grid carry the frozen SHA-256 of mag_s3b.py; the metadata of
+every output records the frozen SHA-256 of mag_s3b.py, estimate.py, analyze_s3b.py, test_s3b.py and of the frozen
+MAG-S3/MAG-S2 files mag_s3.py, analyze.py, mag_s2.py and physics.json (frozen_ok true); estimates.sha256 matches
+estimates.json; the estimates were hashed at 09:11:34 UTC and the truth was opened at 09:11:38 UTC (invariant I7).

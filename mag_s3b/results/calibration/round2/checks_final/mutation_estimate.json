@@ -1,0 +1,110 @@
+[
+ {
+  "mutation": "gamma_no_intercept",
+  "killed": true,
+  "failed_tests": [
+   "test_estimate_exact_synthetic",
+   "test_estimate_exact_neural",
+   "test_bootstrap_coverage"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "odd_template_sign",
+  "killed": true,
+  "failed_tests": [
+   "test_estimate_exact_neural"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "odd_template_no_depth",
+  "killed": true,
+  "failed_tests": [
+   "test_estimate_exact_neural"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "even_template_with_odd",
+  "killed": true,
+  "failed_tests": [
+   "test_estimate_exact_neural"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "even_part_in_numerator",
+  "killed": true,
+  "failed_tests": [
+   "test_estimate_exact_synthetic",
+   "test_estimate_exact_neural",
+   "test_bootstrap_coverage"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "bootstrap_cells_and_pairs",
+  "killed": true,
+  "failed_tests": [
+   "test_bootstrap_coverage"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "interval_90",
+  "killed": true,
+  "failed_tests": [
+   "test_bootstrap_coverage"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "weights_uniform",
+  "killed": true,
+  "failed_tests": [
+   "test_weights_as_mag_s3"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "dipole_same_half",
+  "killed": true,
+  "failed_tests": [
+   "test_dipole_energy_identity",
+   "test_dipole_size_and_power"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "dipole_null_unprojected",
+  "killed": true,
+  "failed_tests": [
+   "test_dipole_size_and_power"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "alpha_010",
+  "killed": true,
+  "failed_tests": [
+   "test_dipole_size_and_power"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "geometry_stream",
+  "killed": true,
+  "failed_tests": [
+   "test_geometry_matches_bird",
+   "test_estimate_exact_neural"
+  ],
+  "equivalent": null
+ },
+ {
+  "mutation": "flips_shared_by_halves",
+  "killed": false,
+  "failed_tests": [],
+  "equivalent": "coupled flips of the two halves are a subgroup of the flip group, so the permutation test stays exact"
+ }
+]

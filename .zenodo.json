@@ -1,7 +1,7 @@
 {
-  "title": "MAG-S3: what a recording experiment needs to see the shape of the quantum compass",
+  "title": "MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order",
   "upload_type": "software",
-  "description": "Simulation study of the recording experiment that could test the MAG-S2 prediction in birds: neurons that read a radical-pair (cryptochrome) magnetic compass carry a population code shaped like the real projective plane RP², while a polarity-sensitive control read by the same eyes and neurons gives a sphere. MAG-S3 adds what a real recording brings: the yield pattern of Ren et al. (2021), a modulation depth of the firing rate set directly from 10% to 100%, Poisson spikes, drift of the base rates, gain noise shared by the cells of a session, field rotations no faster than 100 µT/s, simultaneous recordings and pseudo-populations pooled from probe sessions of 80 cells and tetrode sessions of 6 cells, and a share of tuned cells of 1 or 0.1 with cell selection. The same recordings are read by an antipodal test of parity and by the frozen MAG-S2 topology pipeline gated by an atlas of synthetic shapes. The protocol (v0.4, in Russian), code and thresholds were frozen before the confirmatory run, and their SHA-256 were posted in Telegram (https://t.me/attractordm/76) at 18:28 UTC, before the run started at 18:28:57 UTC. In the confirmatory run (7 November 2026; maps on 10 virtual birds per cell, hypotheses on 100 new virtual birds) the input checks and all invariants passed, all four expectations and four of five hypotheses were met. The realistic pattern kept the RP² label in 82 of 100 birds and the polar control gave a sphere in 100 of 100. The polar control and shuffled data never got the RP² label, in 200 readouts of the second stage and 1500 of the maps. At a modulation depth of 40% the antipodal test called the code even in 100 of 100 birds with 100 cells, half of what topology needed, and it found an odd admixture at a level 20 times below the one at which topology gave a sphere. The hypothesis that pseudo-populations suffer less from shared gain noise than simultaneous recording failed in the opposite direction (RP² in 44 of 100 birds for simultaneous recording and in none for three probe sessions); an exploratory check after the run traces this to the gain noise of each session taking up principal components of its own, and dividing each presentation by the summed count of its session restored RP² in all ten birds checked. The maps give the requirements of an experiment: at a modulation depth of 40% or more, parity is seen with 6–12 cells in one session of about 44 minutes, while the shape needs 100–200 cells and several hours; with one tuned cell in ten, the shape fits none of the three recording budgets fixed before the run and the parity test fits all three. Version 0.1.1 corrects figures from the literature after a check against the primary sources: the share of field-responsive cells reported in birds (53 of 329 neurons, 16%, in the pigeon's vestibular nuclei with a tuning to polarity, and none in the optic tectum, in place of a range of 7–16%), the number of nuclei in the radical-pair models (15–21) and the rate limit of 100 µT/s, which Fenton, Nath & Malkemper (2022) applied along each coil axis and MAG-S3 applies to the whole field vector. It also adds notes from an independent reading of version 0.1.0 (DOI 10.5281/zenodo.24043500): the radio-frequency noise of the recording setup and the stage of recording as limitations, and designs for the next study. The frozen protocol, code, run and verdicts are those of version 0.1.0. The release holds the frozen protocol and the protocol with its results, the code with its synthetic tests, the Colab notebook of the run, the archive of the confirmatory run with its verdicts, the calibration records, the checks before the run and the exploratory check. Licensing: code is released under MIT; text, the protocol and the results are released under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).",
+  "description": "Release v0.2.0 adds MAG-S3b (folder mag_s3b) to the MAG-S3 study of the recording experiment that could test the MAG-S2 prediction in birds. MAG-S3b is a pre-registered simulation study of whether the odd part of a radical-pair (cryptochrome 4) compass code, the part that changes sign when the field is reversed, can carry the sign of the geomagnetic field to neurons through chirality-induced spin selectivity (CISS), how the polar and axial order of cryptochromes in the receptor gates it, and whether a blind estimate recovers its size from a MAG-S3 recording with honest intervals. It compares a coherence form and two polarisation forms of CISS on the MAG-S2 radical pair with Cry4a rates over 225 cells, models the receptor with polar order, axial order and a free or fixed azimuth, and compares a dipole test with the antipodal test of MAG-S3 on 3500 recordings of virtual birds. The protocol (v0.4, in Russian), code and notebook were frozen and their SHA-256 posted in Telegram (https://t.me/attractordm/78); the confirmatory run (9 November 2026) started three minutes before the freeze, on the same files, a deviation recorded in mag_s3b/FREEZE.txt and mag_s3b/README.md. All eight invariants held and the run is valid. The coherence form gave 253 times more odd part than the polarisation forms (H2 met); the blind estimate covered the truth in 95.3%, 92.5% and 93.7% of birds at the three recording points (H5 met, the second point at the lower edge of its band); the dipole test found the odd part at an effective admixture of 0.01, five times below the antipodal test (H6 met). The odd part of the molecule departed from proportionality to the mismatch at the largest CISS angle (H1 not met), stayed below the antipodal threshold in the reference design (H3 not met), and its projection on the receptor axis did not follow cos beta, because the hyperfine tensors set the direction of the odd dipole together with the CISS axis (H4 not met). A null result in the reference design bounds the effective admixture by 0.0010 and, for the coherence form with polar order, excludes mismatches of 0.005 pi and more at any tilt and axial order; the polarisation forms stay unconstrained. All numbers belong to a three-nucleus radical pair without spin relaxation. The MAG-S3 files, run and verdicts are those of v0.1.0 and v0.1.1 and are unchanged. Licensing: code is released under MIT; text, the protocols and the results are released under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).",
   "creators": [
     {
       "name": "Ryzhkova, Julia",
@@ -22,13 +22,21 @@
     "projective plane",
     "population coding",
     "pseudo-population",
-    "simulation"
+    "simulation",
+    "chirality-induced spin selectivity",
+    "CISS",
+    "non-reciprocity",
+    "cryptochrome 4",
+    "molecular order",
+    "inverse problem",
+    "simulation-based calibration",
+    "pre-registration"
   ],
-  "version": "0.1.1",
+  "version": "0.2.0",
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "10.5281/zenodo.24043500",
+      "identifier": "10.5281/zenodo.24044654",
       "relation": "isNewVersionOf",
       "resource_type": "software",
       "scheme": "doi"
@@ -128,7 +136,67 @@
       "relation": "references",
       "resource_type": "publication-article",
       "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.24043500",
+      "relation": "references",
+      "resource_type": "software",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1021/acschembio.4c00576",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1038/s41586-021-03618-9",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1021/acs.jctc.4c00887",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1126/science.176.4030.62",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1021/acs.biochem.6c00516",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1073/pnas.2524093123",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "arXiv:2605.22130",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "arxiv"
+    },
+    {
+      "identifier": "arXiv:2505.01519",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "arxiv"
+    },
+    {
+      "identifier": "arXiv:1804.06788",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "arxiv"
     }
   ],
-  "publication_date": "2026-11-07"
+  "publication_date": "2026-11-09"
 }
