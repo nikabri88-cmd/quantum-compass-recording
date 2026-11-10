@@ -1027,8 +1027,11 @@ def main():
     write_table(os.path.join(a.out, "tables", "cells.csv"), res["maps"]["E1"])
     np.savez_compressed(os.path.join(a.out, "maps_axes.npz"), **axis_maps(A_GRID[0], e5))
     c.write_json(os.path.join(a.out, "results.json"), res)
-    verdicts = {k: {g: w["verdict"] for g, w in v.items() if g in c.GEOMETRIES} for k, v in res["hypotheses"].items()}
-    print("valid" if res["valid"] else "INVALID", verdicts, flush=True)
+    if res["rates_ok"] and res["grid_ok"]:
+        verdicts = {k: {g: w["verdict"] for g, w in v.items() if g in c.GEOMETRIES} for k, v in res["hypotheses"].items()}
+        print("valid" if res["valid"] else "INVALID", verdicts, flush=True)
+    else:       # smoke and blind checks: technical facts only, no verdicts on the screen or in the logs
+        print("valid" if res["valid"] else "INVALID", "(rates or grids of a check run; verdicts withheld)", flush=True)
 
 
 if __name__ == "__main__":
