@@ -1,0 +1,21 @@
+[2026-11-10T13:02:56Z] smoke run in /tmp/claude-0/-home-claude/dee9579a-0cff-5c92-93ac-2ff77f6a2175/scratchpad/s3c/v04/smoke_pipeline/smoke_s3c with 2 workers (2 processors)
+[2026-11-10T13:46:52Z] pair exit 0
+[2026-11-10T14:15:41Z] composite exit 0
+[2026-11-10T14:37:26Z] checks exit 0
+[2026-11-10T14:37:43Z] curves exit 0
+[2026-11-10T14:43:12Z] receptor exit 0
+[2026-11-10T14:43:14Z] analyze exit 0
+[2026-11-10T14:43:14Z] cells 574, references 54, composite 24
+result keys present: True
+invariants: {'I1': 'ok', 'I2': 'ok', 'I3': 'ok', 'I4': 'ok', 'I5': 'ok', 'I6': 'ok', 'I7': 'ok', 'I8': 'ok', 'I9': 'ok', 'I10': 'ok', 'I11': 'ok'}
+valid: False  grid_ok: False  rates_ok: False  curves_full: False  cells_complete: True  composite_done: True  blas_single_thread: True (grid, rates and curves differ from the protocol in the checks)
+expectations well formed: True  hypotheses well formed: True
+comparisons as in the protocol: True  maps E1-E14 present: True
+grids as intended: True  substitute rates throughout: True
+check passed
+[2026-11-10T14:43:14Z] done
+check output deleted (exit 0)
+
+real	100m17.964s
+user	194m47.914s
+sys	3m8.698s
