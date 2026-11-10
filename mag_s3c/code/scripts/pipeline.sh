@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-# MAG-S3c pipeline driver: cells of the pair, invariant checks, time curves, receptor maps, analysis.
+# MAG-S3c pipeline driver: cells and references of the pair, the composite pair, invariant checks, time curves,
+# receptor and maps, analysis.
 #
-#   bash scripts/pipeline.sh smoke        OUT_PARENT [HOURS]   30 directions with antipodes, curves to 50 ns, substitute
-#                                                              rates; technical facts only, output deleted
-#   bash scripts/pipeline.sh blind        OUT_PARENT [HOURS]   every cell on 500 directions and full curves at the
-#                                                              substitute rates of mag_s3b.py (k_F = 6e6, k_R = 5e5 s^-1;
-#                                                              work order, step 3); technical facts only, output deleted
+#   bash scripts/pipeline.sh smoke        OUT_PARENT [HOURS]   60 directions (composite pair 50), curves to 50 ns,
+#                                                              substitute rates; technical facts only, output deleted
+#   bash scripts/pipeline.sh blind        OUT_PARENT [HOURS]   every cell on 500 directions, the composite pair on 100,
+#                                                              full curves, substitute rates (k_F = 6e6, k_R = 5e5 s^-1,
+#                                                              rates of E12 and hops of E13 times 1.2; work order,
+#                                                              step 3); technical facts only, output deleted
 #   bash scripts/pipeline.sh confirmatory OUT_PARENT [HOURS]   the run (step 5); keeps everything
 #
 # The confirmatory run starts only when OUT_PARENT/confirmation.json, written by cell 5 of the notebook after the
@@ -19,9 +21,10 @@ KIND="$1"; PARENT="$(mkdir -p "$2" && cd "$2" && pwd)"; MAXH="${3:-1.0}"
 WORKERS="${WORKERS:-$(nproc)}"
 CODE="$(cd "$(dirname "$0")/.." && pwd)"
 case "$KIND" in
-  smoke)        OUT="$PARENT/smoke_s3c"; GRID=(--grid-half 30); CURVE=(--t-max 5e-8); RATES=(--blind-rates) ;;
-  blind)        OUT="$PARENT/blind_s3c"; GRID=(--grid-half 250); CURVE=(); RATES=(--blind-rates) ;;
-  confirmatory) OUT="$PARENT/confirmatory_s3c"; GRID=(); CURVE=(); RATES=(--confirmatory)
+  smoke)        OUT="$PARENT/smoke_s3c"; GRID=(--grid-half 30); CGRID=(--grid-half 25); CURVE=(--t-max 5e-8)
+                RATES=(--blind-rates) ;;
+  blind)        OUT="$PARENT/blind_s3c"; GRID=(--grid-half 250); CGRID=(--grid-half 50); CURVE=(); RATES=(--blind-rates) ;;
+  confirmatory) OUT="$PARENT/confirmatory_s3c"; GRID=(); CGRID=(); CURVE=(); RATES=(--confirmatory)
                 python3 -I - "$PARENT/confirmation.json" "$CODE" <<'PY' || exit 1
 import hashlib, json, os, sys
 path, code = sys.argv[1], sys.argv[2]
@@ -62,12 +65,14 @@ step() {   # $1 = name, $2 = file whose presence marks the step as done, rest = 
 log "$KIND run in $OUT with $WORKERS workers ($(nproc) processors)"
 step pair     "$OUT/run/pair_done.json"   python3 -I mag_s3c.py pair --out "$OUT/run" --workers "$WORKERS" \
      --max-hours "$MAXH" "${GRID[@]}" "${RATES[@]}"
+step composite "$OUT/run/composite_done.json" python3 -I mag_s3c.py composite --out "$OUT/run" --workers "$WORKERS" \
+     --max-hours "$MAXH" "${CGRID[@]}" "${RATES[@]}"
 step checks   "$OUT/run/checks.json"      python3 -I mag_s3c.py checks --out "$OUT/run" --workers "$WORKERS" "${RATES[@]}"
 step curves   "$OUT/run/curves.json"      python3 -I mag_s3c.py curves --out "$OUT/run" --workers "$WORKERS" \
      "${CURVE[@]}" "${RATES[@]}"
 step receptor "$OUT/run/receptor.json"    python3 -I mag_s3c.py receptor --out "$OUT/run" --workers "$WORKERS"
 step analyze  "$OUT/results/results.json" python3 -I analyze_s3c.py --run "$OUT/run" --out "$OUT/results"
-log "cells $(find "$OUT/run/cells" -name '*.json' | wc -l)"
+log "cells $(find "$OUT/run/cells" -name '*.json' | wc -l), references $(find "$OUT/run/refs" -name '*.json' | wc -l), composite $(find "$OUT/run/composite" -maxdepth 1 -name '*.json' | wc -l)"
 
 if [ "$KIND" != "confirmatory" ]; then
   python3 -I - "$OUT/results/results.json" "$KIND" <<'PY' || exit 1
@@ -78,21 +83,26 @@ need = ("valid", "invariants", "expectations", "hypotheses", "comparisons", "mul
 ok_verdicts = {"met", "not_met", "untestable"}
 keys = all(k in r for k in need)
 hyp = r.get("hypotheses", {})
-flat = [v["verdict"] for k, v in hyp.items() if k != "H3"] + [v["verdict"] for v in hyp.get("H3", {}).values()]
+geoms = {"H1": ["S2", "W_C", "W_D"], "H2": ["W_C", "W_D"], "H3": ["W_C", "W_D"], "H4": ["S2", "W_C", "W_D"],
+         "H5": ["S2", "W_C", "W_D"]}
+flat = [hyp.get(h, {}).get(g, {}).get("verdict") for h, gs in geoms.items() for g in gs]
 inv = {k: v["verdict"] for k, v in r.get("invariants", {}).items()}
 exp_ok = all(v["verdict"] in ok_verdicts for v in r.get("expectations", {}).values()) and len(r.get("expectations", {})) == 4
-hyp_ok = sorted(hyp) == ["H1", "H2", "H3", "H4", "H5"] and sorted(hyp.get("H3", {})) == ["W_C", "W_D"] \
-    and all(v in ok_verdicts for v in flat)
-counts_ok = r.get("comparisons", {}).get("counted") == r.get("comparisons", {}).get("protocol")
-maps_ok = sorted(r.get("maps", {}), key=lambda k: int(k[1:])) == [f"E{i}" for i in range(1, 11)]
+hyp_ok = sorted(hyp) == ["H1", "H2", "H3", "H4", "H5"] and all(v in ok_verdicts for v in flat)
+cmp = r.get("comparisons", {})
+counts_ok = cmp.get("counted", {}).get("per_hypothesis") == cmp.get("protocol") \
+    and cmp.get("counted", {}).get("known_in_advance") == cmp.get("known_protocol")
+maps_ok = sorted(r.get("maps", {}), key=lambda k: int(k[1:])) == [f"E{i}" for i in range(1, 15)]
 print("result keys present:", keys)
 print("invariants:", inv)
 print("valid:", r.get("valid"), " grid_ok:", r.get("grid_ok"), " rates_ok:", r.get("rates_ok"), " curves_full:",
-      r.get("curves_full"), " cells_complete:", r.get("cells_complete"), " blas_single_thread:",
+      r.get("curves_full"), " cells_complete:", r.get("cells_complete"), " composite_done:", r.get("composite_done"),
+      " blas_single_thread:",
       r.get("blas_single_thread"), "(grid, rates and curves differ from the protocol in the checks)")
 print("expectations well formed:", exp_ok, " hypotheses well formed:", hyp_ok)
-print("comparisons as in the protocol:", counts_ok, " maps E1-E10 present:", maps_ok)
-ok = (keys and inv and all(v == "ok" for v in inv.values()) and r.get("cells_complete") is True and exp_ok and hyp_ok
+print("comparisons as in the protocol:", counts_ok, " maps E1-E14 present:", maps_ok)
+ok = (keys and inv and len(inv) == 11 and all(v == "ok" for v in inv.values()) and r.get("cells_complete") is True
+      and r.get("composite_done") is True and exp_ok and hyp_ok
       and counts_ok and maps_ok and r.get("blas_single_thread") is True
       and (kind != "blind" or r.get("curves_full") is True))
 print("check passed" if ok else "CHECK FAILED")

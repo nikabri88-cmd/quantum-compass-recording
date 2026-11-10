@@ -1,18 +1,19 @@
-"""Environment check of MAG-S3c (author's harness, not part of the study): compares the calibration C1-C4 of a new
+"""Environment check of MAG-S3c (author's harness, not part of the study): compares the calibration C1-C6 of a new
 environment with the reference calibration, number by number, and prints the environment.
 Usage: python3 -I scripts/env_check.py REF_DIR NEW_DIR
 Exit code 0 when every number agrees to 1e-9 relative or 1e-12 absolute (round-off quantities such as the residuals
 of C3), the relative changes of C1 and C2 to 1e-6 absolute (GMRES stops at a relative residual of 1e-13, so their last
-digits depend on the BLAS of the machine), every count of GMRES iterations to 2 and every verdict is the same, 1
-otherwise."""
+digits depend on the BLAS of the machine), every count of GMRES iterations to 2 and of restarts to 1, and every verdict
+is the same, 1 otherwise. Times are left out."""
 import json
 import os
 import platform
 import sys
 
 FILES = ("calibration.json",)
-SKIP = {"metadata", "seconds"}
-ITERATIONS = "max_gmres_iterations"
+SKIP = {"metadata", "seconds", "seconds_per_direction"}
+ITERATIONS = ("max_gmres_iterations", "/iterations")
+RESTARTS = "max_gmres_restarts"
 CHANGE_TOL = 1e-6                        # relative changes of C1 and C2 (keys C1_..., C2_...)
 
 
@@ -34,6 +35,8 @@ def walk(a, b, path, out):
         out.append(("same", path, a, b))
     elif path.endswith(ITERATIONS):
         out.append(("close" if abs(a - b) <= 2 else "DIFFER", path, a, b))
+    elif path.endswith(RESTARTS):
+        out.append(("close" if abs(a - b) <= 1 else "DIFFER", path, a, b))
     elif path.rsplit("/", 1)[-1].startswith(("C1_", "C2_")):
         out.append(("close" if abs(a - b) <= CHANGE_TOL else "DIFFER", path, a, b))
     else:
