@@ -1,0 +1,18 @@
+[2026-11-10T18:43:46Z] blind run in /content/work/blind_s3c with 44 workers (44 processors)
+[2026-11-10T19:10:33Z] pair exit 0
+[2026-11-10T19:19:42Z] composite exit 0
+[2026-11-10T19:22:04Z] checks exit 0
+[2026-11-10T19:25:45Z] curves exit 0
+[2026-11-10T19:31:49Z] receptor exit 0
+[2026-11-10T19:31:50Z] analyze exit 0
+[2026-11-10T19:31:50Z] cells 574, references 54, composite 24
+result keys present: True
+invariants: {'I1': 'ok', 'I2': 'ok', 'I3': 'ok', 'I4': 'ok', 'I5': 'ok', 'I6': 'ok', 'I7': 'ok', 'I8': 'ok', 'I9': 'ok', 'I10': 'ok', 'I11': 'ok'}
+I11 residuals over the odd part of the molecule: 2.5287541332023138e-15 2.4932082761588624e-15  over the odd part of the crystal (normalization of the first blind check, no verdict): 5.194759962849077e-12
+valid: False  grid_ok: False  rates_ok: False  curves_full: True  cells_complete: True  composite_done: True  blas_single_thread: True (grid, rates and curves differ from the protocol in the checks)
+expectations well formed: True  hypotheses well formed: True
+comparisons as in the protocol: True  maps E1-E14 present: True
+grids as intended: True  substitute rates throughout: True
+check passed
+[2026-11-10T19:31:51Z] done
+check output deleted (exit 0)

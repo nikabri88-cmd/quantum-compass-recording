@@ -53,3 +53,11 @@ and times.
   Hypotheses H1-H5, their thresholds and the rules of the analysis did not change. The calibration does not depend on
   the changed files (analyze_s3c.py, test_s3c.py, scripts/pipeline.sh, scripts/make_colab_notebook.py), so the reference
   calibration of round 3 stays; the new notebook is build f994d9b191aa9dbb.
+
+## Second blind check
+
+On build f994d9b191aa9dbb cell 3 ran the 30 fast tests and gave the same comparison of the environment (192 identical,
+31 within the tolerances, none different), and the blind check ran from 18:43:46 to 19:31:51 UTC with every step at exit
+code 0. All eleven invariants held. Over all 844 cells of the crystal, I11 gave 2.5e-15 for the plane and the mirror
+residuals over the odd part of the molecule, while the normalization of the first check gave 5.2e-12 and would have
+failed again. The check passed, deleted its output unread and wrote its marker for the build (colab_build_f994d9b_*).
