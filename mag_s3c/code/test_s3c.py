@@ -687,6 +687,7 @@ def synth_world(over=None):
     for ref in c.e5_references():
         n_ax = 10 + (4 if ref.system != "S2" else 0)
         dz = refs[ref.name]["main_axes"][f"z_chi0.1"]["d_K"][2]
+        e5[f"{ref.name}__axes"] = np.tile([0.0, 0.0, 1.0], (n_ax, 1))
         for chi in (0.05, 0.1):
             dk = np.tile([0.0, 0.0, dz * chi / 0.1], (n_ax, 1))
             e5.update({f"{ref.name}__chi{chi:g}_F": np.full(n_ax, 0.02), f"{ref.name}__chi{chi:g}_F_amp": np.full(n_ax, 0.018),
@@ -922,6 +923,121 @@ def test_analysis_cli():
         shutil.rmtree(tmp)
 
 
+def test_composite_model_independent():
+    """The two-site model built independently: site D directly in one common ordering (electrons, N1_C, N1_D), the
+    free N1 from RadicalPy's own nuclear Zeeman term, the hops as the identity map, a dense solve against
+    composite_solve."""
+    cs = c.build_composite(tiny=True)
+    syC, syD = cs.sites
+    eye3 = np.eye(3)
+    n = rand_dir(61)
+    th, ph = m2.to_angles(n[None, :])
+    full = np.asarray(syC.sim.zeeman_hamiltonian_3d(m3.P2.B0_mT, th[0], ph[0]), dtype=complex)
+    rot = np.array([np.sin(th[0]) * np.cos(ph[0]), np.sin(th[0]) * np.sin(ph[0]), np.cos(th[0])])
+    el = sum(-m3.P2.B0_mT * p.gamma_mT * sum(rot[a] * np.asarray(syC.sim.spin_operator(i, "xyz"[a]), dtype=complex)
+                                             for a in range(3)) for i, p in enumerate(syC.sim.particles[:2]))
+    hC = (full - el).reshape(4, 3, 4, 3)[0, :, 0, :]                       # RadicalPy's term of one 14N
+    close(hC, cs.h_free(n), 1e-9 * np.abs(hC).max())
+    HD = syD.H(n).reshape(4, 3, 4, 3)                                       # (e, N1_D, e', N1_D')
+    HD_common = (np.einsum("adbf,cg->acdbgf", HD, eye3) + np.einsum("ab,cg,df->acdbgf", np.eye(4), hC, eye3)
+                 ).reshape(36, 36)
+    close(HD_common, cs.hop(cs.H(1, n)), 1e-15 * np.abs(HD_common).max())
+    PS, I = np.kron(syC.PS, eye3), np.eye(36)
+    k_f, k_r = BLIND
+    for kcd, kdc in ((1.2e7, 1.2e6), (1.2e9, 1.2e9)):
+        for krec in ((k_r, 0.0), (k_r, k_r)):
+            for P in (syC.PS, syC.turned(0.1 * np.pi, c.axis_vector("W_C", "r"))):
+                rho0 = np.kron(P, eye3) / np.trace(np.kron(P, eye3)).real
+                Ls = []
+                for H, kr, ko in ((cs.H(0, n), krec[0], kcd), (HD_common, krec[1], kdc)):
+                    Am = 1j * H + 0.5 * (kr * PS + (k_f + ko) * I)
+                    Ls.append(np.kron(Am, I) + np.kron(I, Am.conj()))
+                M = np.block([[Ls[0], -kdc * np.eye(1296)], [-kcd * np.eye(1296), Ls[1]]])
+                x = np.linalg.solve(M, np.concatenate([rho0.ravel(), np.zeros(1296)]))
+                f_ind = k_f * (np.trace(x[:1296].reshape(36, 36)).real + np.trace(x[1296:].reshape(36, 36)).real)
+                close(c.composite_solve(cs, n, rho0, krec, (kcd, kdc), k_f)[0], f_ind, 1e-12)
+
+
+def test_crystal_mates():
+    """The rotations of the crystal average are the field rotations between the symmetry mates of 6PU0."""
+    assert c.crystal_mates_check() < 1e-12
+    R = np.array(c.geo()["frame"])
+    close(c.cell_axes(), R, 0.0)                                            # columns R e_a, R e_b, R e_c
+    assert c.cryst1()["space_group"] == "P 21 21 21"
+
+
+def test_failures_raise_and_gates():
+    # GMRES that cannot converge reports it, and the composite solver raises
+    M = np.diag(np.linspace(1e-6, 1.0, 50))
+    x, info, it = c.gmres_real(lambda v: M @ v, np.ones(50), 1e-15, 3, 2)
+    assert info != 0 and it == 6
+    cs = c.build_composite(tiny=True)
+    old = c.COMPOSITE_MAXITER
+    try:
+        c.COMPOSITE_MAXITER = 1
+        try:
+            c.composite_solve(cs, rand_dir(62), cs.birth(cs.sites[0].PS), (5e5, 5e5), (1.2e8, 1.2e8), 6e6, tol=1e-40)
+        except RuntimeError:
+            pass
+        else:
+            raise AssertionError("composite_solve accepted a solution that did not converge")
+    finally:
+        c.COMPOSITE_MAXITER = old
+    # the confirmation: all files, the build identity and the blind marker are needed
+    tmp = tempfile.mkdtemp()
+    try:
+        sha = {f: c.file_sha256(os.path.join(HERE, f)) for f in c.STUDY_FILES}
+        code_id = __import__("hashlib").sha256(json.dumps(sha, sort_keys=True).encode()).hexdigest()
+        path = os.path.join(tmp, "confirmation.json")
+
+        def write(**kw):
+            with open(path, "w") as fh:
+                json.dump(kw, fh, ensure_ascii=False)
+        write(answer="запускай", sha256=sha, code_id=code_id, blind_ok=dict(code_id=code_id))
+        assert c.confirmation_problems(path) == []
+        one = {"requirements.txt": sha["requirements.txt"]}
+        one_id = __import__("hashlib").sha256(json.dumps(one, sort_keys=True).encode()).hexdigest()
+        write(answer="запускай", sha256=one, code_id=one_id, blind_ok=dict(code_id=one_id))
+        assert any("missing" in x for x in c.confirmation_problems(path))
+        write(answer="запускай", sha256=sha, code_id="0" * 64, blind_ok=dict(code_id=code_id))
+        assert any("code_id" in x for x in c.confirmation_problems(path))
+        write(answer="запускай", sha256=sha, code_id=code_id)
+        assert any("blind" in x for x in c.confirmation_problems(path))
+        write(answer="да", sha256=sha, code_id=code_id, blind_ok=dict(code_id=code_id))
+        assert any("answer" in x for x in c.confirmation_problems(path))
+        p = subprocess.run([sys.executable, "-I", os.path.join(HERE, "mag_s3c.py"), "pair", "--out",
+                            os.path.join(tmp, "x"), "--confirmatory", path], capture_output=True, text=True)
+        assert p.returncode != 0 and not os.path.exists(os.path.join(tmp, "x"))
+        write(answer="запускай", sha256=sha, code_id=code_id, blind_ok=dict(code_id=code_id))
+        p = subprocess.run([sys.executable, "-I", os.path.join(HERE, "mag_s3c.py"), "pair", "--out",
+                            os.path.join(tmp, "x"), "--confirmatory", path, "--grid-half", "6"],
+                           capture_output=True, text=True)
+        assert p.returncode != 0 and not os.path.exists(os.path.join(tmp, "x"))
+        # env_check: the same calibration passes, a changed number fails
+        cal = os.path.join(tmp, "cal")
+        os.makedirs(cal)
+        with open(os.path.join(cal, "calibration.json"), "w") as fh:
+            json.dump(dict(C4=dict(x=1.0, criterion_met=True), metadata=c.metadata("calibrate")), fh)
+        env = os.path.join(HERE, "scripts", "env_check.py")
+        assert subprocess.run([sys.executable, "-I", env, cal, cal], capture_output=True).returncode == 0
+        cal2 = os.path.join(tmp, "cal2")
+        os.makedirs(cal2)
+        with open(os.path.join(cal2, "calibration.json"), "w") as fh:
+            json.dump(dict(C4=dict(x=1.001, criterion_met=True), metadata=c.metadata("calibrate")), fh)
+        assert subprocess.run([sys.executable, "-I", env, cal, cal2], capture_output=True).returncode == 1
+    finally:
+        shutil.rmtree(tmp)
+
+
+def test_near_zero_flag():
+    """H4 and H5 flag a denominator below 5% of the largest |d_odd . z| of the geometry and keep it in the verdict."""
+    s0 = name("W_C", "x", "none", 0.0, "K", 0.1, 1.0)
+    h = hyp_of({s0: dict(dz=1e-6)})
+    flagged = [x for x in h["H4"]["W_C"]["comparisons"] if x["near_zero_circle"]]
+    assert {x["label"] for x in flagged} == {"W_C_x_chi0.1_rf1e+06", "W_C_x_chi0.1_std1e+06"}
+    assert not any(x["near_zero_circle"] for x in h["H4"]["W_D"]["comparisons"])
+
+
 def test_pipeline_gates():
     """The confirmatory run refuses to start without a confirmation of the exact files (nothing is computed)."""
     tmp = tempfile.mkdtemp()
@@ -969,7 +1085,8 @@ TESTS = [test_frozen_and_cells, test_geometry, test_dipolar_tensor, test_tensors
          test_frozen_regression_s2, test_exact_zeros_full_pairs, test_kinc_and_forms, test_reconstruction,
          test_form_E_and_denton, test_composite_pair, test_gmres_real, test_crystal_and_maps, test_curves,
          test_receptor_transfer, test_blind_rates, test_pair_and_receptor_modes, test_analysis_world_and_counts,
-         test_analysis_edges, test_analysis_cli, test_pipeline_gates, test_notebook_build_reproducible,
+         test_analysis_edges, test_analysis_cli, test_composite_model_independent, test_crystal_mates,
+         test_failures_raise_and_gates, test_near_zero_flag, test_pipeline_gates, test_notebook_build_reproducible,
          test_solver_against_steps]
 SLOW = {test_solver_against_steps}
 

@@ -46,16 +46,20 @@ Modes
   calibrate  C1-C6; C1-C3 at the MAG-S2 and the substitute rates, which no hypothesis, expectation or map uses
 
 Usage
-  python3 -I mag_s3c.py pair --out RUN (--blind-rates | --confirmatory) [--workers 2] [--max-hours 1] [--grid-half N]
-  python3 -I mag_s3c.py composite --out RUN (--blind-rates | --confirmatory) [--workers 2] [--max-hours 1]
+  python3 -I mag_s3c.py pair --out RUN (--blind-rates | --confirmatory CONF) [--workers 2] [--max-hours 1]
           [--grid-half N]
-  python3 -I mag_s3c.py checks --out RUN (--blind-rates | --confirmatory) [--workers 2]
-  python3 -I mag_s3c.py curves --out RUN (--blind-rates | --confirmatory) [--workers 2] [--t-max 4e-6]
+  python3 -I mag_s3c.py composite --out RUN (--blind-rates | --confirmatory CONF) [--workers 2] [--max-hours 1]
+          [--grid-half N]
+  python3 -I mag_s3c.py checks --out RUN (--blind-rates | --confirmatory CONF) [--workers 2]
+  python3 -I mag_s3c.py curves --out RUN (--blind-rates | --confirmatory CONF) [--workers 2] [--t-max 4e-6]
   python3 -I mag_s3c.py receptor --out RUN [--workers 2]
   python3 -I mag_s3c.py calibrate --out CAL [--checks C1,C2,C3,C4,C5,C6] [--workers 2]
+  python3 -I mag_s3c.py check-confirmation --confirmatory CONF
 pair, composite, checks and curves refuse to run without one of the two flags: before the freeze nothing is computed
-at the rates of the hypotheses, and scripts/pipeline.sh passes --confirmatory only after the answer «запускай» of the
-notebook. --grid-half, --t-max and --blind-rates serve only the smoke and blind checks of scripts/pipeline.sh.
+at the rates of the hypotheses. --confirmatory takes the confirmation.json that cell 5 of the notebook writes after
+the answer «запускай»; mag_s3c.py itself checks the answer, the SHA-256 of every file of the study, the build
+identity and the marker of the passed blind check of the same build, and computes nothing when one fails.
+--grid-half, --t-max and --blind-rates serve only the smoke and blind checks of scripts/pipeline.sh.
 """
 from __future__ import annotations
 
@@ -226,15 +230,7 @@ def geometry(path=None):
     """FAD frame (rows x, y, z in PDB coordinates) and, for the four tryptophans, the indole normal (sign: z >= 0),
     the centroid vector r from the frame origin, its length and unit vector, all in the FAD frame (angstrom)."""
     A = pdb_atoms(path or os.path.join(HERE, PDB_FILE))
-    fad = {k[2]: v for k, v in A.items() if k[0] == "FAD"}
-    o = np.array([fad[n] for n in ("N10", "N5", "C9A", "C10", "C5X", "C4X")]).mean(axis=0)
-    x = fad["N10"] - o
-    x /= np.linalg.norm(x)
-    y = 0.5 * (fad["C4X"] + fad["C10"]) - o
-    y -= (y @ x) * x
-    y /= np.linalg.norm(y)
-    z = np.cross(x, y)
-    R = np.vstack([x, y, z])
+    R, o = fad_frame(A)
     out = dict(frame=R.tolist())
     for name, num in TRP.items():
         pts = np.array([A[("TRP", num, a)] for a in INDOLE])
@@ -244,6 +240,19 @@ def geometry(path=None):
         r = R @ (c - o)
         out[name] = dict(normal=n, r=r, dist=float(np.linalg.norm(r)), r_hat=r / np.linalg.norm(r))
     return out
+
+
+def fad_frame(atoms):
+    """(R, origin): rows of R are the flavin axes x, y, z in PDB coordinates, so a PDB vector v has flavin components
+    R v; the origin is the centre of the central ring."""
+    fad = {k[2]: v for k, v in atoms.items() if k[0] == "FAD"}
+    o = np.array([fad[n] for n in ("N10", "N5", "C9A", "C10", "C5X", "C4X")]).mean(axis=0)
+    x = fad["N10"] - o
+    x /= np.linalg.norm(x)
+    y = 0.5 * (fad["C4X"] + fad["C10"]) - o
+    y -= (y @ x) * x
+    y /= np.linalg.norm(y)
+    return np.vstack([x, y, np.cross(x, y)]), o
 
 
 _GEO = None
@@ -1170,39 +1179,50 @@ def _composite_job(args):
     t0 = time.perf_counter()
     dirs = composite_parts(half_n)[part]
     y, rc, rd, diag = composite_yields(cc, dirs)
-    write_json(path, dict(part=part, y=y.tolist(), rec_C=rc.tolist(), rec_D=rd.tolist(), diagnostics=diag,
-                          seconds=time.perf_counter() - t0))
+    write_json(path, dict(part=part, **composite_provenance(cc, half_n), y=y.tolist(), rec_C=rc.tolist(),
+                          rec_D=rd.tolist(), diagnostics=diag, seconds=time.perf_counter() - t0))
     return cc.name, part, "done"
+
+
+def composite_provenance(cc, half_n):
+    return dict(grid_half=half_n, rates_used=list(rates(cc.rates)), hop_rates_used=[hop_rate(cc.k_cd), hop_rate(cc.k_dc)],
+                mag_s3c_sha256=file_sha256(os.path.abspath(__file__)))
 
 
 def composite_merge(out, cc, half_n):
     """Join the parts of one cell into composite/NAME.json (yields at +half, then at -half)."""
     n_parts = len(composite_parts(half_n))
     got = []
+    want = composite_provenance(cc, half_n)
     for part in range(n_parts):
         with open(os.path.join(out, "composite", "parts", f"{cc.name}__{part:03d}.json")) as fh:
             got.append(json.load(fh))
+        if any(got[-1].get(k) != v for k, v in want.items()):
+            sys.exit(f"part {part} of {cc.name} was computed by other code, rates or grid; remove the parts and rerun")
     cat = lambda key: np.concatenate([np.asarray(g[key], dtype=float) for g in got])  # noqa: E731
     y, rc, rd = cat("y"), cat("rec_C"), cat("rec_D")
     diag = dict(max_rel_residual=0.0, max_conservation_error=0.0, max_gmres_iterations=0)
     for g in got:
         diag = diag_merge(diag, g["diagnostics"])
     write_json(os.path.join(out, "composite", cc.name + ".json"), dict(
-        cell=asdict(cc), grid_half=half_n, rates_used=list(rates(cc.rates)),
-        hop_rates_used=[hop_rate(cc.k_cd), hop_rate(cc.k_dc)], mag_s3c_sha256=file_sha256(os.path.abspath(__file__)),
-        yp=y[:half_n].tolist(), ym=y[half_n:].tolist(), rec_C_p=rc[:half_n].tolist(), rec_C_m=rc[half_n:].tolist(),
+        cell=asdict(cc), **want, yp=y[:half_n].tolist(), ym=y[half_n:].tolist(), rec_C_p=rc[:half_n].tolist(), rec_C_m=rc[half_n:].tolist(),
         rec_D_p=rd[:half_n].tolist(), rec_D_m=rd[half_n:].tolist(), diagnostics=diag,
         seconds=float(sum(g["seconds"] for g in got))))
 
 
+COMPOSITE_COST = {(1e8, 1e8): 5.7, (1e9, 1e9): 4.8, (1e9, 1e8): 4.1, (1e8, 1e7): 1.1, (1e7, 1e7): 0.75,
+                  (1e7, 1e6): 0.39}                                  # seconds per direction, round 3
+
+
 def composite(out, workers, max_hours, half_n=E13_GRID_HALF):
-    """The 24 cells of branch E13 (resumable): jobs of COMPOSITE_PART directions, the fastest hops last."""
+    """The 24 cells of branch E13 (resumable): jobs of COMPOSITE_PART directions, the costliest first."""
     from multiprocessing import get_context
     os.makedirs(os.path.join(out, "composite", "parts"), exist_ok=True)
     t0 = time.time()
     cells = composite_cells()
     n_parts = len(composite_parts(half_n))
-    jobs = [(c, out, half_n, p) for c in sorted(cells, key=lambda c: -max(c.k_cd, c.k_dc)) for p in range(n_parts)
+    jobs = [(c, out, half_n, p) for c in sorted(cells, key=lambda c: -COMPOSITE_COST.get((c.k_cd, c.k_dc), 1.0))
+            for p in range(n_parts)
             if not os.path.exists(os.path.join(out, "composite", "parts", f"{c.name}__{p:03d}.json"))]
     with get_context("fork").Pool(workers) as pool:
         for name, part, state in pool.imap_unordered(_composite_job, jobs):
@@ -1384,8 +1404,9 @@ def checks(out, workers):
             eps_rec_rel=rel(new["receptor"]["eps_rec"], old["receptor"]["eps_rec"]),
             receptor_even_range_rel=rel(new["receptor"]["receptor_even_range"], old["receptor"]["receptor_even_range"]),
             d_odd_rel=float(np.linalg.norm(d_new - d_old) / np.linalg.norm(d_old)))
-    i5 = dict(found, max_dense=max(found["dense"].values()), max_steps=max(found["steps"].values()),
-              max_tiny=max(found["tiny"].values()))
+    worst = lambda v: float(np.max(list(v))) if all(np.isfinite(list(v))) else float("nan")  # noqa: E731
+    i5 = dict(found, max_dense=worst(found["dense"].values()), max_steps=worst(found["steps"].values()),
+              max_tiny=worst(found["tiny"].values()))
     write_json(os.path.join(out, "checks.json"), dict(
         I1=dict(frozen_mismatches=frozen_mismatches(), frozen=FROZEN, pdb_sha256=PDB_SHA256), I3=res["I3"],
         I5_small=i5, I6=i6_out, diagnostics=diag, check_dirs=CHECK_DIRS, grid_half=half_n,
@@ -1458,19 +1479,20 @@ def load_json(path):
         return json.load(fh)
 
 
-def summarize(half, yp, ym, e4=False):
+def summarize(half, yp, ym, e4=False, check_fit=True):
     """Pair and receptor quantities of one cell with the frozen functions of MAG-S3b: fit of degree 10, check fit of
     degree 24 (Q1), receptor map over p and S (F = eps_eff at S = 1, p = 1; F_amp = eps_E6 at S = 1, p = 1), I5 of
     MAG-S3b (here I7), E4 at p = 0, and the coefficients of degree 10 for the maps."""
     fit = b.harmonic_fit(half, yp, ym, b.L_FIT)
-    hi = b.harmonic_fit(half, yp, ym, b.L_ODD_MAP)
+    hi = b.harmonic_fit(half, yp, ym, b.L_ODD_MAP) if check_fit or e4 else None
     zon = b.zonal(fit)
     d = b.dipole(fit)
     row = dict(parts=b.parity_parts(yp, ym), fit_L=b.L_FIT, fit_even_rms_over_sd=fit["even_rms_over_sd"],
                fit_odd_rms_over_sd=fit["odd_rms_over_sd"], d_odd=d.tolist(), zonal=zon.tolist(),
                receptor=b.receptor_order_map(zon), I7=b.i5_receptor(zon), odd_power_shares=b.odd_power_shares(fit),
-               fit_check=dict(L=b.L_ODD_MAP, even_rms_over_sd=hi["even_rms_over_sd"],
-                              odd_rms_over_sd=hi["odd_rms_over_sd"], d_odd=b.dipole(hi).tolist()),
+               fit_check=None if hi is None else dict(L=b.L_ODD_MAP, even_rms_over_sd=hi["even_rms_over_sd"],
+                                                      odd_rms_over_sd=hi["odd_rms_over_sd"],
+                                                      d_odd=b.dipole(hi).tolist()),
                coef=fit["coef"].tolist())
     if e4:
         row["E4"] = b.e4_cell(half, hi["coef"], b.L_ODD_MAP, d, zon)
@@ -1641,7 +1663,7 @@ def _receptor_job(args):
         r = load_json(os.path.join(out, "composite", c.name + ".json") if kind == "composite" else item_path(out, c))
         yp, ym = np.asarray(r["yp"]), np.asarray(r["ym"])
     h = len(yp)
-    row = summarize(m2.fibonacci_sphere(h), yp, ym, e4=c.name in E4_CELLS)
+    row = summarize(m2.fibonacci_sphere(h), yp, ym, e4=c.name in E4_CELLS, check_fit=kind != "composite")
     row.update(cell=asdict(c), name=c.name, kind=kind, grid_half=h, diagnostics=r["diagnostics"],
                rates_used=r["rates_used"], code_ok=r.get("mag_s3c_sha256") == own)
     if kind == "composite":
@@ -1652,11 +1674,32 @@ def _receptor_job(args):
     return row
 
 
-# crystal 6PU0, space group P2_1 2_1 2_1: the four molecules of the cell are related by 2-fold rotations about the
-# cell axes a, b, c, which are the PDB axes x, y, z (right angles, C4); in the flavin frame they are the columns of
-# the frame matrix
+# crystal 6PU0, space group P2_1 2_1 2_1: the four molecules of the cell are related by 2-fold screw axes along the
+# cell axes a, b, c, which are the PDB axes X, Y, Z (right angles, diagonal SCALE, C4). A PDB vector v has flavin
+# components R v, so the cell axis a has flavin components R e_a, the first column of the frame matrix R.
+P212121_OPS = ((np.diag([1.0, 1.0, 1.0]), np.zeros(3)), (np.diag([-1.0, -1.0, 1.0]), np.array([0.5, 0.0, 0.5])),
+               (np.diag([-1.0, 1.0, -1.0]), np.array([0.0, 0.5, 0.5])),
+               (np.diag([1.0, -1.0, -1.0]), np.array([0.5, 0.5, 0.0])))   # International Tables No. 19
+
+
 def cell_axes():
-    return np.asarray(geo()["frame"], dtype=float).T          # columns: a, b, c in the flavin frame
+    return np.asarray(geo()["frame"], dtype=float)            # columns: a, b, c in the flavin frame
+
+
+def crystal_mates_check(path=None):
+    """Largest deviation between the field rotation R_mate R^T of each symmetry mate of chain A (operators of
+    P2_1 2_1 2_1 with the CRYST1 translations, frame recomputed from the rotated atoms) and the nearest element of
+    crystal_rotations(); zero up to round-off when the averaging of E14 uses the cell of 6PU0."""
+    A = pdb_atoms(path or os.path.join(HERE, PDB_FILE))
+    cr = cryst1(path)
+    cell = np.array([cr["a"], cr["b"], cr["c"]])
+    R = fad_frame(A)[0]
+    rots = crystal_rotations()
+    worst = 0.0
+    for Rot, t in P212121_OPS:
+        Rm = fad_frame({key: Rot @ v + t * cell for key, v in A.items()})[0]
+        worst = max(worst, min(float(np.abs(Rm @ R.T - Q).max()) for Q in rots))
+    return worst
 
 
 def crystal_rotations():
@@ -1903,10 +1946,12 @@ def c4_geometry():
     for key in ("listing_N1_vs_W318_after_z_sign_deg", "listing_N1_vs_W318_deg"):
         dev[key] = abs(rep[key] - PROTOCOL_GEOMETRY[key])
     cr = cryst1()
-    cell_ok = (cr is not None and cr["space_group"] == "P 21 21 21"
+    mates = crystal_mates_check()
+    cell_ok = (cr is not None and cr["space_group"] == "P 21 21 21" and mates < 1e-12
                and all(abs(cr[k] - 90.0) < 1e-9 for k in ("alpha", "beta", "gamma")))
     ok = all((v <= 0.01 if k.endswith("_dist") else v <= 0.1) for k, v in dev.items()) and cell_ok
-    return dict(report=rep, deviations=dev, cryst1=cr, cell_ok=bool(cell_ok), criterion_met=bool(ok))
+    return dict(report=rep, deviations=dev, cryst1=cr, crystal_mates_max_deviation=mates, cell_ok=bool(cell_ok),
+                criterion_met=bool(ok))
 
 
 def c5_rebuild():
@@ -2045,26 +2090,69 @@ def metadata(mode):
                 s3c_rates=dict(S3C_RATES), hop_scale=HOP_SCALE[0])
 
 
+STUDY_FILES = OWN_FILES + tuple(FROZEN) + (PDB_FILE,) + HARNESS_FILES
+
+
+def confirmation_problems(path):
+    """What keeps the confirmation written by cell 5 of the notebook from holding (empty when it holds): the answer
+    «запускай», every file of the study listed with the SHA-256 it has on disk now, the build identity code_id of the
+    confirmed hashes, and the marker of a passed blind check of the same build."""
+    if not path or not os.path.exists(path):
+        return ["no confirmation.json: the confirmatory run starts only from cell 5 after the answer «запускай»"]
+    with open(path) as fh:
+        conf = json.load(fh)
+    out = []
+    if conf.get("answer") != "запускай":
+        out.append("the confirmation does not hold the answer «запускай»")
+    sha = conf.get("sha256") or {}
+    missing = [f for f in STUDY_FILES if f not in sha]
+    bad = [f for f in STUDY_FILES if f in sha and (not os.path.exists(os.path.join(HERE, f))
+                                                  or file_sha256(os.path.join(HERE, f)) != sha[f])]
+    if missing:
+        out.append(f"files missing from the confirmation: {missing}")
+    if bad:
+        out.append(f"files differ from the confirmed SHA-256: {bad}")
+    code_id = hashlib.sha256(json.dumps(sha, sort_keys=True).encode()).hexdigest()
+    if conf.get("code_id") != code_id:
+        out.append("code_id does not match the confirmed hashes")
+    if (conf.get("blind_ok") or {}).get("code_id") != code_id:
+        out.append("no marker of a passed blind check of this build")
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("mode", choices=("pair", "composite", "checks", "curves", "receptor", "calibrate"))
-    ap.add_argument("--out", required=True)
+    ap.add_argument("mode", choices=("pair", "composite", "checks", "curves", "receptor", "calibrate",
+                                     "check-confirmation"))
+    ap.add_argument("--out", default=None)
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--max-hours", type=float, default=0.0)
     ap.add_argument("--grid-half", type=int, default=None,
                     help="pair and composite: smaller grids only for the smoke and blind checks")
-    ap.add_argument("--t-max", type=float, default=CURVE_T, help="curves: shorter curves only for the smoke check")
+    ap.add_argument("--t-max", type=float, default=None, help="curves: shorter curves only for the smoke check")
     ap.add_argument("--checks", default="C1,C2,C3,C4,C5,C6")
     ap.add_argument("--blind-rates", action="store_true", help="the substitute rates of the blind check")
-    ap.add_argument("--confirmatory", action="store_true",
-                    help="the confirmatory run at the Cry4a rates (set by scripts/pipeline.sh after the confirmation)")
+    ap.add_argument("--confirmatory", metavar="CONFIRMATION_JSON", default=None,
+                    help="the confirmatory run at the Cry4a rates: the confirmation.json of cell 5 of the notebook")
     a = ap.parse_args()
+    if a.mode == "check-confirmation":
+        problems = confirmation_problems(a.confirmatory)
+        print("confirmation holds" if not problems else "\n".join(problems), flush=True)
+        sys.exit(1 if problems else 0)
+    if not a.out:
+        sys.exit("--out is required")
     if a.blind_rates and a.confirmatory:
         sys.exit("--blind-rates and --confirmatory exclude each other")
     if a.mode in ("pair", "composite", "checks", "curves") and not (a.blind_rates or a.confirmatory):
         sys.exit("pair, composite, checks and curves compute at the rates of the hypotheses only in the confirmatory run "
-                 "(--confirmatory, set by scripts/pipeline.sh after the answer «запускай»); before the freeze use "
-                 "--blind-rates")
+                 "(--confirmatory CONFIRMATION_JSON, set by scripts/pipeline.sh after the answer «запускай»); before "
+                 "the freeze use --blind-rates")
+    if a.confirmatory:
+        if a.grid_half is not None or a.t_max is not None:
+            sys.exit("--grid-half and --t-max serve the smoke and blind checks only")
+        problems = confirmation_problems(a.confirmatory)
+        if problems:
+            sys.exit("the confirmation does not hold: " + "; ".join(problems))
     if a.blind_rates:
         use_blind_rates()
     if a.mode == "pair":
@@ -2076,7 +2164,7 @@ def main():
     elif a.mode == "checks":
         checks(a.out, a.workers)
     elif a.mode == "curves":
-        curves(a.out, a.workers, a.t_max)
+        curves(a.out, a.workers, a.t_max or CURVE_T)
     elif a.mode == "receptor":
         receptor(a.out, a.workers)
     else:

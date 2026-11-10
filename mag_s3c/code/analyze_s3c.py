@@ -85,6 +85,14 @@ def angle_between(u, v):
     return float(np.degrees(np.arccos(np.clip(np.dot(unit(u), unit(v)), -1.0, 1.0))))
 
 
+def wmax(values):
+    """Largest value, NaN when any value is not finite (a NaN must not vanish from a worst case)."""
+    v = [float(x) for x in values]
+    if not v:
+        return math.inf
+    return float("nan") if not all(math.isfinite(x) for x in v) else max(v)
+
+
 def inv(ok, **numbers):
     return dict(verdict="ok" if ok else "error", **numbers)
 
@@ -181,15 +189,15 @@ def invariants(rec, chk, curves, G):
     now = c.frozen_mismatches()
     out["I1"] = inv(not mism and not now and code_ok and not other, frozen_mismatches_at_checks=mism,
                     frozen_mismatches_now=now, cells_by_this_code=code_ok, steps_by_other_code=other)
-    w2 = max(v["I2"] for v in refs.values())
+    w2 = wmax(v["I2"] for v in refs.values())
     out["I2"] = inv(w2 < TOL_EXACT and len(refs) == len(c.references()), worst=w2, n=len(refs))
     want3 = {f"{j[1]}_{j[2]}_{j[3]}{j[4]:g}_{j[5]}" for j in c.odd_check_jobs()}
-    w3 = max(chk["I3"].values())
+    w3 = wmax(chk["I3"].values())
     out["I3"] = inv(w3 < TOL_EXACT and set(chk["I3"]) == want3, worst=w3, n=len(chk["I3"]), n_expected=len(want3))
     diags = ([r["diagnostics"] for r in rows] + [v["diagnostics"] for v in refs.values()] + [chk["diagnostics"]]
              + [v["K_up"]["solver_diagnostics"] for v in curves["cases"].values()])
-    cons = max(d["max_conservation_error"] for d in diags)
-    res = max(d["max_rel_residual"] for d in diags)
+    cons = wmax(d["max_conservation_error"] for d in diags)
+    res = wmax(d["max_rel_residual"] for d in diags)
     out["I4"] = inv(cons < TOL_CONSERVATION, worst=cons)
     small = chk["I5_small"]
     cases = c.small_pair_cases()
@@ -202,23 +210,24 @@ def invariants(rec, chk, curves, G):
                     small_composite_vs_dense=small["max_tiny"], small_cases_complete=keys_ok,
                     max_gmres_iterations=max(d["max_gmres_iterations"] for d in diags))
     i6 = chk["I6"]
-    wy = max(v["max_yield_diff"] for v in i6.values())
-    wd = max(max(v["eps_mol_rel"], v["eps_rec_rel"], v["receptor_even_range_rel"], v["d_odd_rel"]) for v in i6.values())
+    wy = wmax(v["max_yield_diff"] for v in i6.values())
+    wd = wmax(x for v in i6.values() for x in (v["eps_mol_rel"], v["eps_rec_rel"], v["receptor_even_range_rel"],
+                                                v["d_odd_rel"]))
     out["I6"] = inv(wy < TOL_I6_YIELD and wd < TOL_I6_DERIVED and set(i6) == {x.name for x in c.I6_CELLS},
                     worst_yield_diff=wy, worst_derived_rel=wd, n=len(i6))
-    w7 = max(max(v["p0_max_odd"], v["p05_half_max_diff"]) for r in rows for v in r["I7"].values())
+    w7 = wmax(x for r in rows for v in r["I7"].values() for x in (v["p0_max_odd"], v["p05_half_max_diff"]))
     out["I7"] = inv(w7 < TOL_EXACT, worst=w7)
     i8 = {k: v for r in refs.values() for k, v in r["I8"].items()}
     want8 = {x.name for x in c.direct_cells(("main",)) if x.form in ("K", "K-inc") and x.m == 1.0
              and (x.relax, x.k) in c.LEVELS_OLD}
-    w8 = max(i8.values()) if i8 else math.inf
+    w8 = wmax(i8.values())
     out["I8"] = inv(w8 < TOL_REBUILD and set(i8) == want8, worst=w8, n=len(i8), n_expected=len(want8))
     iso = [r for r in G.rows.values() if r["cell"]["form"] == "K-iso"]
-    w9 = max(r["parts"]["odd_half_range"] for r in iso)
+    w9 = wmax(r["parts"]["odd_half_range"] for r in iso)
     out["I9"] = inv(w9 < TOL_EXACT and len(iso) == sum(x.form == "K-iso" for x in c.rebuilt_cells()), worst=w9,
                     n=len(iso))
     c10 = [r for r in G.comp.values() if r["cell"]["form"] == "none" and r["cell"]["rec"] == "C"]
-    w10 = max(r["parts"]["odd_half_range"] for r in c10)
+    w10 = wmax(r["parts"]["odd_half_range"] for r in c10)
     out["I10"] = inv(w10 < TOL_EXACT and len(c10) == 6, worst=w10, n=len(c10))
     cr = rec["crystal"]
     rel_plane, rel_mirror = 0.0, 0.0
@@ -655,6 +664,63 @@ def map_e5(G, e5):
     return out
 
 
+CLASS_CODE = {"below 3e7": 0, "3e7 to 6e7": 1, "above 6e7": 2, None: -1}
+
+
+def axis_maps(G, e5):
+    """Per CISS axis of map E5: k_half (with the class code of the dephasing: 0 below 3e7, 1 from 3e7 to 6e7, 2 above
+    6e7, -1 undefined) for every geometry, chi_b and kind, and for W_C and W_D the rate of E10 at which s_C F and
+    s_C F_amp of K at chi_b = 0.1 pi, m = 1 fall below the dipole threshold (stricter transfer). Arrays for an npz
+    beside results.json."""
+    out = {}
+    for g in c.GEOMETRIES:
+        pre0 = f"{c.Ref(g, 'none', 0.0).name}__chi"
+        if f"{pre0}0.1_d_K" not in e5:
+            continue
+        out[f"axes_{g}"] = e5[f"{c.Ref(g, 'none', 0.0).name}__axes"]
+        for chi in (0.05, 0.1):
+            for kind in ("rf", "std"):
+                ks = [k for k in SCALE[kind] if f"{c.Ref(g, kind, k).name}__chi{chi:g}_d_K" in e5]
+                key = lambda k: c.Ref(g, "none", 0.0).name if k == 0.0 else c.Ref(g, kind, k).name  # noqa: E731
+                mags = np.array([np.abs(e5[f"{key(k)}__chi{chi:g}_d_K"][:, 2]) for k in [0.0] + ks])
+                res = [k_half_of([(0.0, mags[0, i])] + [(k, mags[j + 1, i]) for j, k in enumerate(ks)], ks[-1])
+                       for i in range(mags.shape[1])]
+                out[f"k_half_{g}_chi{chi:g}_{kind}"] = np.array(
+                    [x["k_half"] if x["k_half"] is not None else np.nan for x in res])
+                out[f"k_half_code_{g}_chi{chi:g}_{kind}"] = np.array(
+                    [0 if "below" in x else (3 if "above" in x else 1) for x in res])     # 0 below, 1 inside, 3 above
+                if kind == "std":
+                    out[f"k_half_class_{g}_chi{chi:g}"] = np.array([CLASS_CODE[k_half_class(x)] for x in res])
+                if g in ("W_C", "W_D") and chi == 0.1:
+                    stricter = []
+                    for k in [0.0] + ks:
+                        pre = f"{key(k)}__chi0.1"
+                        dk, di = e5[f"{pre}_d_K"][:, 2], e5[f"{pre}_d_inc"][:, 2]
+                        sc = np.where(dk != 0, 1.0 - di / np.where(dk != 0, dk, 1.0), np.nan)
+                        stricter.append(np.minimum(np.abs(sc * e5[f"{pre}_F"]), np.abs(sc * e5[f"{pre}_F_amp"])))
+                    stricter = np.array(stricter)
+                    ks_all = [0.0] + ks
+                    out[f"e10_k_star_{g}_{kind}"] = np.array([
+                        (lambda r: r["k_star"] if r["k_star"] is not None else np.nan)(first_below(
+                            ks_all, [None if not np.isfinite(v) else float(v) for v in stricter[:, i]]))
+                        for i in range(stricter.shape[1])])
+    return out
+
+
+def rates_seen(rec, chk):
+    """Every pair (k_F, k_R) used per rate set and every hop scale, for the post-check of the smoke and blind runs."""
+    by = {}
+    for r in rec["cells"]:
+        by.setdefault(r["cell"]["rates"], set()).add(tuple(r["rates_used"]))
+    for v in rec["refs"].values():
+        by.setdefault(v["ref"]["rates"], set()).add(tuple(v["rates_used"]))
+    for k, v in chk["rates_used"].items():
+        by.setdefault(k, set()).add(tuple(v))
+    scales = {float(chk["hop_scale"])} | {round(r["hop_rates_used"][0] / r["cell"]["k_cd"], 12)
+                                          for r in rec["cells"] if r["kind"] == "composite"}
+    return dict(by_set={k: sorted(list(x) for x in v) for k, v in by.items()}, hop_scale=sorted(scales))
+
+
 def map_e6(G):
     out = {}
     for r in G.rows.values():
@@ -727,7 +793,9 @@ def map_e9(curves):
 
 def first_below(ks, mags, threshold=DIPOLE_THRESHOLD):
     """First crossing of the magnitude below the threshold on the scale of k, linear in lg k between the levels."""
-    if mags[0] is None or mags[0] < threshold:
+    if mags[0] is None:
+        return dict(k_star=None, note="share of the coherence undefined without relaxation (d_K . z = 0)")
+    if mags[0] < threshold:
         return dict(k_star=None, note="below the dipole threshold already without relaxation")
     if all(mv is not None and mv >= threshold for mv in mags):
         return dict(k_star=None, note=f"at or above the dipole threshold up to {ks[-1]:g} s^-1")
@@ -893,6 +961,9 @@ def expected_names():
                 composite={x.name for x in c.composite_cells()}, refs={x.name for x in c.references()})
 
 
+A_GRID = [None]
+
+
 def analyze(rec, chk, curves, e5, e14, pair_done=None, composite_done=None):
     want = expected_names()
     have = dict(direct=[r["name"] for r in rec["cells"] if r["kind"] == "direct"],
@@ -904,6 +975,7 @@ def analyze(rec, chk, curves, e5, e14, pair_done=None, composite_done=None):
                     missing={k: sorted(want[k] - set(have[k])) for k in want},
                     unexpected={k: sorted(set(have[k]) - want[k]) for k in want}, metadata=c.metadata("analyze"))
     G = Grid(rec)
+    A_GRID[:] = [G]
     grid_ok = (rec["grid_half"] == c.GRID_HALF and chk["grid_half"] == c.GRID_HALF
                and rec["e13_grid_half"] == [c.E13_GRID_HALF])
     r_ok = rates_ok(rec, chk, curves)
@@ -915,12 +987,16 @@ def analyze(rec, chk, curves, e5, e14, pair_done=None, composite_done=None):
     invs = invariants(rec, chk, curves, G)
     exp = dict(Q1=q1(G), Q2=q2(G), Q3=q3(G), Q4=q4(curves))
     hyp = hypotheses(G, e5)
+    counted = comparison_counts(hyp)
+    counts_ok = counted["per_hypothesis"] == N_COMPARISONS and counted["known_in_advance"] == N_KNOWN
     valid = (all(v["verdict"] == "ok" for v in invs.values()) and grid_ok and r_ok and complete and curves_ok
-             and blas_ok and pair_done is not None and composite_done is not None)
+             and blas_ok and counts_ok and pair_done is not None and composite_done is not None)
     return dict(valid=bool(valid), grid_ok=bool(grid_ok), rates_ok=r_ok, cells_complete=bool(complete),
-                curves_full=bool(curves_ok), blas_single_thread=bool(blas_ok), pair_done=pair_done is not None,
-                composite_done=composite_done is not None, invariants=invs, expectations=exp, hypotheses=hyp,
-                comparisons=dict(counted=comparison_counts(hyp), protocol=N_COMPARISONS, known_protocol=N_KNOWN),
+                curves_full=bool(curves_ok), blas_single_thread=bool(blas_ok), counts_ok=bool(counts_ok),
+                pair_done=pair_done is not None, composite_done=composite_done is not None,
+                grid_half=rec["grid_half"], e13_grid_half=rec["e13_grid_half"], rates_seen=rates_seen(rec, chk),
+                invariants=invs, expectations=exp, hypotheses=hyp,
+                comparisons=dict(counted=counted, protocol=N_COMPARISONS, known_protocol=N_KNOWN),
                 multiplicity="deterministic hypotheses; no correction applies", maps=maps(G, rec, e5, e14, curves),
                 metadata=meta)
 
@@ -949,6 +1025,7 @@ def main():
                  f"{sum(len(v) for v in res['unexpected'].values())}, curves "
                  f"{'complete' if res['curves_structure_ok'] else 'incomplete'}")
     write_table(os.path.join(a.out, "tables", "cells.csv"), res["maps"]["E1"])
+    np.savez_compressed(os.path.join(a.out, "maps_axes.npz"), **axis_maps(A_GRID[0], e5))
     c.write_json(os.path.join(a.out, "results.json"), res)
     verdicts = {k: {g: w["verdict"] for g, w in v.items() if g in c.GEOMETRIES} for k, v in res["hypotheses"].items()}
     print("valid" if res["valid"] else "INVALID", verdicts, flush=True)

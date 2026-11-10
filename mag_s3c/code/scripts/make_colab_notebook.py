@@ -4,8 +4,9 @@ so the notebook needs no upload; its first cell refuses to go on when a file dif
 deterministically (sorted members, zero times and owners), so the same files always give the same notebook.
 The markers of cells 3 and 4 hold the identity of the embedded file set (the SHA-256 of its list of hashes), and a
 marker from another build counts as missing. Cell 5 starts the confirmatory run only after the blind check of cell 4
-has passed on this build and after the answer «запускай» typed into it; it writes confirmation.json, which
-scripts/pipeline.sh requires before it computes anything at the rates of the hypotheses.
+has passed on this build and after the answer «запускай» typed into it; it writes confirmation.json with the
+answer, the hashes, the build identity and the marker of the blind check, which scripts/pipeline.sh and mag_s3c.py
+require before they compute anything at the rates of the hypotheses.
 The notebook is rebuilt from the frozen files at the freeze, and its own SHA-256 is posted with theirs.
 Usage: python3 -I scripts/make_colab_notebook.py CODE_DIR REF_CALIBRATION_DIR OUT.ipynb"""
 import base64
@@ -19,7 +20,8 @@ import tarfile
 
 CODE, REF, OUT = sys.argv[1:4]
 FILES = ["mag_s3c.py", "analyze_s3c.py", "test_s3c.py", "mag_s3b.py", "mag_s3.py", "analyze.py", "mag_s2.py",
-         "physics.json", "requirements.txt", "data/6PU0.pdb", "scripts/pipeline.sh", "scripts/env_check.py"]
+         "physics.json", "requirements.txt", "data/6PU0.pdb", "scripts/pipeline.sh", "scripts/env_check.py",
+         "scripts/make_colab_notebook.py"]
 REF_FILES = ["calibration.json"]
 
 
@@ -165,7 +167,8 @@ if os.path.exists(arch) and not os.path.exists(f"{WORK}/confirmatory_s3c"):
     sh(f"tar -xzf {arch} -C {WORK}")
 stamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 with open(f"{WORK}/confirmation.json", "w") as fh:
-    json.dump(dict(answer=answer, time_utc=stamp, code_id=CODE_ID, sha256=SHA256), fh, ensure_ascii=False, indent=1)
+    json.dump(dict(answer=answer, time_utc=stamp, code_id=CODE_ID, sha256=SHA256,
+                   blind_ok=json.load(open(f"{DRIVE}/BLIND_OK"))), fh, ensure_ascii=False, indent=1)
 with open(f"{DRIVE}/confirmation.txt", "a") as fh:
     fh.write(f"{stamp} confirmation «{answer}», build {CODE_ID}\\n")
 print("подтверждение принято", stamp)

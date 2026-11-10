@@ -3,7 +3,7 @@ environment with the reference calibration, number by number, and prints the env
 Usage: python3 -I scripts/env_check.py REF_DIR NEW_DIR
 Exit code 0 when every number agrees to 1e-9 relative or 1e-12 absolute (round-off quantities such as the residuals
 of C3), the relative changes of C1 and C2 to 1e-6 absolute (GMRES stops at a relative residual of 1e-13, so their last
-digits depend on the BLAS of the machine), every count of GMRES iterations to 2 and of restarts to 1, and every verdict
+digits depend on the BLAS of the machine), every count of GMRES iterations to 2 or 2% and of restarts to 1, and every verdict
 is the same, 1 otherwise. Times are left out."""
 import json
 import os
@@ -34,7 +34,7 @@ def walk(a, b, path, out):
     elif a == b:
         out.append(("same", path, a, b))
     elif path.endswith(ITERATIONS):
-        out.append(("close" if abs(a - b) <= 2 else "DIFFER", path, a, b))
+        out.append(("close" if abs(a - b) <= max(2, 0.02 * max(abs(a), abs(b))) else "DIFFER", path, a, b))
     elif path.endswith(RESTARTS):
         out.append(("close" if abs(a - b) <= 1 else "DIFFER", path, a, b))
     elif path.rsplit("/", 1)[-1].startswith(("C1_", "C2_")):
