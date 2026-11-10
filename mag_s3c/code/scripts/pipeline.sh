@@ -83,6 +83,10 @@ counts_ok = cmp.get("counted", {}).get("per_hypothesis") == cmp.get("protocol") 
 maps_ok = sorted(r.get("maps", {}), key=lambda k: int(k[1:])) == [f"E{i}" for i in range(1, 15)]
 print("result keys present:", keys)
 print("invariants:", inv)
+i11 = r.get("invariants", {}).get("I11", {})
+print("I11 residuals over the odd part of the molecule:", i11.get("worst_plane"), i11.get("worst_mirror"),
+      " over the odd part of the crystal (normalization of the first blind check, no verdict):",
+      i11.get("worst_over_crystal_odd_max"))
 print("valid:", r.get("valid"), " grid_ok:", r.get("grid_ok"), " rates_ok:", r.get("rates_ok"), " curves_full:",
       r.get("curves_full"), " cells_complete:", r.get("cells_complete"), " composite_done:", r.get("composite_done"),
       " blas_single_thread:",

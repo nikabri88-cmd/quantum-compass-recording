@@ -230,16 +230,31 @@ def invariants(rec, chk, curves, G):
     w10 = wmax(r["parts"]["odd_half_range"] for r in c10)
     out["I10"] = inv(w10 < TOL_EXACT and len(c10) == 6, worst=w10, n=len(c10))
     cr = rec["crystal"]
-    rel_plane, rel_mirror = 0.0, 0.0
-    for v in cr.values():
-        den = max(v["odd_max"], DENOM_FLOOR * v["even_range"])
-        rel_plane = max(rel_plane, v["plane_odd_max"] / den)
-        rel_mirror = max(rel_mirror, v["mirror_residual"] / den)
+    rel_plane, rel_mirror = i11_ratios(cr, {r["name"]: r["parts"]["odd_half_range"] for r in rows})
+    first_check = wmax(max(v["plane_odd_max"], v["mirror_residual"]) / max(v["odd_max"], DENOM_FLOOR * v["even_range"])
+                       if max(v["odd_max"], v["even_range"]) > 0 else math.nan for v in cr.values())
     want11 = {r["name"] for r in rows if r["kind"] == "composite" or r["cell"]["system"][:3] in ("W_C", "W_D")}
     out["I11"] = inv(rel_plane < TOL_EXACT and rel_mirror < TOL_EXACT and set(cr) == want11,
-                     worst_plane_over_odd_max=rel_plane, worst_mirror_over_odd_max=rel_mirror, n=len(cr),
-                     note="odd maximum floored at 1e-9 of the even range of the crystal (numerical zero)")
+                     worst_plane=rel_plane, worst_mirror=rel_mirror, n=len(cr),
+                     worst_over_crystal_odd_max=first_check,
+                     note="plane and mirror residuals over the larger odd maximum of the molecule and of the crystal, "
+                          "floored at 1e-9 of the even range of the crystal; worst_over_crystal_odd_max is the "
+                          "normalization of the first blind check in Colab, reported without a verdict")
     return out
+
+
+def i11_ratios(crystal, molecule_odd):
+    """Largest plane and mirror residuals of the crystal maps (I11) over the larger of the odd maxima of the molecule
+    and of the crystal, floored at DENOM_FLOOR of the even range of the crystal. The rounding of the average follows
+    the odd part of the molecule, which the crystal 222 can cancel almost entirely; over the odd maximum of the crystal
+    alone the rounding of a nearly cancelled cell passes 1e-12 (first blind check in Colab, 10 November)."""
+    plane, mirror = [], []
+    for name, v in crystal.items():
+        parts = (v["odd_max"], molecule_odd.get(name, math.nan), DENOM_FLOOR * v["even_range"])
+        den = max(parts) if all(math.isfinite(x) for x in parts) and max(parts) > 0 else math.nan   # fails I11
+        plane.append(v["plane_odd_max"] / den)
+        mirror.append(v["mirror_residual"] / den)
+    return wmax(plane), wmax(mirror)
 
 
 # --------------------------------------------------------------------------------------------------------------

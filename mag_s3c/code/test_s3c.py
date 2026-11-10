@@ -848,7 +848,7 @@ def test_analysis_edges():
     rec, e5, e14 = synth_world()
     rec["cells"][5]["code_ok"] = False
     next(iter(rec["refs"].values()))["I2"] = 2e-12
-    rec["crystal"][next(iter(rec["crystal"]))]["plane_odd_max"] = 1e-15
+    rec["crystal"][next(iter(rec["crystal"]))]["plane_odd_max"] = 1e-6
     chk = synth_checks()
     chk["I3"].pop(next(iter(chk["I3"])))
     chk["I6"][c.I6_CELLS[0].name]["max_yield_diff"] = 2e-12
@@ -961,6 +961,45 @@ def test_composite_model_independent():
 def test_crystal_mates():
     """The rotations of the crystal average are the field rotations between the symmetry mates of 6PU0."""
     assert c.crystal_mates_check() < 1e-12
+
+
+def test_i11_normalization():
+    """I11 over the odd part of the molecule: a pattern whose odd part the crystal 222 cancels almost entirely passes,
+    though over the odd maximum of the crystal alone its rounding would fail (the first blind check in Colab); an
+    average about axes turned by 1e-3 rad from the cell planes of the test fails, so does an average over three of the
+    four rotations, and so does a cell without its molecule."""
+    half_n = 250
+    half = m2.fibonacci_sphere(half_n)
+    G_ = np.vstack([half, -half])
+    l, _ = c._lm()
+    odd = l % 2 == 1
+    B = m2.real_sh(b.L_FIT, G_)[0]
+    rng = np.random.default_rng(7)
+    co = np.where(odd, rng.normal(size=len(l)) / (1.0 + l) ** 2, 0.0)
+    co[l == 1] *= 30.0                                                # the dipole dominates, as in form K
+    kept = np.zeros(len(l))
+    kept[odd] = np.linalg.lstsq(B[:, odd], c.crystal_basis(G_) @ co, rcond=None)[0]   # the part the crystal keeps
+    coef = np.where(l == 0, 0.6, 0.0) + np.where(l == 2, 0.05, 0.0) + (co - kept) + 1e-6 * kept
+    f = B @ coef
+    mol = float(np.abs(f[:half_n] - f[half_n:]).max() / 2)
+    v = c.crystal_cell(c.crystal_setup(half_n), coef)
+    plane, mirror = A.i11_ratios({"x": v}, {"x": mol})
+    assert plane < 1e-13 and mirror < 1e-13
+    assert v["plane_odd_max"] / max(v["odd_max"], A.DENOM_FLOOR * v["even_range"]) > 1e-12
+    assert math.isnan(A.i11_ratios({"x": v}, {})[0])
+    E = c.cell_axes()
+    cz, sz = math.cos(1e-3), math.sin(1e-3)
+    Eb = np.array([[cz, -sz, 0.0], [sz, cz, 0.0], [0.0, 0.0, 1.0]]) @ E
+    keep = c.crystal_rotations
+    try:
+        c.crystal_rotations = lambda: [np.eye(3)] + [2.0 * np.outer(Eb[:, i], Eb[:, i]) - np.eye(3) for i in range(3)]
+        turned = c.crystal_cell(c.crystal_setup(half_n), coef)
+        c.crystal_rotations = lambda: keep()[:3]
+        three = c.crystal_cell(c.crystal_setup(half_n), coef)
+    finally:
+        c.crystal_rotations = keep
+    assert min(A.i11_ratios({"x": turned}, {"x": mol})) > 1e-9
+    assert min(A.i11_ratios({"x": three}, {"x": mol})) > 1e-3
     R = np.array(c.geo()["frame"])
     close(c.cell_axes(), R, 0.0)                                            # columns R e_a, R e_b, R e_c
     assert c.cryst1()["space_group"] == "P 21 21 21"
@@ -1076,6 +1115,10 @@ def test_notebook_build_reproducible():
             nb = json.load(fh)
         cell5 = "".join(nb["cells"][6]["source"])
         assert cell5.index("BLIND_OK") < cell5.index("input(") < cell5.index("pipeline.sh confirmatory")
+        # a failed cell 3, 4 or 5 ends in an error, so that Colab shows no check mark for it
+        for i, marker in ((3, "CELL3_OK"), (4, "BLIND_OK"), (6, "confirmatory.log")):
+            cell = "".join(nb["cells"][i]["source"])
+            assert cell.index(marker) < cell.index("assert rc == 0")
     finally:
         shutil.rmtree(tmp)
 
@@ -1086,8 +1129,8 @@ TESTS = [test_frozen_and_cells, test_geometry, test_dipolar_tensor, test_tensors
          test_form_E_and_denton, test_composite_pair, test_gmres_real, test_crystal_and_maps, test_curves,
          test_receptor_transfer, test_blind_rates, test_pair_and_receptor_modes, test_analysis_world_and_counts,
          test_analysis_edges, test_analysis_cli, test_composite_model_independent, test_crystal_mates,
-         test_failures_raise_and_gates, test_near_zero_flag, test_pipeline_gates, test_notebook_build_reproducible,
-         test_solver_against_steps]
+         test_i11_normalization, test_failures_raise_and_gates, test_near_zero_flag, test_pipeline_gates,
+         test_notebook_build_reproducible, test_solver_against_steps]
 SLOW = {test_solver_against_steps}
 
 

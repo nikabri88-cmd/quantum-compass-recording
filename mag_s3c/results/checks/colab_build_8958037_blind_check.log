@@ -1,0 +1,18 @@
+[2026-11-10T15:22:43Z] blind run in /content/work/blind_s3c with 44 workers (44 processors)
+[2026-11-10T15:51:54Z] pair exit 0
+[2026-11-10T16:05:49Z] blind run in /content/work/blind_s3c with 44 workers (44 processors)
+[2026-11-10T16:31:31Z] pair exit 0
+[2026-11-10T16:41:11Z] composite exit 0
+[2026-11-10T16:43:36Z] checks exit 0
+[2026-11-10T16:47:13Z] curves exit 0
+[2026-11-10T16:52:48Z] receptor exit 0
+[2026-11-10T16:52:50Z] analyze exit 0
+[2026-11-10T16:52:50Z] cells 574, references 54, composite 24
+result keys present: True
+invariants: {'I1': 'ok', 'I2': 'ok', 'I3': 'ok', 'I4': 'ok', 'I5': 'ok', 'I6': 'ok', 'I7': 'ok', 'I8': 'ok', 'I9': 'ok', 'I10': 'ok', 'I11': 'error'}
+valid: False  grid_ok: False  rates_ok: False  curves_full: True  cells_complete: True  composite_done: True  blas_single_thread: True (grid, rates and curves differ from the protocol in the checks)
+expectations well formed: True  hypotheses well formed: True
+comparisons as in the protocol: True  maps E1-E14 present: True
+grids as intended: True  substitute rates throughout: True
+CHECK FAILED
+check output deleted (exit 1)

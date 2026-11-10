@@ -134,7 +134,9 @@ rc = rc or sh(f"python3 -I scripts/env_check.py reference_calibration {cal} | te
 if rc == 0:
     write_marker(f"{cal}/CELL3_OK")
 sh(f"rm -f {cal}/C1_yields.npz; rm -rf {DRIVE}/calibration && cp -r {cal} {DRIVE}/calibration")
-print(f"\\nкод выхода {rc}, {(time.time() - t0) / 60:.1f} мин; калибровка и сверка окружения: {DRIVE}/calibration")'''
+print(f"\\nкод выхода {rc}, {(time.time() - t0) / 60:.1f} мин; калибровка и сверка окружения: {DRIVE}/calibration")
+assert rc == 0, f"ячейка 3 НЕ ПРОШЛА (код выхода {rc}): тесты, калибровка или сверка окружения; отметки нет"
+print("ячейка 3 пройдена, отметка записана")'''
 
 cell4 = '''# 4. Слепая проверка конвейера на подменённых скоростях; печатает только технические факты и удаляет выход
 t0 = time.time()
@@ -145,8 +147,12 @@ sh(f"rm -f {DRIVE}/BLIND_OK")
 rc = sh(f"set -o pipefail; bash scripts/pipeline.sh blind {WORK} 1 2>&1 | tee -a {DRIVE}/blind_check.log")
 if rc == 0:
     write_marker(f"{DRIVE}/BLIND_OK")
-print(f"\\nкод выхода {rc} (3 – пауза по времени, запусти ячейку снова), {(time.time() - t0) / 60:.1f} мин; "
-      f"журнал: {DRIVE}/blind_check.log")'''
+print(f"\\nкод выхода {rc}, {(time.time() - t0) / 60:.1f} мин; журнал: {DRIVE}/blind_check.log")
+if rc == 3:
+    print("пауза по времени: запусти эту ячейку снова")
+else:
+    assert rc == 0, f"слепая проверка НЕ ПРОШЛА (код выхода {rc}): отметки нет, ячейка 5 закрыта"
+    print("слепая проверка пройдена, отметка записана")'''
 
 md5 = """Ячейка 5 – подтверждающий прогон. Сначала она сверяет файлы с вшитыми SHA-256 и отметку слепой проверки этой
 сборки, потом спрашивает подтверждение: ответ «запускай» вводится вручную после заморозки и публикации SHA-256 в
@@ -179,7 +185,8 @@ while True:
     if rc != 3:
         break
 sh(f"cp {WORK}/confirmatory.log {DRIVE}/; sha256sum {arch}")
-print(f"\\nкод выхода {rc}, {(time.time() - t0) / 60:.1f} мин; архив: {arch}")'''
+print(f"\\nкод выхода {rc}, {(time.time() - t0) / 60:.1f} мин; архив: {arch}")
+assert rc == 0, f"подтверждающий прогон завершился с кодом {rc}; журнал и архив на Диске"'''
 
 
 def code(src):
