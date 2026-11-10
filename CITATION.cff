@@ -3,7 +3,7 @@ message: "If you use this work, please cite it as below."
 title: "MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order"
 type: software
 version: "0.2.1"
-doi: "10.5281/zenodo.24079875"
+doi: "10.5281/zenodo.24100330"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24043500"
