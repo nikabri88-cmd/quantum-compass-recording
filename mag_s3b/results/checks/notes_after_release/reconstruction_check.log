@@ -1,0 +1,3 @@
+1. reconstruction from the singlet-born solution, 11 birth states x 6 directions: worst |direct - rebuilt| / yield = 2.6e-14
+2. odd part of the singlet-born pair and of K-iso: worst |odd| / yield = 1.1e-14
+3. odd(K) = sin chi cos chi odd(C) + sin^2 chi odd(A) and odd(K-inc) = sin^2 chi odd(A): worst residual / yield = 1.4e-14

@@ -1,0 +1,28 @@
+toy rates: {'k12': 20000000.0, 'k21': 3000000.0, 'kR1': 10000000.0, 'kR2': 3000000.0, 'kF': 2000000.0}
+-- no CISS
+E1 recombination only at the birth site (kR2 = 0)          odd F 1.7e-15  R1 3.3e-16  R2 0.0e+00 | odd/range of F   0.00% | |sum-1| 5e-15
+E2 singlet recombination at both sites                     odd F 3.4e-04  R1 2.2e-16  R2 3.4e-04 | odd/range of F  45.54% | |sum-1| 2e-15
+E3 as E2, bridge = Zeeman only (no hyperfine, no dipole)   odd F 5.3e-16  R1 8.3e-17  R2 2.2e-16 | odd/range of F   0.00% | |sum-1| 1e-15
+E3b as E3 plus exchange 0.3 mT in the bridge               odd F 6.1e-16  R1 1.4e-16  R2 1.8e-16 | odd/range of F   0.00% | |sum-1| 9e-16
+E2b as E2, recombination only at the terminal site (kR1 = 0) odd F 5.4e-04  R1 0.0e+00  R2 5.4e-04 | odd/range of F  46.27% | |sum-1| 2e-15
+-- CISS at birth and at the hop
+E4 recombination only at birth site through birth projector odd F 1.3e-15  R1 2.5e-16  R2 0.0e+00 | odd/range of F   0.00% | |sum-1| 4e-15
+E4r same with S-T dephasing 3e7 at both sites              odd F 1.4e-15  R1 2.2e-16  R2 0.0e+00 | odd/range of F   0.00% | |sum-1| 2e-15
+E4n same with no back hop                                  odd F 2.3e-15  R1 4.2e-17  R2 0.0e+00 | odd/range of F   0.00% | |sum-1| 4e-15
+E4m birth projector rotated, recombination through P_S     odd F 4.7e-04  R1 4.7e-04  R2 0.0e+00 | odd/range of F  46.42% | |sum-1| 4e-15
+-- structure of Denton et al.: P_theta at birth and in both channels, bridge = de P_theta + 2 J P_S
+E5a J = 0, de = 0, kR2 = 3e6                               odd F 1.0e-15  R1 1.4e-17  R2 2.2e-16 | odd/range of F   0.00% | |sum-1| 2e-15
+E5b J = 0, de = 4 mT, kR2 = 3e6                            odd F 1.1e-15  R1 1.7e-17  R2 3.6e-16 | odd/range of F   0.00% | |sum-1| 2e-15
+E5c J = 15 mT, de = 4 mT, kR2 = 0                          odd F 1.4e-15  R1 2.8e-17  R2 0.0e+00 | odd/range of F   0.00% | |sum-1| 4e-15
+E5d J = 15 mT, de = 4 mT, kR2 = 3e6                        odd F 2.4e-04  R1 1.7e-17  R2 2.4e-04 | odd/range of F  37.79% | |sum-1| 2e-15
+E5e J = 15 mT, de = 0, kR2 = 3e6                           odd F 2.5e-04  R1 1.7e-17  R2 2.5e-04 | odd/range of F  37.29% | |sum-1| 3e-15
+E5f theta = 0 (P_S everywhere), J = 15 mT, kR2 = 3e6       odd F 8.3e-16  R1 2.1e-17  R2 3.3e-16 | odd/range of F   0.00% | |sum-1| 3e-15
+-- no CISS: odd part against the bridge lifetime (forward hop k12)
+E6 k12 = 2e+07 (bridge lifetime 33.3 ns)                   odd F 3.4e-04  R1 2.2e-16  R2 3.4e-04 | odd/range of F  45.54% | |sum-1| 2e-15
+E6 k12 = 2e+08 (bridge lifetime 4.76 ns)                   odd F 5.6e-04  R1 3.1e-17  R2 5.6e-04 | odd/range of F  32.44% | |sum-1| 5e-15
+E6 k12 = 2e+09 (bridge lifetime 0.498 ns)                  odd F 4.3e-05  R1 4.8e-18  R2 4.3e-05 | odd/range of F   3.01% | |sum-1| 3e-15
+E6 k12 = 2e+10 (bridge lifetime 0.05 ns)                   odd F 4.7e-06  R1 6.5e-19  R2 4.7e-06 | odd/range of F   0.34% | |sum-1| 4e-15
+-- second solver, no back hop: block Liouville vs two Sylvester equations in sequence
+E7 Liouville, no CISS, both channels, k21 = 0              odd F 8.0e-04  R1 2.8e-17  R2 8.0e-04 | odd/range of F  53.54% | |sum-1| 1e-15
+E7 Sylvester sequence, same case                           odd F 8.0e-04  R1 1.5e-16  R2 8.0e-04 | odd/range of F  53.54% | |sum-1| 9e-15
+E7 largest difference between the two solvers: 8.1e-15

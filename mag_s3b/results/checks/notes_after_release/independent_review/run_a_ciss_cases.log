@@ -1,0 +1,10 @@
+rates (toy): {'k2': 30000000.0, 'km2': 4000000.0, 'kCR': 15000000.0, 'kSP': 1000000.0}  kCR2 where used: 2e6
+T1 no CISS, recombination only from the bridge (P_S)           max|odd| SP 7.77e-16  CR 3.05e-16  CR2 0.00e+00 | range of Phi_SP over dirs 5.60e-04 | |sum-1| 8.9e-16
+T2 no CISS, singlet recombination from both sites              max|odd| SP 1.15e-04  CR 1.39e-16  CR2 1.15e-04 | range of Phi_SP over dirs 6.50e-04 | |sum-1| 7.8e-16
+T2b same, bridge Hamiltonian = Zeeman + exchange only          max|odd| SP 2.78e-16  CR 1.94e-16  CR2 1.67e-16 | range of Phi_SP over dirs 3.55e-03 | |sum-1| 8.9e-16
+T3 CISS (U1 at birth, U2 at hop), P_CR = P_b, kCR2 = 0         max|odd| SP 3.33e-16  CR 8.33e-17  CR2 0.00e+00 | range of Phi_SP over dirs 4.77e-04 | |sum-1| 2.2e-15
+T3r same with S-T dephasing 2e7 at both sites                  max|odd| SP 6.66e-16  CR 2.78e-16  CR2 0.00e+00 | range of Phi_SP over dirs 2.34e-04 | |sum-1| 1.8e-15
+T4 as T3 but P_CR = P_S (angle mismatch at the bridge)         max|odd| SP 8.99e-04  CR 8.99e-04  CR2 0.00e+00 | range of Phi_SP over dirs 1.47e-03 | |sum-1| 8.9e-16
+T5 as T3 plus recombination from CS through P_S                max|odd| SP 1.62e-04  CR 1.11e-16  CR2 1.62e-04 | range of Phi_SP over dirs 5.83e-04 | |sum-1| 1.1e-15
+T6 as T3 plus recombination from CS through U2 P_b U2^+        max|odd| SP 2.28e-04  CR 1.39e-16  CR2 2.28e-04 | range of Phi_SP over dirs 5.77e-04 | |sum-1| 1.6e-15
+T7 as T3 with no back hop (km2 = 0)                            max|odd| SP 7.22e-16  CR 4.16e-17  CR2 0.00e+00 | range of Phi_SP over dirs 1.99e-04 | |sum-1| 8.9e-16
