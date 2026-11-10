@@ -1,12 +1,12 @@
 MAG-S3c freeze before the confirmatory run, 10 November 2026 (UTC)
 
 The protocol v0.4, the code, the requirements, the structure file, the reference calibration and the Colab notebook
-were frozen at 19:40 UTC, after the calibration (three rounds), two blind code reviews, the check of the
-environment and the blind pipeline check in Colab (TPU v6e-1, notebook build f994d9b191aa9dbb). Their SHA-256 below are
-posted in Telegram before the confirmatory run. Cell 5 of the notebook starts the run only after the answer
-«запускай» is typed into it; it checks every file against the SHA-256 embedded in the notebook and the marker of the
-passed blind check of the same build, and mag_s3c.py and pipeline.sh compute nothing at the rates of the hypotheses
-without that confirmation.
+were frozen at 19:40 UTC, after the calibration (three rounds), two blind code reviews, the check of the environment
+and the blind pipeline check in Colab (TPU v6e-1, notebook build f994d9b191aa9dbb). Their SHA-256 below were posted in
+Telegram, https://t.me/attractordm/79; the link to the post came at 19:42 UTC, before the confirmatory run. Cell 5 of
+the notebook starts the run only after the answer «запускай» is typed into it; it checks every file against the
+SHA-256 embedded in the notebook and the marker of the passed blind check of the same build, and mag_s3c.py and
+pipeline.sh compute nothing at the rates of the hypotheses without that confirmation.
 Paths are relative to this folder. mag_s3b.py, mag_s3.py, analyze.py, mag_s2.py and physics.json are the frozen
 files of MAG-S3b v0.2.0 (DOI 10.5281/zenodo.24079875), which carry MAG-S3 v0.1.0 and MAG-S2 v0.1.2; code/data/6PU0.pdb
 is the crystal structure of pigeon cryptochrome 4 (ClCry4a) from the Protein Data Bank.
@@ -25,9 +25,9 @@ normalization of the first check gave 5.2·10⁻¹² and would have failed again
 The logs of both builds are in results/checks/.
 
 Before the freeze, the first smoke run of 10 November printed the verdicts H1–H5 of its substitute rates and its grid
-of 60 directions in front of the author of the code. The protocol records this as a deviation; the line is sealed in
-a file on Google Drive (SHA-256 3ea921e030a4df4eca4789a671f401a6cd8132814897ae978dfd040290a94d78), to be opened with the results of the
-confirmatory run.
+of 60 directions in front of the author of the code. The protocol records this as a deviation; the line is sealed in a
+file on Google Drive (SHA-256 3ea921e030a4df4eca4789a671f401a6cd8132814897ae978dfd040290a94d78), to be opened with the
+results of the confirmatory run.
 
 20353b73daf239e4ab392f37772a2af93524417a80605e90ece2433a664aed02  protocol/MAG-S3c_protocol_v0.4_ru.md
 2ccbb82e3fb7c1b12ee18ac33c7994a13073af30922c1a5696955a0dd025ccc7  code/mag_s3c.py

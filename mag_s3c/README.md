@@ -3,7 +3,7 @@
 A pre-registered simulation study of whether the two main conclusions of MAG-S3b survive the real geometry of the radical pair in cryptochrome 4 and spin relaxation, and how much of the odd part of the compass code, the part that changes sign when the field is reversed, the singlet–triplet coherence itself carries.
 
 Author: Julia Ryzhkova (Siriona, siriona.one; ORCID 0009-0005-4194-6059).
-Status: frozen before the confirmatory run on 10 November 2026 at 19:40 UTC. The protocol (v0.4, in Russian), the code, the requirements, the structure file, the reference calibration and the Colab notebook are listed with their SHA-256 in FREEZE.txt, and the hashes were posted in Telegram (https://t.me/attractordm) before the run. The results will follow in release v0.3.0 of this repository. MAG-S3c builds on MAG-S3b (this repository, release v0.2.0, https://doi.org/10.5281/zenodo.24079875), MAG-S3 (release v0.1.0, https://doi.org/10.5281/zenodo.24043500) and MAG-S2 (release v0.1.2, https://doi.org/10.5281/zenodo.24030614) and imports their code unchanged.
+Status: frozen before the confirmatory run on 10 November 2026 at 19:40 UTC. The protocol (v0.4, in Russian), the code, the requirements, the structure file, the reference calibration and the Colab notebook are listed with their SHA-256 in FREEZE.txt, and the hashes were posted in Telegram (https://t.me/attractordm/79) before the run. The results will follow in release v0.3.0 of this repository. MAG-S3c builds on MAG-S3b (this repository, release v0.2.0, https://doi.org/10.5281/zenodo.24079875), MAG-S3 (release v0.1.0, https://doi.org/10.5281/zenodo.24043500) and MAG-S2 (release v0.1.2, https://doi.org/10.5281/zenodo.24030614) and imports their code unchanged.
 
 ## The question
 
