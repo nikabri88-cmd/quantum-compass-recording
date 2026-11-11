@@ -1,7 +1,7 @@
 {
   "title": "MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order",
   "upload_type": "software",
-  "description": "Release v0.2.0 adds MAG-S3b (folder mag_s3b) to the MAG-S3 study of the recording experiment that could test the MAG-S2 prediction in birds. MAG-S3b is a pre-registered simulation study of whether the odd part of a radical-pair (cryptochrome 4) compass code, the part that changes sign when the field is reversed, can carry the sign of the geomagnetic field to neurons through chirality-induced spin selectivity (CISS), how the polar and axial order of cryptochromes in the receptor gates it, and whether a blind estimate recovers its size from a MAG-S3 recording with honest intervals. It compares a coherence form and two polarisation forms of CISS on the MAG-S2 radical pair with Cry4a rates over 225 cells, models the receptor with polar order, axial order and a free or fixed azimuth, and compares a dipole test with the antipodal test of MAG-S3 on 3500 recordings of virtual birds. The protocol (v0.4, in Russian), code and notebook were frozen and their SHA-256 posted in Telegram (https://t.me/attractordm/78); the confirmatory run (9 November 2026) started three minutes before the freeze, on the same files, a deviation recorded in mag_s3b/FREEZE.txt and mag_s3b/README.md. All eight invariants held and the run is valid. The coherence form gave 253 times more odd part than the polarisation forms (H2 met); the blind estimate covered the truth in 95.3%, 92.5% and 93.7% of birds at the three recording points (H5 met, the second point at the lower edge of its band); the dipole test found the odd part at an effective admixture of 0.01, five times below the antipodal test (H6 met). The odd part of the molecule departed from proportionality to the mismatch at the largest CISS angle (H1 not met), stayed below the antipodal threshold in the reference design (H3 not met), and its projection on the receptor axis did not follow cos beta, because the hyperfine tensors set the direction of the odd dipole together with the CISS axis (H4 not met). A null result in the reference design bounds the effective admixture by 0.0010 and, for the coherence form with polar order, excludes mismatches of 0.005 pi and more at any tilt and axial order; the polarisation forms stay unconstrained. All numbers belong to a three-nucleus radical pair without spin relaxation. The MAG-S3 files, run and verdicts are those of v0.1.0 and v0.1.1 and are unchanged. Licensing: code is released under MIT; text, the protocols and the results are released under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).",
+  "description": "Release v0.2.0 adds MAG-S3b (folder mag_s3b) to the MAG-S3 study of the recording experiment that could test the MAG-S2 prediction in birds. MAG-S3b is a pre-registered simulation study of whether the odd part of a radical-pair (cryptochrome 4) compass code, the part that changes sign when the field is reversed, can carry the sign of the geomagnetic field to neurons through chirality-induced spin selectivity (CISS), how the polar and axial order of cryptochromes in the receptor gates it, and whether a blind estimate recovers its size from a MAG-S3 recording with honest intervals. It compares a coherence form and two polarisation forms of CISS on the MAG-S2 radical pair with Cry4a rates over 225 cells, models the receptor with polar order, axial order and a free or fixed azimuth, and compares a dipole test with the antipodal test of MAG-S3 on 3500 recordings of virtual birds. The protocol (v0.4, in Russian), code and notebook were frozen and their SHA-256 posted in Telegram (https://t.me/attractordm/78); the confirmatory run (9 November 2026) started three minutes before the freeze, on the same files, a deviation recorded in mag_s3b/FREEZE.txt and mag_s3b/README.md. All eight invariants held and the run is valid. The coherence form gave 253 times more odd part than the polarisation forms (H2 met); the blind estimate covered the truth in 95.3%, 92.5% and 93.7% of birds at the three recording points (H5 met, the second point at the lower edge of its band); the dipole test found the odd part at an effective admixture of 0.01, five times below the antipodal test (H6 met). The odd part of the molecule departed from proportionality to the mismatch at the largest CISS angle (H1 not met), stayed below the antipodal threshold in the reference design (H3 not met), and its projection on the receptor axis did not follow cos beta, because the hyperfine tensors set the direction of the odd dipole together with the CISS axis (H4 not met). A null result in the reference design bounds the effective admixture by 0.0010 and, for the coherence form with polar order, excludes mismatches of 0.005 pi and more at any tilt and axial order; the polarisation forms stay unconstrained. All numbers belong to a three-nucleus radical pair without spin relaxation. The MAG-S3 files, run and verdicts are those of v0.1.0 and v0.1.1 and are unchanged. Version 0.2.1 adds notes after release to MAG-S3b, from a source check and an independent review whose results were reproduced on independent code; the frozen files, the runs and the verdicts are those of version 0.2.0 (DOI 10.5281/zenodo.24079875). The reciprocity criterion of MAG-S3b, a reciprocity of the Onsager–Casimir type, keeps the yield even in a chain of sites when spin-selective recombination happens only at the birth site, through a birth projector that is invariant under time reversal. When the pair can also recombine at another site with different spin dynamics, the yield loses parity without CISS (up to 46% of its spread over field directions in a toy chain); this narrows the reading of the odd part as a trace of CISS to pairs that recombine where they were born, and narrows the note on parity of MAG-S3 v0.1.1. In the microscopic CISS model of Denton et al. (2026) the odd part needs exchange in the bridge and recombination from the terminal pair together, so it vanishes as the terminal recombination rate goes to zero. In a crystal of point group 222, such as the P2₁2₁2₁ crystals of structure 6PU0, the odd part has no dipole and vanishes for fields in the cell planes. The notes also give the reconstruction of every singlet-recombining form from the singlet-born solution and the exact split of the odd part of the coherence form into coherence and alignment terms, and add Denton et al. (2026), Cantarella et al. (2026), Luo (2024), Ilott et al. (2025) and Golesworthy et al. (2023) to the literature. Licensing: code is released under MIT; text, the protocols and the results are released under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).",
   "creators": [
     {
       "name": "Ryzhkova, Julia",
@@ -32,11 +32,11 @@
     "simulation-based calibration",
     "pre-registration"
   ],
-  "version": "0.2.0",
+  "version": "0.2.1",
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "10.5281/zenodo.24044654",
+      "identifier": "10.5281/zenodo.24079875",
       "relation": "isNewVersionOf",
       "resource_type": "software",
       "scheme": "doi"
@@ -196,6 +196,30 @@
       "relation": "references",
       "resource_type": "publication-preprint",
       "scheme": "arxiv"
+    },
+    {
+      "identifier": "10.1063/5.0348452",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1063/5.0182172",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1063/5.0166675",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.48550/arXiv.2610.10839",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
     }
   ],
   "publication_date": "2026-11-09"

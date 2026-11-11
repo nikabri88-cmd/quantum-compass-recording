@@ -1,0 +1,6 @@
+D1 theta!=0, J=0,  de=0,  kCR2=2e6 (J, de in mT)               max|odd| SP 3.33e-16  CR 2.08e-17  CR2 1.67e-16 | range of Phi_SP over dirs 1.92e-03 | |sum-1| 1.3e-15
+D2 theta!=0, J=0,  de=5,  kCR2=2e6 (J, de in mT)               max|odd| SP 1.67e-16  CR 1.39e-17  CR2 1.11e-16 | range of Phi_SP over dirs 9.53e-04 | |sum-1| 8.9e-16
+D3 theta!=0, J=20, de=5,  kCR2=0   (J, de in mT)               max|odd| SP 1.17e-15  CR 5.55e-17  CR2 0.00e+00 | range of Phi_SP over dirs 3.31e-04 | |sum-1| 1.7e-15
+D4 theta!=0, J=20, de=5,  kCR2=2e6 (J, de in mT)               max|odd| SP 2.81e-04  CR 2.78e-17  CR2 2.81e-04 | range of Phi_SP over dirs 1.16e-03 | |sum-1| 1.3e-15
+D5 theta!=0, J=20, de=0,  kCR2=2e6 (J, de in mT)               max|odd| SP 2.89e-04  CR 1.39e-17  CR2 2.89e-04 | range of Phi_SP over dirs 1.18e-03 | |sum-1| 1.1e-15
+D6 theta=0 (no CISS, no SOC shift), J=20, kCR2=2e6             max|odd| SP 2.78e-16  CR 1.39e-17  CR2 1.67e-16 | range of Phi_SP over dirs 2.05e-03 | |sum-1| 8.9e-16

@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order"
 type: software
-version: "0.2.0"
-doi: "10.5281/zenodo.24079875"
+version: "0.2.1"
+doi: "10.5281/zenodo.24100330"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24043500"
@@ -11,13 +11,16 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.24044654"
     description: "Version 0.1.1 (MAG-S3)"
+  - type: doi
+    value: "10.5281/zenodo.24079875"
+    description: "Version 0.2.0 (MAG-S3b)"
 repository-code: "https://github.com/nikabri88-cmd/quantum-compass-recording"
 authors:
   - family-names: Ryzhkova
     given-names: Julia
     affiliation: Siriona
     orcid: "https://orcid.org/0009-0005-4194-6059"
-date-released: 2026-11-09
+date-released: 2026-11-10
 license: MIT
 abstract: >-
   Version 0.2.0 adds MAG-S3b to MAG-S3. MAG-S3b is a pre-registered simulation study of whether the odd part of a
@@ -32,6 +35,9 @@ abstract: >-
   the cos beta law, because the hyperfine tensors set the direction of the odd dipole together with the CISS axis.
   MAG-S3 itself, unchanged since version 0.1.1, is a simulation study of the recording experiment that could test
   whether neurons reading a radical-pair compass carry a population code shaped like the real projective plane RP2.
+  Version 0.2.1 adds notes after release to MAG-S3b: exact consequences of its reciprocity criterion, one of which
+  limits the reading of the odd part as a trace of CISS to pairs that recombine spin-selectively where they were born,
+  and works found by a source check; the frozen files, the runs and the verdicts are those of version 0.2.0.
   Code is released under MIT; text, the protocols and the results under CC BY 4.0.
 keywords:
   - chirality-induced spin selectivity

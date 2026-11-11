@@ -1,0 +1,5 @@
++v: RK4  Phi_SP 0.405100418 Phi_CR 0.387029350 Phi_CR2 0.207658851  (population left 2.1e-04)
++v: solve Phi_SP 0.405215305 Phi_CR 0.387072864 Phi_CR2 0.207711831
+-v: RK4  Phi_SP 0.404905210 Phi_CR 0.387029350 Phi_CR2 0.207854183  (population left 2.1e-04)
+-v: solve Phi_SP 0.405020032 Phi_CR 0.387072864 Phi_CR2 0.207907103
+odd part of Phi_SP: RK4 +9.760e-05   solve +9.764e-05;   odd part of Phi_CR: RK4 +1.4e-16  solve -2.8e-17

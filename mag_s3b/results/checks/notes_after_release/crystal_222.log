@@ -1,0 +1,4 @@
+single molecule: odd part nonzero = True
+crystal, fields in the three cell planes: worst |odd| / molecular odd scale = 3.5e-13
+crystal, odd part changes sign under each cell mirror: worst residual / molecular odd scale = 3.5e-13
+crystal, fields off the cell planes: odd part nonzero = True

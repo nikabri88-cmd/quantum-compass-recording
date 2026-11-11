@@ -1,0 +1,10 @@
+All tests below: NO CISS anywhere (singlet birth at the bridge, identity hop, singlet recombination).
+T9  recombination only from the terminal site                  max|odd| SP 2.31e-04  CR 0.00e+00  CR2 2.31e-04 | range of Phi_SP over dirs 5.67e-04 | |sum-1| 1.8e-15
+T10 both channels, forward hop k2 = 3e+08                      max|odd| SP 6.02e-04  CR 2.08e-17  CR2 6.02e-04 | range of Phi_SP over dirs 2.96e-03 | |sum-1| 1.1e-15
+T10 both channels, forward hop k2 = 3e+09                      max|odd| SP 1.05e-04  CR 3.47e-18  CR2 1.05e-04 | range of Phi_SP over dirs 4.26e-03 | |sum-1| 1.2e-15
+T10 both channels, forward hop k2 = 3e+10                      max|odd| SP 1.06e-05  CR 3.79e-19  CR2 1.06e-05 | range of Phi_SP over dirs 4.27e-03 | |sum-1| 1.1e-15
+T13 composite, fast exchange both ways, recomb. only at birth site max|odd| SP 2.08e-16  CR 5.55e-16  CR2 0.00e+00 | range of Phi_SP over dirs 1.32e-04 | |sum-1| 1.3e-15
+T13b same, recombination at both sites                         max|odd| SP 4.17e-05  CR 3.89e-16  CR2 4.17e-05 | range of Phi_SP over dirs 1.85e-04 | |sum-1| 1.3e-15
+T12 both channels, identical spin Hamiltonians at both sites   max|odd| SP 5.86e-06  CR 1.67e-16  CR2 5.86e-06 | range of Phi_SP over dirs 3.58e-03 | |sum-1| 7.8e-16
+T12b bridge = terminal Hamiltonian + exchange 0.3 mT           max|odd| SP 3.37e-05  CR 1.39e-16  CR2 3.37e-05 | range of Phi_SP over dirs 1.17e-03 | |sum-1| 8.9e-16
+T11 bridge: FAD nucleus + exchange only; terminal: full        max|odd| SP 4.24e-04  CR 5.55e-17  CR2 4.24e-04 | range of Phi_SP over dirs 3.42e-03 | |sum-1| 4.4e-16
