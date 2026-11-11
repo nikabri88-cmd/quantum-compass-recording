@@ -1,9 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order"
+title: "MAG-S3, MAG-S3b and MAG-S3c: recording the quantum compass, CISS non-reciprocity, cryptochrome order and real pair geometry"
 type: software
-version: "0.2.1"
-doi: "10.5281/zenodo.24100330"
+version: "0.3.0"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24043500"
@@ -14,16 +13,28 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.24079875"
     description: "Version 0.2.0 (MAG-S3b)"
+  - type: doi
+    value: "10.5281/zenodo.24100330"
+    description: "Version 0.2.1 (MAG-S3b, notes after release)"
 repository-code: "https://github.com/nikabri88-cmd/quantum-compass-recording"
 authors:
   - family-names: Ryzhkova
     given-names: Julia
     affiliation: Siriona
     orcid: "https://orcid.org/0009-0005-4194-6059"
-date-released: 2026-11-10
+date-released: 2026-11-11
 license: MIT
 abstract: >-
-  Version 0.2.0 adds MAG-S3b to MAG-S3. MAG-S3b is a pre-registered simulation study of whether the odd part of a
+  Version 0.3.0 adds MAG-S3c, a pre-registered simulation study of whether the conclusions of MAG-S3b survive the
+  real geometry of the radical pair in cryptochrome 4 and spin relaxation. It recomputes the three-nucleus pair in
+  the FAD–W_C and FAD–W_D pairs of pigeon cryptochrome 4 (PDB 6PU0), with their dipolar coupling and with random
+  fields and singlet-triplet dephasing up to 1e8 per second. Its protocol, code and notebook were frozen and their
+  SHA-256 posted before the run; the run was continued in parts of 1.5 h after a flaw of the pause, a deviation
+  recorded before the continuation. All eleven invariants held and a reanalysis reproduced every value. The odd
+  dipole follows the hyperfine tensors, the singlet-triplet coherence creates it, it falls by half at a dephasing
+  rate of 3.3–6.2e7 per second, inside the range measured in Cry4a, and the dipole test sees both candidate pairs.
+  The dominance of the coherence form of CISS over the polarisation forms holds only without the dipolar coupling.
+  Version 0.2.0 added MAG-S3b to MAG-S3. MAG-S3b is a pre-registered simulation study of whether the odd part of a
   radical-pair (cryptochrome 4) compass code can carry the sign of the geomagnetic field to neurons through
   chirality-induced spin selectivity (CISS), how the polar and axial order of cryptochromes gates it, and whether a
   blind estimate recovers its size from a MAG-S3 recording. Its protocol, code and notebook were frozen and their
@@ -40,6 +51,9 @@ abstract: >-
   and works found by a source check; the frozen files, the runs and the verdicts are those of version 0.2.0.
   Code is released under MIT; text, the protocols and the results under CC BY 4.0.
 keywords:
+  - spin relaxation
+  - singlet-triplet dephasing
+  - dipolar coupling
   - chirality-induced spin selectivity
   - non-reciprocity
   - inverse problem
@@ -56,6 +70,52 @@ keywords:
   - population coding
   - simulation
 references:
+  - type: article
+    title: "Singlet-triplet dephasing in radical pairs in avian cryptochromes leads to time-dependent magnetic field effects"
+    authors:
+      - family-names: Golesworthy
+        given-names: M. J.
+      - name: "et al."
+    journal: "Journal of Chemical Physics"
+    volume: 159
+    doi: "10.1063/5.0166675"
+    year: 2023
+  - type: article
+    title: "Microscopic dissection of chirality-induced spin selectivity in cryptochrome"
+    authors:
+      - family-names: Denton
+        given-names: M. C. J.
+      - family-names: Pearse
+        given-names: C. D.
+      - family-names: Kattnig
+        given-names: D. R.
+      - family-names: Smith
+        given-names: L. D.
+    journal: "Journal of Chemical Physics"
+    volume: 165
+    doi: "10.1063/5.0348452"
+    year: 2026
+  - type: article
+    title: "Role of exchange and dipolar interactions in the radical pair model of the avian magnetic compass"
+    authors:
+      - family-names: Efimova
+        given-names: Olga
+      - family-names: Hore
+        given-names: P. J.
+    journal: "Biophysical Journal"
+    volume: 94
+    doi: "10.1529/biophysj.107.119362"
+    year: 2008
+  - type: article
+    title: "Chemical and structural analysis of a photoactive vertebrate cryptochrome from pigeon"
+    authors:
+      - family-names: Zoltowski
+        given-names: B. D.
+      - name: "et al."
+    journal: "Proceedings of the National Academy of Sciences"
+    volume: 116
+    doi: "10.1073/pnas.1907875116"
+    year: 2019
   - type: software
     title: "MAG-S2: the shape of the quantum compass signal"
     authors:

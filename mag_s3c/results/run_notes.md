@@ -41,3 +41,12 @@
   receptor 20:58:59, analysis 20:59:01 UTC; 574 cells, 54 references, 24 cells of the composite pair. The run took
   30 minutes on 10 November and 2 h 50 min on 11 November. The verdicts go to the log of the analysis step inside the
   archive; the notebook showed only the exit codes of the steps.
+- 20:59:20 UTC: the archive of the run, 48,804,217 bytes, on Google Drive. Nobody read the output in Colab; the
+  notebook showed the exit codes of the steps and the counts of the files.
+- 21:01–21:12 UTC: the archive was split into parts on Google Drive (first parts of 7 MB, too large for the
+  connector, then 25 parts of 2 MB) and joined on the calibration machine; SHA-256
+  99e6288ba6d583181cb2e18fbf8df5bd00dbd1fce5c8568fbe68dda6f9c8446a, gzip check passed.
+- About 21:14–21:20 UTC: checks of provenance, which printed the technical facts and the verdicts of the
+  expectations, and the reanalysis with the frozen analyze_s3c.py: every value of results.json came out identical
+  (checks/reanalysis_of_the_archive.txt). Then the verdicts of the hypotheses were read, and the sealed file with
+  the line of the trial run was opened; its SHA-256 equals the one in FREEZE.txt.

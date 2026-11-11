@@ -1,0 +1,41 @@
+MAG-S3c – check and reanalysis of the confirmatory run outside Colab, 11 November 2026
+
+Transfer. Cell 5a left the archive confirmatory_s3c.tar.gz on Google Drive at 20:59:20 UTC. It came to the
+calibration machine in 25 parts of 2,000,000 bytes (the last one 804,217 bytes), split in Colab with
+`split -b 2000000`, and was joined there: 48,804,217 bytes, SHA-256
+99e6288ba6d583181cb2e18fbf8df5bd00dbd1fce5c8568fbe68dda6f9c8446a (results/confirmatory_run/
+confirmatory_s3c.tar.gz.sha256). gzip -t passed. The archive holds only regular files and folders with relative
+paths (1149 files, 8 folders), and it was unpacked with tarfile and filter='data' into an empty folder.
+
+Checks on the archive (no new computation):
+
+- confirmation.json: the answer «запускай» at 2026-11-11T18:08:50Z, build f994d9b191aa9dbbbfce5d53905dfc1f9669e167afb6e3de924bfad9442e7eb2,
+  equal to the SHA-256 of the 14 confirmed files; the SHA-256 of the 13 files of code/ and of the reference
+  calibration equal FREEZE.txt; the marker of the passed blind check of the same build, 2026-11-11T17:53:47Z.
+- All 574 direct cells and 54 references carry the frozen SHA-256 of mag_s3c.py
+  (2ccbb82e3fb7c1b12ee18ac33c7994a13073af30922c1a5696955a0dd025ccc7) and 1000 directions with their antipodes
+  (2000 directions); all 24 cells of the composite pair carry the same SHA-256 and 250 directions (500).
+- The metadata of the steps pair, composite, checks, curves, receptor and analyze record the frozen SHA-256 of
+  mag_s3c.py and of every file of code/ listed in FREEZE.txt (frozen_ok true), Python 3.13.18, NumPy 2.5.3,
+  SciPy 1.18.1, RadicalPy 1.0.9, one BLAS thread in both loaded OpenBLAS libraries, and hop scale 1.
+- results.json: valid, grid_ok, rates_ok, cells_complete, curves_full, blas_single_thread, counts_ok, pair_done
+  and composite_done are true; the rates seen are those of Cry4a (k_F = 5e6, k_R = 3.4e5 s^-1) and of branch
+  E12 (1e6 with 1e8 and 1e9 s^-1); all eleven invariants are ok; the 184 comparisons per hypothesis and the 8
+  known in advance are as in the protocol; maps E1-E14 are present.
+
+Reanalysis. The frozen analyze_s3c.py (SHA-256 b9ca20ea51cdae510f9bc958e86c348d90cc51ccabc403f15a67d71534b6e857) was
+run again in the calibration environment (Python 3.13.18, NumPy 2.5.3, SciPy 1.18.1, RadicalPy 1.0.9, OpenBLAS
+SkylakeX, one BLAS thread; every file of code/ equal to FREEZE.txt) on the unpacked run:
+
+  python3 -I analyze_s3c.py --run RUN/confirmatory_s3c/run --out RUN/reanalysis
+
+It took 3.7 s and printed the same line of verdicts as analyze.log of the run. All 174,753 values of results.json
+outside the metadata came out identical, bit for bit (none differed, none in the last bit); results/tables/cells.csv
+and maps_axes.npz are identical. Only metadata.time_utc and the fields of the machine differ, as they record when
+and where the analysis ran.
+
+Sealed file. After the reanalysis the sealed file with the line of the trial run of 10 November was opened from
+Google Drive. Its SHA-256, 3ea921e030a4df4eca4789a671f401a6cd8132814897ae978dfd040290a94d78, equals the value
+published in FREEZE.txt; the file is sealed_trial_verdicts_opened.txt. Its verdicts, at substitute rates on 60
+directions, agree with the confirmatory run in 11 of 13 verdicts per geometry and differ in H3 (not met in W_C and
+W_D in the trial, met in the run).

@@ -1,0 +1,14 @@
+confirmation holds
+[2026-11-11T18:08:51Z] confirmatory run in /content/work/confirmatory_s3c with 44 workers (44 processors)
+[2026-11-11T19:39:03Z] pair exit 3
+[2026-11-11T19:39:03Z] pair paused at the time limit; rerun the same command
+confirmation holds
+[2026-11-11T19:39:07Z] confirmatory run in /content/work/confirmatory_s3c with 44 workers (44 processors)
+[2026-11-11T19:46:10Z] pair exit 0
+[2026-11-11T20:32:53Z] composite exit 0
+[2026-11-11T20:35:53Z] checks exit 0
+[2026-11-11T20:39:31Z] curves exit 0
+[2026-11-11T20:58:59Z] receptor exit 0
+[2026-11-11T20:59:01Z] analyze exit 0
+[2026-11-11T20:59:01Z] cells 574, references 54, composite 24
+[2026-11-11T20:59:01Z] done
