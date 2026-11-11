@@ -1,0 +1,6 @@
+W_C  r none0      rates=(6000000.0, 500000.0) dirs=2000 F=+0.6100 F_amp=+0.08134 stricter=0.08134
+W_C  r rf1e+06  rates=(6000000.0, 500000.0) dirs=2000 F=+0.8720 F_amp=+0.07175 stricter=0.07175
+W_C  r std1e+06  rates=(6000000.0, 500000.0) dirs=2000 F=+0.6818 F_amp=+0.08425 stricter=0.08425
+W_D  r none0      rates=(6000000.0, 500000.0) dirs=2000 F=+3.7736 F_amp=+0.24538 stricter=0.24538
+W_D  r rf1e+06  rates=(6000000.0, 500000.0) dirs=2000 F=+3.5751 F_amp=+0.20739 stricter=0.20739
+W_D  r std1e+06  rates=(6000000.0, 500000.0) dirs=2000 F=+3.1510 F_amp=+0.24776 stricter=0.24776

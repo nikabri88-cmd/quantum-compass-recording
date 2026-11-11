@@ -1,0 +1,6 @@
+W_C  r none0      rates=(5000000.0, 340000.0) dirs=60 F=+0.0001 F_amp=+0.04280 stricter=0.00008
+W_C  r rf1e+06  rates=(5000000.0, 340000.0) dirs=60 F=+0.0001 F_amp=+0.03743 stricter=0.00007
+W_C  r std1e+06  rates=(5000000.0, 340000.0) dirs=60 F=+0.0001 F_amp=+0.04468 stricter=0.00009
+W_D  r none0      rates=(5000000.0, 340000.0) dirs=60 F=+0.0003 F_amp=+0.13657 stricter=0.00027
+W_D  r rf1e+06  rates=(5000000.0, 340000.0) dirs=60 F=+0.0002 F_amp=+0.11500 stricter=0.00023
+W_D  r std1e+06  rates=(5000000.0, 340000.0) dirs=60 F=+0.0003 F_amp=+0.13937 stricter=0.00027
