@@ -19,3 +19,25 @@
   after each part. The frozen files do not change: cell 1 checks them against the SHA-256 embedded in the notebook,
   and pipeline.sh and mag_s3c.py check them again before every step. Cell 5a asks for «запускай» again and appends a
   line to confirmation.txt on Google Drive.
+- 11 November 2026, a new runtime of the same kind (TPU v6e-1, 44 processors). Cells 1-3 ran there. Cell 3 is not
+  needed for the run and repeated the 30 fast tests and the comparison of the environment with the reference
+  calibration of round 3: 192 identical values, 31 equal within the tolerances, none different and none missing
+  (Python 3.13.18, OpenBLAS SkylakeX); its marker was written at 16:54:07 UTC.
+- 16:54:15 UTC: cell 4 was started on this runtime by mistake and stopped in the notebook, while its process went on
+  in the background; at 16:56:08 UTC a second cell 4 started beside it. The first action of cell 4 removes the marker
+  of the passed blind check from Google Drive, so cell 5a refused to start. Both processes were stopped in the
+  terminal, their output was deleted unread ("check output deleted (exit 1)"), and the folder of the check was removed
+  by hand. No marker was written by hand.
+- 17:07:39 UTC: a clean third blind check of build f994d9b on this runtime. Pair 17:33:22, composite pair 17:42:00,
+  checks 17:44:23, curves 17:48:11, receptor 17:53:46, analysis 17:53:47 UTC; all eleven invariants held, I11 stood
+  at 2.5287541332023138e-15 and 2.4932082761588624e-15 of the odd part of the molecule (5.194759962849077e-12 in the
+  normalization of the first check), bit for bit the values of 10 November on the first runtime. The output was
+  deleted unread, and the marker of the passed check was written at 17:53:47 UTC.
+- 18:08:50 UTC: «запускай» typed into cell 5a (second line of confirmation.txt). The pipeline started at 18:08:51 UTC
+  with 44 workers from the archive of the first part of 10 November.
+- 19:39:03 UTC: the pair step paused at the limit of 1.5 h; the archive and the log went to Google Drive, and the next
+  part started at 19:39:07 UTC.
+- Steps of the run, all with exit code 0: pair 19:46:10, composite pair 20:32:53, checks 20:35:53, curves 20:39:31,
+  receptor 20:58:59, analysis 20:59:01 UTC; 574 cells, 54 references, 24 cells of the composite pair. The run took
+  30 minutes on 10 November and 2 h 50 min on 11 November. The verdicts go to the log of the analysis step inside the
+  archive; the notebook showed only the exit codes of the steps.
