@@ -66,7 +66,7 @@ def figure_k_half(res):
     cases = (("S2", "z", "S2, ось z"), ("W_C", "r", "W_C, ось r̂"), ("W_D", "r", "W_D, ось r̂"))
     fig, axes = plt.subplots(1, 2, figsize=(7.2, 4.2), sharey=True)
     fig.subplots_adjust(left=0.085, right=0.975, top=0.66, bottom=0.2, wspace=0.08)
-    title(fig, "Нечётный диполь падает вдвое внутри измеренной дефазировки",
+    title(fig, "Дефазировка гасит нечётный диполь вдвое при 3–7·10⁷ с⁻¹",
           "|d_odd·z| формы K при χ_b = 0,1π и m = 1 в долях значения без релаксации")
     for ax, kind, head in ((axes[0], "std", "дефазировка синглета и триплета"), (axes[1], "rf", "случайные поля")):
         style(ax)

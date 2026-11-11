@@ -27,12 +27,12 @@ license: MIT
 abstract: >-
   Version 0.3.0 adds MAG-S3c, a pre-registered simulation study of whether the conclusions of MAG-S3b survive the
   real geometry of the radical pair in cryptochrome 4 and spin relaxation. It recomputes the three-nucleus pair in
-  the FAD–W_C and FAD–W_D pairs of pigeon cryptochrome 4 (PDB 6PU0), with their dipolar coupling and with random
-  fields and singlet-triplet dephasing up to 1e8 per second. Its protocol, code and notebook were frozen and their
+  the FAD–W_C and FAD–W_D pairs of pigeon cryptochrome 4 (PDB 6PU0), with their dipolar coupling, with singlet-triplet
+  dephasing up to 1e8 and random fields up to 3e7 per second. Its protocol, code and notebook were frozen and their
   SHA-256 posted before the run; the run was continued in parts of 1.5 h after a flaw of the pause, a deviation
   recorded before the continuation. All eleven invariants held and a reanalysis reproduced every value. The odd
   dipole follows the hyperfine tensors, the singlet-triplet coherence creates it, it falls by half at a dephasing
-  rate of 3.3–6.2e7 per second, inside the range measured in Cry4a, and the dipole test sees both candidate pairs.
+  rate of 3.3–6.2e7 per second, inside the range measured in Cry4a or above it, and the dipole test sees both candidate pairs.
   The dominance of the coherence form of CISS over the polarisation forms holds only without the dipolar coupling.
   Version 0.2.0 added MAG-S3b to MAG-S3. MAG-S3b is a pre-registered simulation study of whether the odd part of a
   radical-pair (cryptochrome 4) compass code can carry the sign of the geomagnetic field to neurons through

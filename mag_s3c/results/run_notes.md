@@ -50,3 +50,6 @@
   expectations, and the reanalysis with the frozen analyze_s3c.py: every value of results.json came out identical
   (checks/reanalysis_of_the_archive.txt). Then the verdicts of the hypotheses were read, and the sealed file with
   the line of the trial run was opened; its SHA-256 equals the one in FREEZE.txt.
+- Correction after the run: the archive records 54–62 minutes for each of the 15 slowest items named above, not
+  about 50, and two references of branch E12 at dephasing 3·10⁷ s⁻¹ took 34 and 44 minutes, so they too could not
+  finish in parts of 0.5 h; every other item of the pair step took at most 23 minutes.
