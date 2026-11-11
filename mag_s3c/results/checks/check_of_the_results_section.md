@@ -3,7 +3,7 @@
 ## What I checked and how
 
 - **Texts.** I checked `protocol/MAG-S3c_protocol_v0.4_with_results_ru.md`, from «## Результаты подтверждающего прогона» to «## Источники» (called RU below). In `README.md` I checked "Results of the confirmatory run", "What it means", "Deviations", "Literature the protocol missed" and "Contents" (called README below). Both files are unchanged since the draft commit 4fdd4e2 (file times 21:39 UTC; later commits touch only results/exploratory), and the working tree is clean.
-- **Ground truth.** I used `results.json` and `maps_axes.npz` from the extracted archive, the run folder (`receptor.json`, `maps_E5.npz`, cells, refs, composite), the four tables, `confirmation.json`, the logs, FREEZE.txt and the git history. I read everything with `python3 -I` from my own scripts in `scratchpad/s3c/indep_check/`, and I imported nothing from the extract folder.
+- **Ground truth.** I used `results.json` and `maps_axes.npz` from the extracted archive, the run folder (`receptor.json`, `maps_E5.npz`, cells, refs, composite), the four tables, `confirmation.json`, the logs, FREEZE.txt and the git history. I read everything with `python3 -I` from my own scripts (not published), and I imported nothing from the extract folder.
 - **Field definitions.** I took the definitions from `analyze_s3c.py`: `eps_mol` is the odd half-range divided by the even range (`mag_s3b.parity_parts`); `E6.F_amp_over_F` is F_amp/F at p = 1, S = 1; E5 quantiles use `nanquantile`, so axes beyond the scale are dropped; `E4.eps_x` uses the ratio transfer (`R_REN·d_x/zonal even range`).
 - **Rounding.** I rounded every value to the precision the text uses. RU uses decimal commas.
 - **Integrity checks (all hold).**
@@ -214,7 +214,7 @@
 
 ## C. The author's writing rules
 
-- **Em dash.** There is no em dash (—, U+2014) or other dash variant in either text. RU has 131 en dashes and README 56. Four U+2212 minus signs mark negative numbers (E11, E12), which is correct.
+- **Em dash.** There is no em dash (U+2014) or other dash variant in either text. RU has 131 en dashes and README 56. Four U+2212 minus signs mark negative numbers (E11, E12), which is correct.
 - **«не X – это Y» and negative definitions.** None found.
 - **Verbless formula-like lists.**
   - Both figure captions are verbless formula-like lists with «·»: «*results.json подтверждающего прогона, H1 и карта E3 · форма K при χ\_b = 0,05π и m = 1, формы поляризации при χ = 0,1π, без релаксации*» and «*… H4 · форма K при χ\_b = 0,1π и m = 1*». Suggested rewrite: «Рисунок построен по results.json подтверждающего прогона (H4) для формы K при χ\_b = 0,1π и m = 1.»
@@ -270,7 +270,7 @@ These are listed briefly; every value was recomputed.
 
 ---
 
-## F. What was changed after this check (12 November 2026)
+## F. What was changed after this check (11 November 2026, UTC)
 
 All 18 real errors (A1.1–A5.1) were corrected in the results section of the protocol and in README.md, with the
 values and wordings given above: the E6 medians (0,07 and 0,04), the E8 ranges (0,007–2,4; 63–3400; 0,10–0,57), E10
@@ -280,10 +280,20 @@ polarisation forms only on the axis z), the control P-0 at D = 0 (by ε_mol and 
 at p = 0,5 with the levels named, k½ described as inside the measured dephasing or above it (figure title, README
 heading and alt text included), the margin of 5–10 tied to 3·10⁷ s⁻¹, the reversal of H1 stated by ε_mol with the 15
 comparisons by |F| where form K stays stronger, the dependence on J stated as an inference, the readings of k½ given
-as the protocol defines them, the border of the classes, and the contents of the README.
+as the protocol defines them, the border of the classes, and the contents of the README, which now lists the check
+file and results/exploratory; SHA256SUMS.txt, which the README also lists, was generated as the last step before the
+release.
 
-Of the minor suggestions, 1–25 and 27–30 were applied; for 26 the text now cites FREEZE.txt for the time the link to
-the post came. The two figure captions are now full sentences. The section also gained, after this check, the
+Of the minor suggestions, 1–25 and 27–30 were applied, among them the ratios of form K at m = 0,1 in E1 (22) and
+the clause on the word INVALID of the sealed line (30); for 26 the text first cited FREEZE.txt for the time the link
+to the post came. The two figure captions are now full sentences. The section also gained, after this check, the
 exploratory recomputations of results/exploratory (the CISS scale of Kobori et al. 2026 and the H3 cells of the trial
-run) and the dipolar sweep of Gwynn, Adams & Petruccione (2026) as the closest precedent of branch E3; these
-additions went through a second pass of the same checker.
+run), the dipolar sweep of Gwynn, Adams & Petruccione (2026) as the closest precedent of branch E3, and rewritten
+letters: to Exeter as a transfer of the comparison of CISS forms by Smith et al. (2025) from the even anisotropy to
+the odd part, and to the group of Kobori in Kobe as a third addressee.
+
+These changes went through a second pass of the same checker on commit eac8486
+(check_of_the_results_section_pass2.md). It confirmed the fixes above except two: this section claimed the contents
+of the README fixed while SHA256SUMS.txt did not exist yet, and item 26 still claimed the post came before the run on
+evidence of minute resolution. In the changed and new text it found five real errors and seventeen minor points;
+section G of that file lists what was changed after it.

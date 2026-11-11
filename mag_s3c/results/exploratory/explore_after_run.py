@@ -1,8 +1,8 @@
-"""Exploratory computations after the MAG-S3c confirmatory run (12 November 2026). Nothing here changes a verdict.
+"""Exploratory computations after the MAG-S3c confirmatory run (11 November 2026, UTC). Nothing here changes a verdict.
 
 1. scale   Form K at m = 1 and the control P-0 at small CISS angles, rebuilt exactly from the reference solutions of
            the run archive with the frozen functions of mag_s3c.py (no new solves): the angle of the CISS estimate of
-           Kobori et al. (2026), 6% for the late pair and 8% for the intermediate pair, read either as an amplitude
+           Kobori et al. (2026), 6% for the late state and 8% for the intermediate state, read either as an amplitude
            (sin chi) or as a triplet share (sin^2 chi). The check row at chi = 0.1 pi must equal the run.
 2. h3grid  Why the trial run of 10 November (substitute rates, 60 directions) gave H3 not met: form K at
            chi_b = 0.1 pi, m = 1, axis r of W_C and W_D on the levels of H3, rebuilt from reference solutions solved
