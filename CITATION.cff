@@ -32,7 +32,7 @@ abstract: >-
   Version 0.3.1 adds notes after release to MAG-S3c. With the definition of Kobori et al. (2026), CISS
   efficiency 100(1 - cos chi), the form of their model (birth at chi, recombination at -chi) gives an odd part below
   the threshold of the dipole test along the pair axis at the Cry4a rates of the run by the stricter transfer, and
-  far above it at fast recombination; the coherence form and the other polarisation forms stay visible. This
+  far above it at fast recombination without relaxation; the coherence form and the other polarisation forms stay visible. This
   withdraws a statement of version 0.3.0 that the W_C pair stands at the threshold at their scale. The exchange
   coupling they fitted, 22 uT, changes their form by 5-17% and lowers the response of the polarisation form P-same
   in the W_C pair by a factor of 1.7-2.6. The half-rate of 3.3-6.2e7 per second belongs to the projection of
