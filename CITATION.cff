@@ -22,7 +22,7 @@ authors:
     given-names: Julia
     affiliation: Siriona
     orcid: "https://orcid.org/0009-0005-4194-6059"
-date-released: 2026-11-11
+date-released: 2026-11-12
 license: MIT
 abstract: >-
   Version 0.3.0 adds MAG-S3c, a pre-registered simulation study of whether the conclusions of MAG-S3b survive the
