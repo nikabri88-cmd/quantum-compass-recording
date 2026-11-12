@@ -31,10 +31,11 @@ license: MIT
 abstract: >-
   Version 0.3.1 adds notes after release to MAG-S3c. With the definition of Kobori et al. (2026), CISS
   efficiency 100(1 - cos chi), the form of their model (birth at chi, recombination at -chi) gives an odd part below
-  the threshold of the dipole test along the pair axis, while the coherence form and the other polarisation forms
-  stay visible; this withdraws a statement of version 0.3.0 that the W_C pair stands at the threshold at their
-  scale. The exchange coupling they fitted, 22 uT, changes their form by about 10% and lowers the response of the
-  polarisation form P-same in the W_C pair by a factor of 1.7-2.6. The frozen files, the run and the verdicts are those of version 0.3.0.
+  the threshold of the dipole test along the pair axis at the Cry4a rates of the run by the stricter transfer, and
+  far above it at fast recombination; the coherence form and the other polarisation forms stay visible. This
+  withdraws a statement of version 0.3.0 that the W_C pair stands at the threshold at their scale. The exchange
+  coupling they fitted, 22 uT, changes their form by 5-17% and lowers the response of the polarisation form P-same
+  in the W_C pair by a factor of 1.7-2.6. The frozen files, the run and the verdicts are those of version 0.3.0.
   Version 0.3.0 adds MAG-S3c, a pre-registered simulation study of whether the conclusions of MAG-S3b survive the
   real geometry of the radical pair in cryptochrome 4 and spin relaxation. It recomputes the three-nucleus pair in
   the FAD–W_C and FAD–W_D pairs of pigeon cryptochrome 4 (PDB 6PU0), with their dipolar coupling, with singlet-triplet
@@ -116,6 +117,17 @@ references:
     volume: 94
     doi: "10.1529/biophysj.107.119362"
     year: 2008
+  - type: article
+    title: "Electron-electron dipolar interaction poses a challenge to the radical pair mechanism of magnetoreception"
+    authors:
+      - family-names: Babcock
+        given-names: N. S.
+      - family-names: Kattnig
+        given-names: D. R.
+    journal: "Journal of Physical Chemistry Letters"
+    volume: 11
+    doi: "10.1021/acs.jpclett.0c00370"
+    year: 2020
   - type: article
     title: "Chemical and structural analysis of a photoactive vertebrate cryptochrome from pigeon"
     authors:
