@@ -73,7 +73,7 @@ def figure_k_half(res):
         ax.set_xscale("log")
         if kind == "std":
             ax.axvspan(3e7, 6e7, color="#e9e7e1", zorder=0, linewidth=0)
-            ax.text(4.25e7, 1.27, "измерено\nв Cry4a", ha="center", va="top", fontsize=8.5, color=INK2)
+            ax.text(4.25e7, 1.27, "по опытам\nв Cry4a", ha="center", va="top", fontsize=8.5, color=INK2)
         ax.axhline(0.5, color=MUTED, linewidth=0.9, linestyle=(0, (4, 3)), zorder=1)
         for g, axis, label in cases:
             v = kh[f"{g}_{axis}_chi0.1_{kind}"]

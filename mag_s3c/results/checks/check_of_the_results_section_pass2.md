@@ -233,3 +233,14 @@
   - D14: F names items 22 and 30 of the first pass and the rewritten letters.
   - D16: the INVALID sentence adds that I1 flagged cells of the previous build («Раунд 3»).
   - D17: the path of the unpublished scripts is gone from the first report and from item 17 here.
+
+## H. Changes after a review of the release text (12 November 2026, UTC)
+
+After this check the author passed on a review of the draft release notes. The changes below did not go through the independent checker; every new number was recomputed from the run archive, and every new statement about a source was checked against that source.
+
+- **Golesworthy et al. (2023).** The range 3–6·10⁷ s⁻¹ is now described as estimated from magnetic field effects in modified Cry4a of robin, pigeon and chicken; the abstract says "Analysis of the experimental data gives dephasing rate constants … in the range 3–6 × 10⁷ s⁻¹". RU keeps the protocol's term «измеренная дефазировка» and says once where the range comes from, and the band in k_half.png is now labelled «по опытам в Cry4a».
+- **What the range means for the dipole.** In the real pairs the odd dipole keeps 0,53–0,86 of its value at 3·10⁷ s⁻¹ and 0,10–0,57 at 10⁸ s⁻¹ (k_half.csv), so at 6·10⁷ s⁻¹ less than half of it remains wherever k½ lies below that rate, in 8 of the 12 combinations.
+- **Kobori et al. (2026).** The estimate is now described after the press release on EurekAlert (https://www.eurekalert.org/news-releases/1149346): cryptochrome-DASH of Xenopus laevis, about 8% for FAD–W\_B and at most 6% for FAD–W\_C. Carrying it over to Cry4 and to W\_D is named an assumption, and wherever the margin of 5–18 times is stated it is tied to Δχ = 0,1π.
+- **Two kinds of coherence.** The texts now say that both CISS forms carry singlet–triplet coherence: imaginary in form K, and real in the polarisation forms, where it means opposite polarisations of the two spins (protocol, «Разложение формы K» and «Время жизни когерентности»). H5 concerns form K, and H1 compares the forms.
+- **Lower bound of s\_C.** The metadata give at least 0.975. The smallest value is 0.97555, which the rounded ranges of the tables show as 0,976.
+- **Crystal.** The English texts call it the P2₁2₁2₁ crystal packing of 6PU0 (point group 222).
