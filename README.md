@@ -1,6 +1,6 @@
 # MAG-S3: what a recording experiment needs to see the shape of the quantum compass
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24100330.svg)](https://doi.org/10.5281/zenodo.24100330)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24148799.svg)](https://doi.org/10.5281/zenodo.24148799)
 
 <p align="center"><img src="figures/robin.jpg" alt="A European robin (Erithacus rubecula) in flight, in watercolour" width="440"></p>
 
@@ -8,7 +8,7 @@ A simulation study of the recording experiment that could test the MAG-S2 predic
 
 Author: Julia Ryzhkova (Siriona, siriona.one; ORCID 0009-0005-4194-6059).
 
-**New in release v0.3.0 (12 November 2026): MAG-S3c.** The folder [`mag_s3c`](mag_s3c/README.md) holds the follow-up study MAG-S3c: whether the two main conclusions of MAG-S3b survive the real geometry of the radical pair in cryptochrome 4 and spin relaxation, and how much of the odd part of the compass code the singlet–triplet coherence itself carries. It recomputes the pair of MAG-S3b in the FAD–W_C and FAD–W_D pairs of pigeon cryptochrome 4 (PDB 6PU0), with their dipolar coupling, with singlet–triplet dephasing up to 10⁸ s⁻¹ and random fields up to 3·10⁷ s⁻¹. Its protocol, code and confirmatory run were frozen and checked the same way as MAG-S3b (https://t.me/attractordm/79). The odd dipole follows the hyperfine tensors, the coherence creates it, it falls by half at a dephasing rate inside the range estimated from experiment or above it, and the dipole test sees both candidate pairs; the dominance of the coherence form of CISS over the polarisation forms holds only without the dipolar coupling. The MAG-S3 and MAG-S3b files are unchanged in v0.3.0.
+**New in release v0.3.0 (12 November 2026): MAG-S3c.** The folder [`mag_s3c`](mag_s3c/README.md) holds the follow-up study MAG-S3c: whether the two main conclusions of MAG-S3b survive the real geometry of the radical pair in cryptochrome 4 and spin relaxation, and how much of the odd part of the compass code the singlet–triplet coherence itself carries. It recomputes the pair of MAG-S3b in the FAD–W_C and FAD–W_D pairs of pigeon cryptochrome 4 (PDB 6PU0), with their dipolar coupling, with singlet–triplet dephasing up to 10⁸ s⁻¹ and random fields up to 3·10⁷ s⁻¹. Its protocol, code and confirmatory run were frozen and checked the same way as MAG-S3b (https://t.me/attractordm/79). The odd dipole follows the hyperfine tensors, the coherence creates it, it falls by half at a dephasing rate inside the range estimated from experiment or above it, and the dipole test sees both candidate pairs; the dominance of the coherence form of CISS over the polarisation forms holds only without the dipolar coupling. The MAG-S3 and MAG-S3b files are unchanged in v0.3.0. Archived on Zenodo: release v0.3.0, https://doi.org/10.5281/zenodo.24148799.
 
 **New in release v0.2.0 (9 November 2026): MAG-S3b.** The folder [`mag_s3b`](mag_s3b/README.md) holds the follow-up study MAG-S3b: whether the odd part of the compass code can carry the sign of the field to neurons through chirality-induced spin selectivity (CISS) in cryptochrome 4, how the order of cryptochromes in the receptor gates it, and whether a blind estimate recovers its size from a MAG-S3 recording. Its protocol, code and confirmatory run were frozen and checked the same way as MAG-S3. The MAG-S3 files described below are unchanged in v0.2.0. Archived on Zenodo: release v0.2.0, https://doi.org/10.5281/zenodo.24079875. Release v0.2.1 (10 November 2026) adds notes after release to MAG-S3b and narrows the note "Parity follows from the physics" of MAG-S3 below; the frozen files, the runs and the verdicts of both studies are unchanged. Archived on Zenodo: release v0.2.1, https://doi.org/10.5281/zenodo.24100330.
 
@@ -186,6 +186,8 @@ Code (`code/*.py`, `code/scripts/*`) is released under the MIT License. Text, fi
 Ryzhkova, J. (2026). MAG-S3: what a recording experiment needs to see the shape of the quantum compass (v0.1.1). Zenodo. https://doi.org/10.5281/zenodo.24044654
 
 MAG-S3b: Ryzhkova, J. (2026). MAG-S3 and MAG-S3b: recording the quantum compass, CISS non-reciprocity and cryptochrome order (v0.2.1). Zenodo. https://doi.org/10.5281/zenodo.24100330
+
+MAG-S3c: Ryzhkova, J. (2026). MAG-S3, MAG-S3b and MAG-S3c: recording the quantum compass, CISS non-reciprocity, cryptochrome order and real pair geometry (v0.3.0). Zenodo. https://doi.org/10.5281/zenodo.24148799
 
 See also `CITATION.cff`.
 

@@ -3,6 +3,7 @@ message: "If you use this work, please cite it as below."
 title: "MAG-S3, MAG-S3b and MAG-S3c: recording the quantum compass, CISS non-reciprocity, cryptochrome order and real pair geometry"
 type: software
 version: "0.3.0"
+doi: "10.5281/zenodo.24148799"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24043500"
@@ -16,6 +17,9 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.24100330"
     description: "Version 0.2.1 (MAG-S3b, notes after release)"
+  - type: doi
+    value: "10.5281/zenodo.24148799"
+    description: "Version 0.3.0 (MAG-S3c)"
 repository-code: "https://github.com/nikabri88-cmd/quantum-compass-recording"
 authors:
   - family-names: Ryzhkova
