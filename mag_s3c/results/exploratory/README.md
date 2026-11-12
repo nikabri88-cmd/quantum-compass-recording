@@ -33,3 +33,40 @@ The sealed line of the trial run (substitute rates, 60 directions) had H3 not me
 | 2000 directions, substitute rates | 0.61–0.87 | 0.072–0.084 | 3.2–3.8 | 0.207–0.248 |
 
 On 60 directions the even part spreads over the degrees the grid cannot resolve, the even range of the receptor grows, and the ratio transfer F falls to about 10⁻⁴, below the threshold; the amplitude transfer, which takes only the dipole, keeps 74–76% of its value on 2000 directions. On 2000 directions the substitute rates raise F_amp by about 40%, and H3 holds there with a margin of 7–8 times in W_C and 21–25 times in W_D. The grid of 60 directions thus explains why H3 failed in the trial: with the frozen code, the same grid and rates give H3 not met. The trial itself ran on code from before the freeze, so this recomputation is no replay of it.
+
+## 3. Plan of the computations in Colab after release v0.3.0
+
+Written on 12 November 2026 (UTC) and committed before anything of it was computed. The script is
+kobori_and_dephasing.py and the notebook notebooks/MAG-S3c_colab_after_release.ipynb; they use the frozen code of
+code/ unchanged and check its SHA-256 against FREEZE.txt first. The results go into the notes after release v0.3.1 and
+change no verdict.
+
+**Why.** A comment on release v0.3.0 pointed out that Kobori et al. define the CISS efficiency as 100 (1 − cos χ). Their
+preprint (ChemRxiv, doi 10.26434/chemrxiv.15000186/v2) fits the time-resolved EPR spectra of the cryptochrome-DASH of
+Xenopus laevis with the singlet-born state cos(χ/2)|S⟩ + sin(χ/2)|T₀⟩ (their Eq. 6), recombination at χ_CR = −χ
+(Eq. 16) and the CISS axis along the axis of the dipolar coupling, with χ = 20° (6%) for the pair FAD–W_C and 23° (8%)
+for FAD–W_B. Neither reading of section 1 matches this definition. Among the forms of MAG-S3c their model is P-LH with
+the CISS axis r, and the run computed the polarisation forms at χ = 0.1π = 18°, an efficiency of 4.9% in this measure.
+
+**A. Polarisation forms at the angles of Kobori et al.** Direct cells of P-LH and P-same at χ = 20° and 23° in W_C and
+W_D, on the axes r, z and x, without relaxation, at 10⁶ s⁻¹ of random fields and of dephasing, and at 3·10⁷ and
+10⁸ s⁻¹ of dephasing: 120 cells on the grid of the run (2000 directions, Cry4a rates). Form K at equal triplet
+population (χ_b = χ/2) and the control P-0 at χ follow from the references of the run without new solves.
+
+**B. Dense dephasing.** References of W_C and W_D at dephasing 4·10⁷, 5·10⁷, 6·10⁷ and 8·10⁷ s⁻¹, between the levels
+3·10⁷ and 10⁸ s⁻¹ of the run: 8 references. With them k½ of form K (χ_b = 0.05π and 0.1π, m = 1) on the axes z, x and
+r follows by the rule of the protocol, the first crossing of half, linear in lg k between adjacent levels, and |d_odd·z|
+at 6·10⁷ s⁻¹ needs no interpolation.
+
+**Checks.** Twelve direct cells (P-LH and P-same at χ = 0.1π on the axis r, without relaxation and at 10⁶ s⁻¹ of both
+kinds, in W_C and W_D) repeat cells of the run, and the script stops before A and B when one of them differs from the
+archive of the run by more than 10⁻⁹ relative. The reference of W_C at dephasing 3·10⁷ s⁻¹ is compared at the end. On
+the calibration machine the first of the twelve came out bit for bit, and the rule for k½ reproduces k_half.csv to
+4·10⁻¹³ relative.
+
+**Reading.** For every cell the summary gives F, F_amp and the stricter of the two at p = 1 and S = 1, as in the run,
+and calls a cell visible to the dipole test when the stricter response is at least 0.01. The comparison with Kobori et
+al. reads P-LH on the axis r at 20° in W_C first, then W_D, the other axes, P-same, K and P-0. Section B reports k½
+beside the value from the levels of the run and the class of the protocol (below 3·10⁷, 3–6·10⁷, above 6·10⁷ s⁻¹).
+
+**Cost.** About 43 processor hours, 1–1.5 hours on the 44 processors of a TPU v6e-1 runtime in Colab.
