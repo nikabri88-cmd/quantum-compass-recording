@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "MAG-S3, MAG-S3b and MAG-S3c: recording the quantum compass, CISS non-reciprocity, cryptochrome order and real pair geometry"
 type: software
-version: "0.3.2"
+version: "0.3.3"
 doi: "10.5281/zenodo.24158610"
 identifiers:
   - type: doi
@@ -35,6 +35,12 @@ authors:
 date-released: 2026-11-12
 license: MIT
 abstract: >-
+  Version 0.3.3 adds note 9 to the notes after release of MAG-S3c. The recombination rate of the Cry4a set,
+  3.4e5 per second, is the estimate of Xu et al. (2021) for the FAD-W_D pair, and the protocol applied it to both
+  pairs. With the rate estimated for FAD-W_C, about 1.2e7 per second, every CISS form computed at the angle of
+  Kobori et al. (2026) lies above the threshold of the dipole test in the W_C pair, theirs 35-48 times, and at
+  axial order 0.4 the coherence form exceeds the approximate sphere-detection benchmark of MAG-S3. The frozen
+  files, the run and the verdicts are those of version 0.3.0.
   Version 0.3.2 makes four wording fixes to the notes after release of MAG-S3c: when an oriented sample reads the
   whole odd dipole, what the check Q1 covers, bounds rounded up and the relaxation levels of the cells; the numbers,
   the frozen files, the run and the verdicts are those of version 0.3.1.
@@ -140,6 +146,16 @@ references:
     volume: 11
     doi: "10.1021/acs.jpclett.0c00370"
     year: 2020
+  - type: article
+    title: "Cryptochrome magnetoreception: four tryptophans could be better than three"
+    authors:
+      - family-names: Wong
+        given-names: S. Y.
+      - name: "et al."
+    journal: "Journal of the Royal Society Interface"
+    volume: 18
+    doi: "10.1098/rsif.2021.0601"
+    year: 2021
   - type: article
     title: "Chemical and structural analysis of a photoactive vertebrate cryptochrome from pigeon"
     authors:
