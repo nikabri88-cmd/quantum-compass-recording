@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "MAG-S3, MAG-S3b and MAG-S3c: recording the quantum compass, CISS non-reciprocity, cryptochrome order and real pair geometry"
 type: software
-version: "0.3.1"
+version: "0.3.2"
 doi: "10.5281/zenodo.24157274"
 identifiers:
   - type: doi
@@ -32,6 +32,9 @@ authors:
 date-released: 2026-11-12
 license: MIT
 abstract: >-
+  Version 0.3.2 makes four wording fixes to the notes after release of MAG-S3c: when an oriented sample reads the
+  whole odd dipole, what the check Q1 covers, bounds rounded up and the relaxation levels of the cells; the numbers,
+  the frozen files, the run and the verdicts are those of version 0.3.1.
   Version 0.3.1 adds notes after release to MAG-S3c. With the definition of Kobori et al. (2026), CISS
   efficiency 100(1 - cos chi), the form of their model (birth at chi, recombination at -chi) gives an odd part below
   the threshold of the dipole test along the pair axis at the Cry4a rates of the run by the stricter transfer, and
