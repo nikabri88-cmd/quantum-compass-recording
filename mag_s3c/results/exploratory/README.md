@@ -58,6 +58,14 @@ population (χ_b = χ/2) and the control P-0 at χ follow from the references of
 r follows by the rule of the protocol, the first crossing of half, linear in lg k between adjacent levels, and |d_odd·z|
 at 6·10⁷ s⁻¹ needs no interpolation.
 
+**C. Exchange coupling (added on 12 November 2026 before it was computed).** Kobori et al. fitted J = 22 μT for the
+pair FAD–W_C (2J = E_S − E_T₀), where the run took J = 0. The script kobori_exchange.py adds the exchange term in the
+convention of RadicalPy, −J|γ_e|(2 S_A·S_B + 1/2), to the frozen systems W_C and W_D with J = +22 μT and −22 μT and
+computes P-LH and P-same at χ = 20° on the axis r, without relaxation and at 10⁶ s⁻¹ of both kinds: 24 cells. The
+frozen code stays unchanged, and a check cell at J = 0 must equal the cell of the frozen W_C bit for bit. Because
+Colab did not connect, the core of A on the axis r (32 cells without the level 10⁸ s⁻¹) and part C run on the
+calibration machine; the rest of A and part B wait for Colab.
+
 **Checks.** Twelve direct cells (P-LH and P-same at χ = 0.1π on the axis r, without relaxation and at 10⁶ s⁻¹ of both
 kinds, in W_C and W_D) repeat cells of the run, and the script stops before A and B when one of them differs from the
 archive of the run by more than 10⁻⁹ relative. The reference of W_C at dephasing 3·10⁷ s⁻¹ is compared at the end. On
