@@ -1,0 +1,28 @@
+E_S - E_T of the added term in units of J |gamma_e| (2 expected): {'W_C_J+0.022': np.float64(1.9999999999999993), 'W_C_J-0.022': np.float64(1.9999999999999993), 'W_D_J+0.022': np.float64(1.9999999999999993), 'W_D_J-0.022': np.float64(1.9999999999999993)}
+W_C_J+0_r_none0_P-LH_chi0.111111_m1_cry4a done 0.02 h
+check cell at J = 0 equal to the frozen W_C bit for bit: True
+W_C_J+0.022_r_rf1e+06_P-LH_chi0.111111_m1_cry4a done 0.06 h
+W_C_J+0.022_r_rf1e+06_P-same_chi0.111111_m1_cry4a done 0.06 h
+W_C_J-0.022_r_rf1e+06_P-LH_chi0.111111_m1_cry4a done 0.13 h
+W_C_J-0.022_r_rf1e+06_P-same_chi0.111111_m1_cry4a done 0.13 h
+W_D_J+0.022_r_rf1e+06_P-LH_chi0.111111_m1_cry4a done 0.19 h
+W_D_J+0.022_r_rf1e+06_P-same_chi0.111111_m1_cry4a done 0.19 h
+W_D_J-0.022_r_rf1e+06_P-LH_chi0.111111_m1_cry4a done 0.25 h
+W_D_J-0.022_r_rf1e+06_P-same_chi0.111111_m1_cry4a done 0.25 h
+W_C_J+0.022_r_std1e+06_P-LH_chi0.111111_m1_cry4a done 0.30 h
+W_C_J+0.022_r_std1e+06_P-same_chi0.111111_m1_cry4a done 0.30 h
+W_C_J-0.022_r_std1e+06_P-LH_chi0.111111_m1_cry4a done 0.35 h
+W_C_J-0.022_r_std1e+06_P-same_chi0.111111_m1_cry4a done 0.35 h
+W_D_J+0.022_r_std1e+06_P-LH_chi0.111111_m1_cry4a done 0.40 h
+W_D_J+0.022_r_std1e+06_P-same_chi0.111111_m1_cry4a done 0.41 h
+W_D_J-0.022_r_std1e+06_P-LH_chi0.111111_m1_cry4a done 0.46 h
+W_D_J-0.022_r_std1e+06_P-same_chi0.111111_m1_cry4a done 0.46 h
+W_C_J+0.022_r_none0_P-LH_chi0.111111_m1_cry4a done 0.48 h
+W_C_J+0.022_r_none0_P-same_chi0.111111_m1_cry4a done 0.48 h
+W_C_J-0.022_r_none0_P-LH_chi0.111111_m1_cry4a done 0.50 h
+W_C_J-0.022_r_none0_P-same_chi0.111111_m1_cry4a done 0.50 h
+W_D_J+0.022_r_none0_P-LH_chi0.111111_m1_cry4a done 0.52 h
+W_D_J+0.022_r_none0_P-same_chi0.111111_m1_cry4a done 0.52 h
+W_D_J-0.022_r_none0_P-LH_chi0.111111_m1_cry4a done 0.54 h
+W_D_J-0.022_r_none0_P-same_chi0.111111_m1_cry4a done 0.54 h
+exit 0

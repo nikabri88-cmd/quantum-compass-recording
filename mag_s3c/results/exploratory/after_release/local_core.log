@@ -1,0 +1,39 @@
+W_C_r_none0_P-same_chi0.1_m1_cry4a done 0.02 h
+W_D_r_none0_P-LH_chi0.1_m1_cry4a done 0.02 h
+W_D_r_none0_P-same_chi0.1_m1_cry4a done 0.04 h
+[{"item": "W_C_r_none0_P-LH_chi0.1_m1_cry4a", "identical": true, "max_rel_diff": 0.0}, {"item": "W_C_r_none0_P-same_chi0.1_m1_cry4a", "identical": true, "max_rel_diff": 0.0}, {"item": "W_D_r_none0_P-LH_chi0.1_m1_cry4a", "identical": true, "max_rel_diff": 0.0}, {"item": "W_D_r_none0_P-same_chi0.1_m1_cry4a", "identical": true, "max_rel_diff": 0.0}]
+32 core cells
+W_C_r_std3e+07_P-LH_chi0.127778_m1_cry4a done 0.20 h
+W_C_r_std3e+07_P-LH_chi0.111111_m1_cry4a done 0.20 h
+W_C_r_std3e+07_P-same_chi0.127778_m1_cry4a done 0.41 h
+W_C_r_std3e+07_P-same_chi0.111111_m1_cry4a done 0.41 h
+W_D_r_std3e+07_P-LH_chi0.111111_m1_cry4a done 0.62 h
+W_D_r_std3e+07_P-LH_chi0.127778_m1_cry4a done 0.62 h
+W_D_r_std3e+07_P-same_chi0.111111_m1_cry4a done 0.83 h
+W_D_r_std3e+07_P-same_chi0.127778_m1_cry4a done 0.83 h
+W_C_r_rf1e+06_P-LH_chi0.111111_m1_cry4a done 0.89 h
+W_C_r_rf1e+06_P-LH_chi0.127778_m1_cry4a done 0.89 h
+W_C_r_rf1e+06_P-same_chi0.111111_m1_cry4a done 0.95 h
+W_C_r_rf1e+06_P-same_chi0.127778_m1_cry4a done 0.96 h
+W_D_r_rf1e+06_P-LH_chi0.111111_m1_cry4a done 1.01 h
+W_D_r_rf1e+06_P-LH_chi0.127778_m1_cry4a done 1.01 h
+W_D_r_rf1e+06_P-same_chi0.111111_m1_cry4a done 1.07 h
+W_D_r_rf1e+06_P-same_chi0.127778_m1_cry4a done 1.08 h
+W_C_r_std1e+06_P-LH_chi0.111111_m1_cry4a done 1.12 h
+W_C_r_std1e+06_P-LH_chi0.127778_m1_cry4a done 1.13 h
+W_C_r_std1e+06_P-same_chi0.111111_m1_cry4a done 1.17 h
+W_C_r_std1e+06_P-same_chi0.127778_m1_cry4a done 1.18 h
+W_D_r_std1e+06_P-LH_chi0.111111_m1_cry4a done 1.23 h
+W_D_r_std1e+06_P-LH_chi0.127778_m1_cry4a done 1.23 h
+W_D_r_std1e+06_P-same_chi0.111111_m1_cry4a done 1.28 h
+W_D_r_std1e+06_P-same_chi0.127778_m1_cry4a done 1.28 h
+W_C_r_none0_P-LH_chi0.111111_m1_cry4a done 1.30 h
+W_C_r_none0_P-LH_chi0.127778_m1_cry4a done 1.30 h
+W_C_r_none0_P-same_chi0.111111_m1_cry4a done 1.32 h
+W_C_r_none0_P-same_chi0.127778_m1_cry4a done 1.32 h
+W_D_r_none0_P-LH_chi0.111111_m1_cry4a done 1.35 h
+W_D_r_none0_P-LH_chi0.127778_m1_cry4a done 1.35 h
+W_D_r_none0_P-same_chi0.111111_m1_cry4a done 1.37 h
+W_D_r_none0_P-same_chi0.127778_m1_cry4a done 1.37 h
+done 1.4090344034963185 h
+exit 0
