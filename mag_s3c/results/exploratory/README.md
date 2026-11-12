@@ -4,6 +4,8 @@ Computed on 11 November 2026 (UTC), after the run and its reanalysis, with the f
 
 ## 1. The scale of CISS of Kobori et al. (2026)
 
+**Correction (v0.3.1).** Kobori et al. define the CISS efficiency as 100(1 − cos χ) for the state cos(χ/2)|S⟩ + sin(χ/2)|T₀⟩, so neither reading of this section, sin χ = 0.06 or sin²χ = 0.06, matches their 6% (χ = 20°). The values below stay correct as functions of the angle; the comparison at their definition is in section 3 and in note 1 of the notes after release in ../../README.md.
+
 Kobori et al. (2026) estimated the contribution of CISS in the cryptochrome-DASH of the frog Xenopus laevis by time-resolved EPR and a model fit at about 8% for the pair FAD–W_B and at most 6% for FAD–W_C (Kobe University press release); carrying these numbers over to Cry4 and to W_D is an assumption. Form K at m = 1 (CISS at birth only, full non-reciprocity) and the control P-0 (the polarised birth state of the polarisation forms, recombining through the singlet) follow exactly from the reference solutions of the run for any CISS angle, so no new solves are needed. The script rebuilds both at the angles that the two readings of the estimate give, sin χ = 0.06 or 0.08 (χ = 0.0191π or 0.0255π) and sin²χ = 0.06 or 0.08 (χ = 0.0788π or 0.0913π), together with χ = 0.1π, where every value equals the run (check rows). Output: scale.json, scale.log.
 
 Form K, CISS axis r̂, the stricter of the two transfers at p = 1 and S = 1 (here always F_amp); threshold of the dipole test 0.01:
@@ -78,3 +80,5 @@ al. reads P-LH on the axis r at 20° in W_C first, then W_D, the other axes, P-s
 beside the value from the levels of the run and the class of the protocol (below 3·10⁷, 3–6·10⁷, above 6·10⁷ s⁻¹).
 
 **Cost.** About 43 processor hours, 1–1.5 hours on the 44 processors of a TPU v6e-1 runtime in Colab.
+
+**Results so far (12 November 2026, UTC).** The core of A on the axis r (32 cells: P-LH and P-same at 20° and 23° in W_C and W_D, without relaxation, at 10⁶ s⁻¹ of both kinds and at dephasing 3·10⁷ s⁻¹) and part C (24 cells) ran on the calibration machine; after_release/ holds the driver local_core.py, core_summary.py, the logs, the summaries and the raw cells in local_cells.tar.gz. The four check cells at χ = 0.1π without relaxation equal the run bit for bit, and so does the check cell of part C at J = 0. The numbers are in notes 1 and 2 of the notes after release in ../../README.md. The rest of A (the axes z and x, dephasing 10⁸ s⁻¹), the remaining check items and part B wait for Colab.
