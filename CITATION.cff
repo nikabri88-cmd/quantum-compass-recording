@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "MAG-S3, MAG-S3b and MAG-S3c: recording the quantum compass, CISS non-reciprocity, cryptochrome order and real pair geometry"
 type: software
-version: "0.3.3"
+version: "0.3.4"
 doi: "10.5281/zenodo.24169811"
 identifiers:
   - type: doi
@@ -35,9 +35,17 @@ authors:
     given-names: Julia
     affiliation: Siriona
     orcid: "https://orcid.org/0009-0005-4194-6059"
-date-released: 2026-11-12
+date-released: 2026-11-13
 license: MIT
 abstract: >-
+  Version 0.3.4 corrects the interval of the difference that MAG-S3 reports for H3: the frozen analysis multiplies
+  the exact conditional interval by the observed share of discordant birds, which made it too narrow, 0.369-0.440
+  instead of 0.34-0.54; the verdict rests on the exact McNemar test and stays not met. It adds note 10 to the notes
+  after release of MAG-S3c: computed directly between the dephasing levels of the run, the half-rate of the
+  projection of the odd dipole is 3.2-5.9e7 per second in the real pairs, 1-7% below the values on the levels of the
+  run and inside the range estimated from experiment, except one axis of W_D above 1e8. The notes now state that the
+  gain from axial disorder holds when the neurons keep their modulation depth and that the bound of a null result
+  belongs to an estimate that knows the bird's retina. The frozen files, the runs and the verdicts are unchanged.
   Version 0.3.3 adds note 9 to the notes after release of MAG-S3c. The recombination rate of the Cry4a set,
   3.4e5 per second, is the estimate of Xu et al. (2021) for the FAD-W_D pair, and the protocol applied it to both
   pairs. With the rate estimated for FAD-W_C, about 1.2e7 per second, every CISS form computed at the angle of
@@ -102,6 +110,16 @@ keywords:
   - population coding
   - simulation
 references:
+  - type: article
+    title: "Improved confidence intervals for the difference between binomial proportions based on paired data"
+    authors:
+      - family-names: Newcombe
+        given-names: R. G.
+    journal: "Statistics in Medicine"
+    volume: 17
+    start: 2635
+    end: 2650
+    year: 1998
   - type: article
     title: "Singlet-triplet dephasing in radical pairs in avian cryptochromes leads to time-dependent magnetic field effects"
     authors:

@@ -1,0 +1,7 @@
+H3 of the run: n = 100, simultaneous RP2 44, probe RP2 0, n10 = 44, n01 = 0, n11 = 0, n00 = 56, verdict not met
+reported interval of the difference: [0.36923, 0.44]
+frozen paired_difference reproduces it: True
+conditional Clopper-Pearson interval of the simultaneous-only share among discordant birds: 0.9196-1.0000; upper bound below 1/2: False (the verdict rule)
+Newcombe hybrid score interval of the difference: 0.3397-0.5377
+Clopper-Pearson interval of the simultaneous share (exact for the difference, no probe RP2): 0.3408-0.5428
+exact coverage for true shares 0.44 and 0: reported interval 0.4726, Newcombe 0.9556
