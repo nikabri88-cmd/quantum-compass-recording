@@ -1,0 +1,12 @@
+start 2026-11-13T10:42:52Z script sha256 b65285266e85442e0f7b4a07eee6a5366b9cd1fa40a513199ba57e151d3bec04
+ref_W_C_std6e+07_cry4a done 0.35 h
+ref_W_C_std8e+07_cry4a done 0.44 h
+ref_W_C_std5e+07_cry4a done 0.64 h
+ref_W_C_std4e+07_cry4a done 0.68 h
+ref_W_C_std3e+07_cry4a done 0.84 h
+[{"item": "ref_W_C_std3e+07_cry4a", "identical": true, "max_rel_diff": 0.0}]
+ref_W_D_std6e+07_cry4a done 0.38 h
+ref_W_D_std8e+07_cry4a done 0.49 h
+ref_W_D_std5e+07_cry4a done 0.70 h
+ref_W_D_std4e+07_cry4a done 0.76 h
+done 1.60 h check passed

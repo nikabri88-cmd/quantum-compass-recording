@@ -1,0 +1,14 @@
+k_half on the levels of the run against k_half.csv: largest relative difference 4.3e-13
+W_C_z_chi0.05    run levels 3.33e+07 (3e7 to 6e7), dense 3.3e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.323
+W_C_z_chi0.1     run levels 3.55e+07 (3e7 to 6e7), dense 3.5e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.341
+W_C_x_chi0.05    run levels 5.58e+07 (3e7 to 6e7), dense 5.33e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.447
+W_C_x_chi0.1     run levels 5.52e+07 (3e7 to 6e7), dense 5.27e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.441
+W_C_r_chi0.05    run levels 6.21e+07 (above 6e7), dense 5.94e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.495
+W_C_r_chi0.1     run levels 6.21e+07 (above 6e7), dense 5.94e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.495
+W_D_z_chi0.05    run levels None (above 1e8), dense None (above 1e8), |d_odd.z| at 6e7 / at 0: 0.714
+W_D_z_chi0.1     run levels None (above 1e8), dense None (above 1e8), |d_odd.z| at 6e7 / at 0: 0.712
+W_D_x_chi0.05    run levels 4.35e+07 (3e7 to 6e7), dense 4.05e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.336
+W_D_x_chi0.1     run levels 4.34e+07 (3e7 to 6e7), dense 4.04e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.335
+W_D_r_chi0.05    run levels 3.33e+07 (3e7 to 6e7), dense 3.25e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.239
+W_D_r_chi0.1     run levels 3.31e+07 (3e7 to 6e7), dense 3.23e+07 (3e7 to 6e7), |d_odd.z| at 6e7 / at 0: 0.237
+written dense/local_dense_summary.json
